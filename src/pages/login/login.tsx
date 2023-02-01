@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup"
@@ -6,12 +6,19 @@ import {login} from "../../api/call/auth";
 import {LoginInputs} from "../../types/loginDataType";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {loginAction} from "../../reducers/login";
+import {addLocalStorageItem, delLocalStorageItem, getLocalStorageItem} from "../../utills";
 
 const LoginPage = () => {
+  const remember = getLocalStorageItem("rememberEmail")
+
+  useEffect(()=>{
+    if(remember != undefined){
+      methods.setValue("email", remember)
+      methods.setValue("remember", true)
+    }
+  },[])
+
   const navigator = useNavigate()
-  const dispatch = useDispatch();
 
   const schema = yup.object().shape({
     email: yup.string().required(),
@@ -26,14 +33,13 @@ const LoginPage = () => {
   const onSubmit = async (data: LoginInputs) => {
     login(data).then((res)=>{
       if(res.data === 1){
-        const param = {
-          login: true,
-          email: data.email
+        if(data.remember){
+          addLocalStorageItem("rememberEmail", data.email)
+        }else{
+          delLocalStorageItem("rememberEmail")
         }
-        dispatch(loginAction.setIsLogin(param))
         toast.success("인증 성공")
         navigator("/main")
-
       }else{
         toast.error ("입력 정보를 확인하세요")
       }
@@ -72,7 +78,7 @@ const LoginPage = () => {
                 {...methods.register("remember")}
               />
               <label className="custom-control-label" htmlFor="customCheck1">
-                Remember me
+                <span style={{marginLeft:"5px"}}>Remember me</span>
               </label>
             </div>
           </div>
@@ -81,8 +87,9 @@ const LoginPage = () => {
               Submit
             </button>
           </div>
-          <p className="forgot-password text-right">
-            Forgot <a href="/forgot">password?</a>
+          <p className="forgot-password text-right" style={{fontSize:"15px"}}>
+            Forgot <a style={{fontSize:"15px"}} href="/forgot">password?</a>
+            <br/><a style={{fontSize:"15px"}} href="/sign-up">Sign-Up</a>
           </p>
         </form>
         </div>

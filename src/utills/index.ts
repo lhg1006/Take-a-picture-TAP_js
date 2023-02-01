@@ -21,3 +21,13 @@ export const getCookie = (cName : string) => {
   }
   return unescape(cValue);
 }
+
+export const addLocalStorageItem = (iName : string, iValue : string) => {
+  window.localStorage.setItem(iName, iValue)
+}
+export const delLocalStorageItem = (iName : string) => {
+  window.localStorage.removeItem(iName)
+}
+export const getLocalStorageItem = (iName : string) => {
+  return window.localStorage.getItem(iName)
+}

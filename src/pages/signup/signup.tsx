@@ -98,7 +98,7 @@ const SignupPage = () => {
         </div>
         <div className="d-grid">
           <button type="button" onClick={ () => { emailChk(methods.getValues("email")) }} className={!emailOk ? "btn btn-secondary" : "btn btn-success"}>
-            Email Check
+            {!emailOk ? "Email Check" : "Available"}
           </button>
         </div>
         <div className="mb-3">

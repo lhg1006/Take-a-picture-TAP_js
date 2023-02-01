@@ -5,6 +5,8 @@ import {TfiMore} from 'react-icons/tfi';
 import {TiDeleteOutline} from "react-icons/ti"
 import {Modal} from "../common/modal";
 import {getCookie} from "../../utills";
+import {delComment} from "../../api/call/feed";
+import {toast} from "react-toastify";
 
 const Card = ({data, targetComment}: { data: FeedResultType; targetComment: CommentResultType[] }) => {
   const [likeList, setLikeList] = useState<string[]>([])
@@ -30,10 +32,16 @@ const Card = ({data, targetComment}: { data: FeedResultType; targetComment: Comm
     }
   }
 
-  const onDeleteComment = () => {
-    console.log("del Click")
+  const onDeleteComment = (data:CommentResultType) => {
+    delComment(data).then((res)=>{
+      if(res.data == 1){
+        setCommentList(commentList.filter(co => co.autoNo !== data.autoNo))
+        toast.success("Delete success")
+      }else{
+        toast.error("Delete fail ...")
+      }
+    })
   }
-
 
   const onMoreComment = () => {
     setModalOpen(true)
@@ -77,7 +85,10 @@ const Card = ({data, targetComment}: { data: FeedResultType; targetComment: Comm
                           <span>{data.rmemberEmail} </span>
                           <span>{data.comment}</span>
                         {data.rmemberEmail === cookieMemberEmail &&
-                            <div onClick={onDeleteComment} style={{float: "right", cursor:"pointer"}}><TiDeleteOutline/></div>
+                            <div style={{float: "right"}}
+                                 onClick={()=>{onDeleteComment(data)}} >
+                                <TiDeleteOutline/>
+                            </div>
                         }
                           <br/>
                       </div>
@@ -97,7 +108,10 @@ const Card = ({data, targetComment}: { data: FeedResultType; targetComment: Comm
                     <span>{data.rmemberEmail} </span>
                     <span>{data.comment}</span>
                     {data.rmemberEmail === cookieMemberEmail &&
-                        <div onClick={onDeleteComment} style={{float: "right", marginRight: "10px", cursor:"pointer"}}><TiDeleteOutline/></div>
+                        <div style={{float: "right", marginRight: "10px"}}
+                             onClick={()=>{onDeleteComment(data)}}>
+                            <TiDeleteOutline/>
+                        </div>
                     }
                     <br/>
                   </div>
