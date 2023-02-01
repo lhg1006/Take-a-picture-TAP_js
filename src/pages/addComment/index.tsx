@@ -1,11 +1,15 @@
 import React, {Dispatch, SetStateAction} from "react"
 import {useForm} from "react-hook-form";
-import {addComment} from "../../api/call/feed";
+import {addComment, getFeedList} from "../../api/call/feed";
 import {CommentResultType} from "../../types/feedTypes";
 import {toast} from "react-toastify";
 import {getCookie} from "../../utills";
+import {feedAction} from "../../reducers/feed";
+import {commonAction} from "../../reducers/common";
+import {useDispatch} from "react-redux";
 
-const AddComment = ({postNo, commentList, setCommentList} : {postNo:number; commentList:CommentResultType[]; setCommentList:Dispatch<SetStateAction<CommentResultType[]>>}) =>{
+const AddComment = ({postNo} : {postNo:number}) =>{
+  const dispatch = useDispatch()
   const rmemberEmail = getCookie("memberEmail")
 
   const method = useForm<CommentResultType>({
@@ -19,7 +23,9 @@ const AddComment = ({postNo, commentList, setCommentList} : {postNo:number; comm
     addComment(data).then( (res) => {
       if(res.data === 1){
         method.reset()
-        setCommentList([...commentList, data])
+        getFeedList().then((res) => {
+          dispatch(feedAction.setFirstPage(res.data))
+        })
         toast.success("Add Comment Success")
       }else{
         toast.error("Failure . . .")

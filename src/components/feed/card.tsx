@@ -5,13 +5,15 @@ import {TfiMore} from 'react-icons/tfi';
 import {TiDeleteOutline} from "react-icons/ti"
 import {Modal} from "../common/modal";
 import {getCookie} from "../../utills";
-import {delComment} from "../../api/call/feed";
+import {delComment, getFeedList} from "../../api/call/feed";
 import {toast} from "react-toastify";
+import {feedAction} from "../../reducers/feed";
+import {useDispatch} from "react-redux";
 
 const Card = ({data, targetComment}: { data: FeedResultType; targetComment: CommentResultType[] }) => {
+  const dispatch = useDispatch()
   const [likeList, setLikeList] = useState<string[]>([])
   const [bookmarkList, setBookmarkList] = useState<string[]>([])
-  const [commentList, setCommentList] = useState<CommentResultType[]>(targetComment)
   const cookieMemberEmail = getCookie("memberEmail")
 
   const onLike = (e: any) => {
@@ -35,7 +37,9 @@ const Card = ({data, targetComment}: { data: FeedResultType; targetComment: Comm
   const onDeleteComment = (data:CommentResultType) => {
     delComment(data).then((res)=>{
       if(res.data == 1){
-        setCommentList(commentList.filter(co => co.autoNo !== data.autoNo))
+        getFeedList().then((res) => {
+          dispatch(feedAction.setFirstPage(res.data))
+        })
         toast.success("Delete success")
       }else{
         toast.error("Delete fail ...")
@@ -77,7 +81,7 @@ const Card = ({data, targetComment}: { data: FeedResultType; targetComment: Comm
             <div style={{fontWeight: 'bold', marginRight: "10px", marginBottom: "10px"}}>
               {data.contents}
             </div>
-            {commentList.map((data, idx) => {
+            {targetComment.map((data, idx) => {
               return (
                 <div key={idx}>
                   {idx < 3 &&
@@ -96,13 +100,13 @@ const Card = ({data, targetComment}: { data: FeedResultType; targetComment: Comm
                 </div>
               )
             })}
-            {commentList.length > 3 &&
+            {targetComment.length > 3 &&
                 <div onClick={onMoreComment} style={{marginLeft: "3px", cursor: "pointer"}}>
                     <TfiMore/>
                 </div>
             }
             <Modal open={modalOpen} close={modalClose} header="More Comments">
-              {commentList.map((data, idx) => {
+              {targetComment.map((data, idx) => {
                 return (
                   <div key={idx}>
                     <span>{data.rmemberEmail} </span>
@@ -117,11 +121,11 @@ const Card = ({data, targetComment}: { data: FeedResultType; targetComment: Comm
                   </div>
                 )
               })}
-              <AddComment postNo={data.autoNo} commentList={commentList} setCommentList={setCommentList}/>
+              <AddComment postNo={data.autoNo}/>
             </Modal>
           </div>
         </div>
-        <AddComment postNo={data.autoNo} commentList={commentList} setCommentList={setCommentList}/>
+        <AddComment postNo={data.autoNo}/>
       </div>
 
     </>
