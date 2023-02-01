@@ -79,6 +79,8 @@ const Forgot = () => {
 
   return(
     <>
+      <div className="auth-wrapper">
+        <div className="auth-inner">
       <form onSubmit={methods.handleSubmit(onSubmit)}>
         <h3>Forgot Password</h3>
         <div className="mb-3">
@@ -137,7 +139,8 @@ const Forgot = () => {
           </button>
         </div>
       </Modal>
-
+        </div>
+      </div>
     </>
   )
 }

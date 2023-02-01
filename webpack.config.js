@@ -41,6 +41,11 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
     },
     devServer: {
+        hot: true,
+        port: '3000',
+        client: {
+            progress: true,
+        },
         proxy: {
             '/api': 'http://loaclhost:8000',
             changeOrigin: true

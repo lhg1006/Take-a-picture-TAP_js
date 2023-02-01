@@ -5,23 +5,35 @@ import * as yup from "yup"
 import {login} from "../../api/call/auth";
 import {LoginInputs} from "../../types/loginDataType";
 import {toast} from "react-toastify";
-
-const schema = yup.object().shape({
-  email: yup.string().required(),
-  password:yup.string().required(),
-  remember:yup.boolean()
-}).required()
+import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {loginAction} from "../../reducers/login";
 
 const LoginPage = () => {
+  const navigator = useNavigate()
+  const dispatch = useDispatch();
+
+  const schema = yup.object().shape({
+    email: yup.string().required(),
+    password:yup.string().required(),
+    remember:yup.boolean()
+  }).required()
+
   const methods = useForm<LoginInputs>({
     resolver: yupResolver(schema)
   })
 
   const onSubmit = async (data: LoginInputs) => {
-    console.log(data);
     login(data).then((res)=>{
       if(res.data === 1){
+        const param = {
+          login: true,
+          email: data.email
+        }
+        dispatch(loginAction.setIsLogin(param))
         toast.success("인증 성공")
+        navigator("/main")
+
       }else{
         toast.error ("입력 정보를 확인하세요")
       }
@@ -29,6 +41,8 @@ const LoginPage = () => {
   };
   return(
     <>
+      <div className="auth-wrapper">
+        <div className="auth-inner">
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <h3>Sign In</h3>
           <div className="mb-3">
@@ -71,6 +85,8 @@ const LoginPage = () => {
             Forgot <a href="/forgot">password?</a>
           </p>
         </form>
+        </div>
+      </div>
     </>
   )
 }

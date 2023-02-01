@@ -1,3 +1,10 @@
+export type loginStateType = {
+  login:{
+    isLogin: boolean
+    memberEmail: string
+  }
+}
+
 export type LoginInputs = {
   email:string
   password:string
@@ -21,4 +28,9 @@ export type ChangePwInputs = {
   email: string
   changePassword: string
   changeChkPassword: string
+}
+
+export type loginParamType = {
+  login: boolean
+  email: string
 }

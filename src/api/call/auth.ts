@@ -20,3 +20,7 @@ export const forgotPassword = async (data:ForgotInputs) =>{
 export const changePassword = async (data:{email: string, password: string}) =>{
   return await axios.post(`/api/change/password`, data)
 }
+
+export const logout = async () => {
+  return await axios.post(`/api/logout`)
+}

@@ -6,16 +6,9 @@ import React from "react";
 
 const Auth = () => {
   return (
-    <div className="auth-wrapper">
-      <div className="auth-inner">
         <Routes>
-          <Route path="/" element={<LoginPage />}/>
-          <Route path="/sign-in" element={<LoginPage/>}/>
-          <Route path="/sign-up" element={<SignupPage/>}/>
-          <Route path={"/forgot"} element={<Forgot />} />
+
         </Routes>
-      </div>
-    </div>
   )
 }
 

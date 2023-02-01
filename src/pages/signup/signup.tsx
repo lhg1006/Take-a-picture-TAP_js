@@ -65,6 +65,8 @@ const SignupPage = () => {
 
   return(
     <>
+      <div className="auth-wrapper">
+        <div className="auth-inner">
       <form onSubmit={methods.handleSubmit(onSignUp)}>
         <h3>Sign Up</h3>
         <div className="mb-3">
@@ -127,6 +129,8 @@ const SignupPage = () => {
           Already registered <a href="/sign-in">sign in?</a>
         </p>
       </form>
+        </div>
+      </div>
     </>
   )
 }
