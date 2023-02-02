@@ -1,11 +1,21 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {getCookie} from "../../utills";
 
 const MyPage = () => {
+  const isLogin = getCookie('isLogin')
+  useEffect(()=>{
+    if(!isLogin){
+      window.location.replace("/")
+      return;
+    }
+  })
   return(
     <>
-      <div className={"main-wrapper"} >
-        <div>My Page</div>
-      </div>
+      {isLogin &&
+          <div className={"main-wrapper"} >
+              <div>My Page</div>
+          </div>
+      }
     </>
   )
 }

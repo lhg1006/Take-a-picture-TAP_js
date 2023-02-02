@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import "./css/common/common.css"
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -16,7 +16,6 @@ import {getCookie} from "./utills";
 import AddPost from "./pages/addPost";
 
 function App() {
-  const isLogin = getCookie("isLogin")
   return (
     <BrowserRouter>
       <div className="App">
@@ -33,7 +32,7 @@ function App() {
             <Route path="/add-post" element={<AddPost />} />
           </Route>
         </Routes>
-        {isLogin && <Footer />}
+        <Footer />
       </div>
     </BrowserRouter>
   );

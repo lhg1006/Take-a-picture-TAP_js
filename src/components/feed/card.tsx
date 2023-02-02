@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {CommentResultType, FeedResultType} from "../../types/feedTypes";
-import AddComment from "../../pages/addComment";
+import AddComment from "../addComment";
 import {TfiMore} from 'react-icons/tfi';
 import {TiDeleteOutline} from "react-icons/ti"
 import {Modal} from "../common/modal";
