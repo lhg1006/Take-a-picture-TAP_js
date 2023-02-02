@@ -26,7 +26,7 @@ const DropdownBox = () => {
         </>) : (<>
         <Dropdown.Item href="/main"><i className="bi bi-house"></i> home</Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item href="/mypage"><i className="bi bi-house-gear-fill"></i> MyPage</Dropdown.Item>
+        <Dropdown.Item href="/my-page"><i className="bi bi-house-gear-fill"></i> MyPage</Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item onClick={()=>{
           logout().then((res) => {

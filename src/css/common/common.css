@@ -1,0 +1,128 @@
+.text-area-container {
+    overflow: auto;
+    width: 85%;
+    resize: none;
+    max-height: 70px;
+    border-radius: 5px;
+}
+.text-area-container::-webkit-scrollbar {
+    width: 5px;
+}
+.text-area-container::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.69);;
+    border-radius: 5px;
+}
+.text-area-container::-webkit-scrollbar-track {
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.text-limit {
+    width:80%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    display:inline-block;
+}
+.text-limit-none {
+    width:80%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:inline-block;
+}
+
+.comment-del-icon-modal {
+    position:relative;
+    top:-3px;
+    float: right;
+    margin-right: 10px;
+}
+.comment-del-icon {
+    position:relative;
+    font-size: 18px;
+    top:-3px;
+    float: right;
+}
+
+.card-heart-icon{
+    font-size: 1.5rem;
+    color: red;
+    cursor: pointer;
+    float: left;
+    margin-left: 10px;
+}
+
+.card-chat-icon{
+    position: relative;
+    top: -2px;
+    font-size: 1.5rem;
+    color: black;
+    cursor: pointer;
+    float: left;
+    margin-left: 25px;
+}
+
+.card-send-icon{
+    font-size: 1.5rem;
+    color: black;
+    cursor: pointer;
+    float: left;
+    margin-left: 20px;
+}
+
+.card-bookmark-icon{
+    font-size: 1.5rem;
+    color: black;
+    cursor: pointer;
+    float: right;
+}
+
+.card-header-text{
+    font-weight: bold;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.card-comment-icon{
+    position: relative;
+    top: -2px;
+    float: right;
+    margin-right: 10px;
+    font-size: 1.5rem;
+    color: #000000;
+}
+
+.wd-25r{
+    width: 25rem
+}
+
+.cursor{
+    cursor:pointer;
+}
+
+.custom-ui{
+    text-align: center;
+}
+
+.pink_btn {
+    width: 90px;
+    background: #ed197a;
+    margin: 5px;
+    color: #fff;
+    height: 36px;
+    line-height: 36px;
+    transition: 0.5s;
+    font-size: 17px;
+    border: none;
+}
+
+.fs15 {
+    font-size: 15px;
+}
+
+.fs20 {
+    font-size: 20px;
+}
+.fs30 {
+    font-size: 30px;
+}

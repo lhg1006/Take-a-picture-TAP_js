@@ -8,6 +8,8 @@ import {changePassword, forgotPassword} from "../../api/call/auth";
 import {toast} from "react-toastify";
 import {Modal} from "../../components/common/modal";
 import {useNavigate} from "react-router-dom";
+import {Form} from "react-bootstrap";
+
 
 const Forgot = () => {
   const navigator = useNavigate()
@@ -83,33 +85,35 @@ const Forgot = () => {
         <div className="auth-inner">
       <form onSubmit={methods.handleSubmit(onSubmit)}>
         <h3>Forgot Password</h3>
-        <div className="mb-3">
-          <label>Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Enter email"
-            {...methods.register("email")}
-          />
-        </div>
-        <div className="mb-3">
-          <label>Phone number</label>
-          <input
+        <Form.Floating className="mb-3">
+        <Form.Control
+          id="floatingInputCustom"
+          type="email"
+          placeholder="Email address"
+          {...methods.register("email")}
+        />
+        <label htmlFor="floatingInputCustom">Email address</label>
+      </Form.Floating>
+
+        <Form.Floating className="mb-3">
+          <Form.Control
+            id="floatingInputCustom"
             type="tel"
             value={value}
             maxLength={13}
-            className="form-control"
-            placeholder="Enter phone"
+            placeholder="Phone number"
             {...methods.register("phone", {onChange:onChange})}
           />
-        </div>
+          <label htmlFor="floatingInputCustom">Phone number</label>
+        </Form.Floating>
+
         <div className="d-grid">
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
         </div>
-        <p className="forgot-password text-right">
-          Already registered <a href="/sign-in">sign in?</a>
+        <p className="forgot-password text-right fs15">
+          Already registered <a className={'fs15'} href="/sign-in">sign in?</a>
         </p>
       </form>
       {/*비밀번호 변경 모달*/}

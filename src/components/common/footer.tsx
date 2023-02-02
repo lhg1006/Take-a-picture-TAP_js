@@ -9,11 +9,11 @@ const Footer = () => {
   }
 
   const onIcoPlus = () => {
-
+    navigator("/add-post")
   }
 
   const onIcoGear = () => {
-    navigator("/mypage")
+    navigator("/my-page")
   }
 
   const icoStyle = {

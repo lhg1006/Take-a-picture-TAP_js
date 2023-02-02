@@ -1,11 +1,10 @@
-import React, {Dispatch, SetStateAction} from "react"
+import React, {useCallback, useRef} from "react"
 import {useForm} from "react-hook-form";
 import {addComment, getFeedList} from "../../api/call/feed";
 import {CommentResultType} from "../../types/feedTypes";
 import {toast} from "react-toastify";
 import {getCookie} from "../../utills";
 import {feedAction} from "../../reducers/feed";
-import {commonAction} from "../../reducers/common";
 import {useDispatch} from "react-redux";
 
 const AddComment = ({postNo} : {postNo:number}) =>{
@@ -20,9 +19,13 @@ const AddComment = ({postNo} : {postNo:number}) =>{
     }
   })
   const onAddComment = (data: CommentResultType) => {
+    if(textRef.current.value.trim() === ""){
+      textRef.current.focus()
+      return;
+    }
     addComment(data).then( (res) => {
       if(res.data === 1){
-        method.reset()
+        textRef.current.value = ""
         getFeedList().then((res) => {
           dispatch(feedAction.setFirstPage(res.data))
         })
@@ -33,15 +36,23 @@ const AddComment = ({postNo} : {postNo:number}) =>{
     })
   }
 
+  const textRef = useRef<any>();
+  const handleResizeHeight = useCallback(() => {
+    textRef.current.style.height = 'auto';
+    textRef.current.style.height = textRef.current.scrollHeight + 'px';
+    method.setValue("comment", textRef.current.value)
+  }, []);
+
   return(
     <>
-      <div style={{marginTop:"10px", marginBottom:"7px"}}>
-        <textarea style={{width: "85%", resize: "none"}} cols={10} rows={1} maxLength={300}
-                  placeholder={"Add comment..."} {...method.register("comment", {required:"입력하세요."})} />
-        <a className={"btn-btn"}
-           style={{position: "relative", top: "-2px", float: "right", marginRight: "10px"}}>
+      <div className={'mt-2 mb-2'}>
+        <textarea className={'text-area-container'} cols={10} rows={1} maxLength={300}
+                  ref={textRef}
+                  onInput={handleResizeHeight}
+                  placeholder={" Add comment..."}  />
+        <a className={"btn-btn card-comment-icon"}>
           <div onClick={method.handleSubmit(onAddComment)}>
-            <span><i className="bi bi-chat-right-text-fill" style={{fontSize: "1.5rem", color: "black"}}></i></span>
+            <span><i className="bi bi-chat-right-text-fill "></i></span>
           </div>
         </a>
       </div>

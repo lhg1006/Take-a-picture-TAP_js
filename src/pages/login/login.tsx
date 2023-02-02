@@ -7,6 +7,7 @@ import {LoginInputs} from "../../types/loginDataType";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
 import {addLocalStorageItem, delLocalStorageItem, getLocalStorageItem} from "../../utills";
+import {Form} from "react-bootstrap";
 
 const LoginPage = () => {
   const remember = getLocalStorageItem("rememberEmail")
@@ -51,24 +52,26 @@ const LoginPage = () => {
         <div className="auth-inner">
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <h3>Sign In</h3>
-          <div className="mb-3">
-            <label>Email address</label>
-            <input
+          <Form.Floating className="mb-3">
+            <Form.Control
+              id="floatingInputCustom"
               type="email"
-              className="form-control"
-              placeholder="Enter email"
+              placeholder="name@example.com"
               {...methods.register("email", {pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g})}
             />
-          </div>
-          <div className="mb-3">
-            <label>Password</label>
-            <input
+            <label htmlFor="floatingInputCustom">Email address</label>
+          </Form.Floating>
+
+          <Form.Floating className="mb-3">
+            <Form.Control
+              id="floatingPasswordCustom"
               type="password"
-              className="form-control"
-              placeholder="Enter password"
+              placeholder="Password"
               {...methods.register("password")}
             />
-          </div>
+            <label htmlFor="floatingPasswordCustom">Password</label>
+          </Form.Floating>
+
           <div className="mb-3">
             <div className="custom-control custom-checkbox">
               <input
@@ -87,9 +90,9 @@ const LoginPage = () => {
               Submit
             </button>
           </div>
-          <p className="forgot-password text-right" style={{fontSize:"15px"}}>
-            Forgot <a style={{fontSize:"15px"}} href="/forgot">password?</a>
-            <br/><a style={{fontSize:"15px"}} href="/sign-up">Sign-Up</a>
+          <p className="forgot-password text-right fs15">
+            Forgot <a className={'fs15'} href="/forgot">password?</a>
+            <br/><a className={'fs15'} href="/sign-up">Sign-Up</a>
           </p>
         </form>
         </div>

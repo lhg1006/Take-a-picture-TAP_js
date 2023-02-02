@@ -6,6 +6,7 @@ import {useDispatch} from "react-redux";
 import {loginAction} from "../../reducers/login";
 import DropdownBox from "./dropdown";
 import {getCookie} from "../../utills";
+import {FcLinux} from "react-icons/fc";
 
 const Header = () => {
   const isLogin = getCookie("isLogin")
@@ -16,7 +17,7 @@ const Header = () => {
     <nav className="navbar navbar-expand-lg navbar-light fixed-top">
       <div className="container">
         <Link className="navbar-brand" to={'/main'}>
-          positronX
+          _ _ _  <FcLinux className={'fs30'}/>
         </Link>
         <DropdownBox />
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -44,7 +45,7 @@ const Header = () => {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to={'/mypage'}>
+                    <Link className="nav-link" to={'/my-page'}>
                       MyPage
                     </Link>
                   </li>
