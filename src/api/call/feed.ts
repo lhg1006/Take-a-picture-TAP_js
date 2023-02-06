@@ -12,3 +12,7 @@ export const addComment = async (data: CommentResultType) => {
 export const delComment = async (data: CommentResultType) => {
   return await axios.post(`/api/feed/comment/del`, data)
 }
+
+export const addPhotoImg = async (data: any) => {
+  return await axios.post(`/api/photo/upload/file`, data)
+}

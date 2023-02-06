@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {SignUpInputs} from "../../types/loginDataType";
 import {confirmEmailDuplication, signUp} from "../../api/call/auth";
-import {phoneNumberAutoFormat} from "../../utills";
+import {getCookie, phoneNumberAutoFormat} from "../../utills";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
 import {Form} from "react-bootstrap";
@@ -11,6 +11,7 @@ import {signUpSchema} from "../../schema/signUp";
 
 const SignupPage = () => {
   const [emailOk, setEmailOk] = useState(false);
+  const isLogin = getCookie('isLogin')
   const navigate = useNavigate();
 
   const methods = useForm<SignUpInputs>({
@@ -56,8 +57,14 @@ const SignupPage = () => {
     setValue(targetValue);
   };
 
+  useEffect(()=>{
+    if(isLogin){
+      window.location.replace('/main')
+    }
+  },[])
   return (
     <>
+      {!isLogin &&
       <div className="auth-wrapper">
         <div className="auth-inner">
           <form onSubmit={methods.handleSubmit(onSignUp)}>
@@ -133,6 +140,7 @@ const SignupPage = () => {
           </form>
         </div>
       </div>
+      }
     </>
   )
 }

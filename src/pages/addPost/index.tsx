@@ -4,6 +4,7 @@ import {useForm, FormProvider} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {addPostDefault, addPostSchema} from "../../schema/addPost";
 import {getCookie} from "../../utills";
+import AddPhoto from "../../components/addPost/addPhoto";
 
 const AddPost = () => {
   const isLogin = getCookie('isLogin')
@@ -21,21 +22,23 @@ const AddPost = () => {
       return;
     }
   }, [])
+
   return (
     <>
       {isLogin &&
           <div className={"main-wrapper"}>
               <div className={"content-wrapper"}>
                   <FormProvider {...methods}>
+                      <AddPhoto />
                       <Form>
-                          <FloatingLabel controlId="floatingTextarea2" label="Comments">
+                          <FloatingLabel className={"mb-3"} controlId="floatingTextarea2" label="Comments">
                               <Form.Control
                                   as="textarea"
                                   placeholder="Leave a comment here"
                                   style={{height: '100px', resize: 'none'}}
                               />
                           </FloatingLabel>
-                          <Button variant="primary" type="submit">
+                          <Button className={"mb-3"} variant="primary" type="submit">
                               Submit
                           </Button>
                       </Form>

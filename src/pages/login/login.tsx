@@ -6,13 +6,18 @@ import {login} from "../../api/call/auth";
 import {LoginInputs} from "../../types/loginDataType";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
-import {addLocalStorageItem, delLocalStorageItem, getLocalStorageItem} from "../../utills";
+import {addLocalStorageItem, delLocalStorageItem, getCookie, getLocalStorageItem} from "../../utills";
 import {Form} from "react-bootstrap";
 
 const LoginPage = () => {
   const remember = getLocalStorageItem("rememberEmail")
+  const isLogin = getCookie('isLogin')
 
   useEffect(()=>{
+    if(isLogin){
+      window.location.replace("/main")
+    }
+
     if(remember != undefined){
       methods.setValue("email", remember)
       methods.setValue("remember", true)
@@ -48,6 +53,7 @@ const LoginPage = () => {
   };
   return(
     <>
+      {!isLogin &&
       <div className="auth-wrapper">
         <div className="auth-inner">
         <form onSubmit={methods.handleSubmit(onSubmit)}>
@@ -97,6 +103,7 @@ const LoginPage = () => {
         </form>
         </div>
       </div>
+      }
     </>
   )
 }
