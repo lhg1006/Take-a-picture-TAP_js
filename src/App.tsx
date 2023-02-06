@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './App.css';
 import "./css/common/common.css"
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -12,7 +12,6 @@ import SignupPage from "./pages/signup/signup";
 import Forgot from "./pages/forgot/forgot";
 import MyPage from "./pages/mypage";
 import Footer from "./components/common/footer";
-import {getCookie} from "./utills";
 import AddPost from "./pages/addPost";
 
 function App() {
