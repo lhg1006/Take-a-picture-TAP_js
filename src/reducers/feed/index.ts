@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {CommentResultType, FeedResponseType, FeedResultType} from "../../types/feedTypes";
+import {CommentResultType, FeedResponseType, FeedResultType, PrevImgList} from "../../types/feedTypes";
 
 type stateType = {
   feedList: {
@@ -11,7 +11,7 @@ type stateType = {
 const initialState: stateType = {
   feedList: {
     list:[],
-    comment:[]
+    comment:[],
   }
 };
 
@@ -22,7 +22,7 @@ export const feedReducer = createSlice({
     setFirstPage:(state, action:PayloadAction<FeedResponseType>) =>{
       state.feedList.list = action.payload.feedList;
       state.feedList.comment = action.payload.commentList
-    }
+    },
   },
   extraReducers: {},
 });

@@ -16,3 +16,7 @@ export const delComment = async (data: CommentResultType) => {
 export const addPhotoImg = async (data: any) => {
   return await axios.post(`/api/photo/upload/file`, data)
 }
+
+export const preViewImg = async (fileName : string) => {
+  return await axios.get(`api/photo/img/view?fileName=${fileName}`)
+}

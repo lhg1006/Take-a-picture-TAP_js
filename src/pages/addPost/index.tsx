@@ -5,6 +5,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {addPostDefault, addPostSchema} from "../../schema/addPost";
 import {getCookie} from "../../utills";
 import AddPhoto from "../../components/addPost/addPhoto";
+import AddComments from "../../components/addPost/addComments";
 
 const AddPost = () => {
   const isLogin = getCookie('isLogin')
@@ -30,18 +31,7 @@ const AddPost = () => {
               <div className={"content-wrapper"}>
                   <FormProvider {...methods}>
                       <AddPhoto />
-                      <Form>
-                          <FloatingLabel className={"mb-3"} controlId="floatingTextarea2" label="Comments">
-                              <Form.Control
-                                  as="textarea"
-                                  placeholder="Leave a comment here"
-                                  style={{height: '100px', resize: 'none'}}
-                              />
-                          </FloatingLabel>
-                          <Button className={"mb-3"} variant="primary" type="submit">
-                              Submit
-                          </Button>
-                      </Form>
+                      <AddComments />
                   </FormProvider>
               </div>
           </div>

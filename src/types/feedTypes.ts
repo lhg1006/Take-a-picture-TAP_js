@@ -25,3 +25,15 @@ export type CommentResultType = {
   rmemberEmail:string
   comment: string
 }
+
+export type PrevImgList = {
+  imageUrl: string
+  fileName: string
+}
+
+export type PrevPayload = {
+  imageData: {
+    imageUrl: string
+    fileName: string
+  }
+}

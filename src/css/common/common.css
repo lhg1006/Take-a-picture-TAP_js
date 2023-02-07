@@ -126,3 +126,11 @@
 .fs30 {
     font-size: 30px;
 }
+
+.prev-photo{
+    max-width: 15rem;
+    min-width: 15rem;
+    max-height: 15rem;
+    min-height: 15rem;
+    margin: 10px;
+}
