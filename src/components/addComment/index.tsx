@@ -1,24 +1,27 @@
 import React, {useCallback, useRef} from "react"
 import {useForm} from "react-hook-form";
-import {addComment, getFeedList} from "../../api/call/feed";
+import {getFeedList} from "../../api/call/feed";
 import {CommentResultType} from "../../types/feedTypes";
 import {toast} from "react-toastify";
 import {getCookie} from "../../utills";
 import {feedAction} from "../../reducers/feed";
 import {useDispatch} from "react-redux";
+import {addComment} from "../../api/call/newFeed";
+import {AddCommentType} from "../../types/newFeedType";
+import {commonAction} from "../../reducers/common";
 
 const AddComment = ({postNo} : {postNo:number}) =>{
   const dispatch = useDispatch()
-  const rmemberEmail = getCookie("memberEmail")
+  const rememberEmail = getCookie("memberEmail")
 
-  const method = useForm<CommentResultType>({
+  const method = useForm<AddCommentType>({
     defaultValues: {
-      postNo,
-      rmemberEmail,
-      comment: ""
+      postId : postNo,
+      userMail : rememberEmail,
+      content: ""
     }
   })
-  const onAddComment = (data: CommentResultType) => {
+  const onAddComment = (data: AddCommentType) => {
     if(textRef.current.value.trim() === ""){
       textRef.current.focus()
       return;
@@ -26,9 +29,7 @@ const AddComment = ({postNo} : {postNo:number}) =>{
     addComment(data).then( (res) => {
       if(res.data === 1){
         textRef.current.value = ""
-        getFeedList().then((res) => {
-          dispatch(feedAction.setFirstPage(res.data))
-        })
+        dispatch(commonAction.setCall())
         toast.success("Add Comment Success")
       }else{
         toast.error("Failure . . .")
@@ -40,7 +41,7 @@ const AddComment = ({postNo} : {postNo:number}) =>{
   const handleResizeHeight = useCallback(() => {
     textRef.current.style.height = 'auto';
     textRef.current.style.height = textRef.current.scrollHeight + 'px';
-    method.setValue("comment", textRef.current.value)
+    method.setValue("content", textRef.current.value)
   }, []);
 
   return(

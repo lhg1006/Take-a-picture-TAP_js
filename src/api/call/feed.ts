@@ -5,9 +5,9 @@ export const getFeedList = async () => {
   return await axios.get(`/api/feed/getList`)
 }
 
-export const addComment = async (data: CommentResultType) => {
-  return await axios.post(`/api/feed/comment/ins`, data)
-}
+// export const addComment = async (data: CommentResultType) => {
+//   return await axios.post(`/api/feed/comment/ins`, data)
+// }
 
 export const delComment = async (data: CommentResultType) => {
   return await axios.post(`/api/feed/comment/del`, data)

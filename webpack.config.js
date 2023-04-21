@@ -35,6 +35,9 @@ module.exports = {
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
+        alias: {
+            'react-icons': path.resolve(__dirname, 'node_modules/react-icons')
+        }
     },
     output: {
         filename: 'bundle.js',
@@ -49,6 +52,6 @@ module.exports = {
         proxy: {
             '/api': 'http://loaclhost:8000',
             changeOrigin: true
-        }
+        },
     },
 }

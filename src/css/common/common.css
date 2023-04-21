@@ -18,7 +18,7 @@
 }
 
 .text-limit {
-    width:80%;
+    width:100%;
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
@@ -40,7 +40,7 @@
 .comment-del-icon {
     position:relative;
     font-size: 18px;
-    top:-3px;
+    top:-5px;
     float: right;
 }
 
@@ -81,6 +81,7 @@
     font-weight: bold;
     margin-right: 10px;
     margin-bottom: 10px;
+    border-bottom: 1px solid #cdcdcd;
 }
 
 .card-comment-icon{
@@ -94,6 +95,10 @@
 
 .wd-25r{
     max-width: 25rem
+}
+
+.wd-30r{
+    max-width: 30rem
 }
 
 .cursor{
@@ -133,4 +138,34 @@
     max-height: 15rem;
     min-height: 15rem;
     margin: 10px;
+}
+
+.form-error-message{
+    position: relative;
+    top: -6px;
+}
+
+.main-page-card{
+    min-height: 680px;
+    max-height: 680px;
+    margin-bottom: 200px;
+}
+
+.post-date-time{
+    color: gray;
+    font-weight: bold;
+    font-size: small;
+    min-width: 85px;
+    position: relative;
+    top: 5px;
+}
+
+.modal-post-date-time{
+    color: gray;
+    font-weight: bold;
+    font-size: small;
+    min-width: 100px;
+    position: relative;
+    top: -6px;
+    right: -3px;
 }

@@ -39,7 +39,7 @@ const Card = ({data, targetComment}: { data: FeedResultType; targetComment: Comm
   const onDeleteComment = (data: CommentResultType) => {
     CustomConfirm(
       {
-        title: "Are you sure you want to delete?",
+        title: "Delete Comment?",
         onConfirm: () => {
           delComment(data).then((res) => {
             if (res.data == 1) {
@@ -65,7 +65,7 @@ const Card = ({data, targetComment}: { data: FeedResultType; targetComment: Comm
 
   return (
     <>
-      <div className="card border-dark mb-3 wd-25r">
+      <div className="main-page-card card border-dark mb-3 wd-25r">
         <div className="card-header fw-bold"><i className="bi bi-instagram"></i> {data.memberEmail}</div>
         <img src={data.photoUrl} className="card-img-top" alt="..."/>
         <div className={"card-header"} style={{borderTop: "0.1rem solid"}}>

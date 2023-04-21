@@ -15,6 +15,61 @@ code {
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 
+@media all and (max-width: 1024px){
+    .main-page-card{
+     width: 100%;
+    }
+
+    .prev-photo{
+        max-width: 25rem !important;
+        min-width: 25rem !important;
+        max-height: 25rem !important;
+        min-height: 25rem !important;
+    }
+/*브라우저 창 width가 1024px보다 작아지는 순간부터 적용*/
+/*태블릿*/
+
+}
+@media all and (max-width: 768px){
+    .prev-photo{
+        max-width: 18rem !important;
+        min-width: 18rem !important;
+        max-height: 18rem !important;
+        min-height: 18rem !important;
+    }
+/*브라우저 창 width가 768px보다 작아지는 순간부터 적용*/
+/*모바일*/
+
+}
+@media all and (min-width: 768px){
+    .prev-photo{
+        max-width: 25rem !important;
+        min-width: 25rem !important;
+        max-height: 25rem !important;
+        min-height: 25rem !important;
+    }
+/*브라우저 창 width가 768px보다 커지는 순간부터 적용*/
+/*태블릿*/
+
+}
+@media all and (min-width: 1024px){
+    html{
+    }
+    .topHeaderDropDown{
+        display: none;
+    }
+
+    .prev-photo{
+        max-width: 25rem !important;
+        min-width: 25rem !important;
+        max-height: 25rem !important;
+        min-height: 25rem !important;
+    }
+/*브라우저 창 width가 1024px보다 커지는 순간부터 적용*/
+/*데스크탑*/
+
+}
+
 * {
     box-sizing: border-box !important;
 }
@@ -27,32 +82,34 @@ h1,h2,h3,h4,h5,h6,label,span {
     font-weight: 500;
     font-family: 'Fira Sans', sans-serif;
 }
-/*body, html, .App, #root, .auth-wrapper {*/
 
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*}*/
+.App, #root{
+    text-align: -webkit-center;
+    width: 100%;
+    height: 80%;
+}
 
 .main-wrapper {
     text-align: -webkit-center;
-    margin: 100px;
+    position: relative;
+    margin-top: 60px;
+    margin-bottom: 70px;
+    max-width: 1000px;
     border: 1px solid blueviolet;
     height: 100%;
+    width: 100%;
 }
 
 .content-wrapper {
-    padding: 20px;
     text-align: -webkit-center;
-    margin: 30px;
+    margin: 10px;
     border: 1px solid blue;
-    height: 90%;
+    height: 100%;
 }
 
 .hidden {
     display: none!important;
 }
-
-
 .navbar {
     text-align: -webkit-center;
 }
@@ -63,13 +120,12 @@ h1,h2,h3,h4,h5,h6,label,span {
 .auth-wrapper {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    text-align: left;
-    margin: 300px;
+    margin-top: 150px;
 }
 .auth-inner {
-    width: 450px;
-    margin: auto;
+    min-width: 400px;
+    max-width: 500px;
+    justify-content: center;
     background: #ffffff;
     box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
     padding: 40px 55px 45px 55px;
@@ -119,4 +175,29 @@ h1,h2,h3,h4,h5,h6,label,span {
 
 .custom-ui{
     border : black;
+}
+.input-file-button{
+    font-size: xx-large;
+    margin-top: 10px;
+}
+
+.comment-filed{
+    font-family: sans-serif;
+}
+.commentWrap{
+    min-height: 120px;
+    max-height: 120px;
+}
+.card-img-top{
+    min-height: 335px;
+    max-height: 335px;
+}
+
+.delete-post-button{
+    position: relative;
+    left: 110px;
+}
+
+.add-post-form{
+    min-height: 710px;
 }

@@ -27,12 +27,14 @@ export type CommentResultType = {
 }
 
 export type PrevImgList = {
+  imagePath: string
   imageUrl: string
   fileName: string
 }
 
 export type PrevPayload = {
   imageData: {
+    imagePath: string
     imageUrl: string
     fileName: string
   }

@@ -34,7 +34,6 @@ const MainPage = () => {
     <>
       {isLogin &&
         <div className={"main-wrapper"}>
-          <div className={"content-wrapper"}>
             {list.length > 0 ?
               list.map((data) => {
                 const targetComment = comment.filter((co: { postNo: number; }) => co.postNo === data.autoNo)
@@ -48,7 +47,6 @@ const MainPage = () => {
                     <FontAwesomeIcon icon={faSpinner} spin/>
                 </h1>
             }
-          </div>
         </div>
       }
     </>

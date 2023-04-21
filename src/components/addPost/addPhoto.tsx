@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import {addPhotoImg} from "../../api/call/feed";
 import {toast} from "react-toastify";
 import {useFormContext} from "react-hook-form";
@@ -42,9 +42,19 @@ const AddPhoto = () => {
     })
   }
 
+  useEffect(() => {
+      let imageList : string = ""
+      prevList.map(data=>{
+          imageList = data.imagePath
+          methods.setValue("imagePath",imageList)
+      })
+  },[prevList])
+
+
   return (
     <>
       <label className="input-file-button" htmlFor="input-file">
+        <span style={{fontSize:"20px"}}>Add Photo </span>
         <BiAddToQueue />
       </label>
       <input className={"mb-3"}
@@ -64,19 +74,18 @@ const AddPhoto = () => {
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
       >
-        {prevList?.map((data: { imageUrl: string | undefined; fileName: string | undefined; }, idx: React.Key | null | undefined) => {
+        {prevList?.map((data: { imagePath: string | undefined; imageUrl: string | undefined; fileName: string | undefined; }) => {
           return (
-            <>
-              <SwiperSlide key={idx} style={{marginRight:"150px"}}>
-                <img className={'prev-photo'}
+            <div>
+              <SwiperSlide style={{marginRight:"150px"}}>
+                <img key={prevList.length} className={'prev-photo'}
                      src={data.imageUrl}
                      alt={data.fileName}
                 />
               </SwiperSlide>
-            </>
+            </div>
           )
         })}
-
       </Swiper>
     </>
 

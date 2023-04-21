@@ -12,8 +12,8 @@ const DropdownBox = () => {
   const dispatch = useDispatch()
   const isLogin = getCookie("isLogin")
   return (
-    <Dropdown>
-      <Dropdown.Toggle variant="primary" id="dropdown-basic">
+    <Dropdown className={"topHeaderDropDown"}>
+      <Dropdown.Toggle variant="light" id="dropdown-basic" style={{backgroundColor:"#ed197a", color:"white"}}>
         Menu
       </Dropdown.Toggle>
 
@@ -24,7 +24,7 @@ const DropdownBox = () => {
         <Dropdown.Divider />
         <Dropdown.Item href="/sign-up"><i className="bi bi-door-open-fill"></i> Sign up</Dropdown.Item>
         </>) : (<>
-        <Dropdown.Item href="/main"><i className="bi bi-house"></i> home</Dropdown.Item>
+        <Dropdown.Item href="/new-feed"><i className="bi bi-house"></i> home</Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item href="/my-page"><i className="bi bi-house-gear-fill"></i> MyPage</Dropdown.Item>
         <Dropdown.Divider />

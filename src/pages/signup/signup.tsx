@@ -108,7 +108,9 @@ const SignupPage = () => {
                 {!emailOk ? "Email Check" : "Available"}
               </button>
             </div>
-            {methods.formState?.errors?.password ? "※ 6자리 이상 입력해주세요" : ""}
+            <span className={"form-error-message"}>
+                {methods.formState?.errors?.password?.message ? methods.formState?.errors?.password?.message : ""}
+            </span>
             <Form.Floating className="mb-3">
               <Form.Control
                 id="floatingInputCustom"

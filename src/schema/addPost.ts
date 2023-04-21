@@ -1,11 +1,20 @@
 import * as yup from "yup";
-type addPostInputType = {
-  email: string
+export type AddPostInputType = {
+  title: string,
+  userMail: string,
+  content: string,
+  imagePath: string
 }
 export const addPostSchema = yup.object().shape({
-  email: yup.string().required("")
+  title: yup.string(),
+  userMail: yup.string(),
+  content: yup.string(),
+  imagePath: yup.string()
 }).required()
 
-export const addPostDefault: addPostInputType = {
-  email:'',
+export const addPostDefault: AddPostInputType = {
+  title:'',
+  userMail:'',
+  content: '',
+  imagePath: ''
 }
