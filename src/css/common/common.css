@@ -49,7 +49,6 @@
     color: red;
     cursor: pointer;
     float: left;
-    margin-left: 10px;
 }
 
 .card-chat-icon{
@@ -77,11 +76,22 @@
     float: right;
 }
 
+.card-header-st{
+    text-align: left;
+    background-color: #f7f7f7;
+}
+
 .card-header-text{
     font-weight: bold;
     margin-right: 10px;
     margin-bottom: 10px;
     border-bottom: 1px solid #cdcdcd;
+}
+
+.card-header-txt{
+    position: relative;
+    right: 6px;
+    top: 3px;
 }
 
 .card-comment-icon{
@@ -124,20 +134,18 @@
 .fs15 {
     font-size: 15px;
 }
-
 .fs20 {
     font-size: 20px;
+}
+.fs25 {
+    font-size: 25px;
 }
 .fs30 {
     font-size: 30px;
 }
 
 .prev-photo{
-    max-width: 15rem;
-    min-width: 15rem;
-    max-height: 15rem;
-    min-height: 15rem;
-    margin: 10px;
+    border: 0.5px solid lightgray;
 }
 
 .form-error-message{
@@ -146,26 +154,62 @@
 }
 
 .main-page-card{
+    position: relative;
+    top:-3px;
+    text-align: center;
     min-height: 680px;
-    max-height: 680px;
-    margin-bottom: 200px;
+    max-height: 710px;
+    margin-bottom: 205px;
 }
 
 .post-date-time{
     color: gray;
+    font-size: 11px;
     font-weight: bold;
-    font-size: small;
     min-width: 85px;
     position: relative;
-    top: 5px;
+    top: 8px;
+    left: 9px;
 }
 
 .modal-post-date-time{
     color: gray;
     font-weight: bold;
-    font-size: small;
+    font-size: 12px;
     min-width: 100px;
     position: relative;
     top: -6px;
     right: -3px;
+}
+
+.random-color-text {
+    text-shadow: 0 0 1px #fff, 0 0 3px #fff, 0 0 5px #fff,
+                0 0 7px #fd62af, 0 0 9px #f566ad, 0 0 11px #f66bb0,
+                0 0 13px #ff71b8, 0 0 15px #ff68b3;
+}
+
+.pulse-text{
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        color: #FF007F;
+    }
+    50% {
+        color: #fc835b;
+    }
+    100% {
+        color: #FF007F;
+    }
+}
+
+.content-text-limit {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+    display: inline-block;
+    max-height: 2.8em; /* 2줄까지 노출 */
+    line-height: 1.4em;
 }

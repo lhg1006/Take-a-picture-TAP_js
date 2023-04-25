@@ -1,79 +1,50 @@
-import {Link, useNavigate} from "react-router-dom";
-import React from "react";
-import {logout} from "../../api/call/auth";
-import {toast} from "react-toastify";
+import React, {useState} from "react";
+import {SlPaperPlane} from "react-icons/sl";
+import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {loginAction} from "../../reducers/login";
-import DropdownBox from "./dropdown";
+import {commonAction} from "../../reducers/common";
 import {getCookie} from "../../utills";
-import {FcLinux} from "react-icons/fc";
+
 
 const Header = () => {
-  const isLogin = getCookie("isLogin")
-  const navigator = useNavigate()
-  const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const isLogin = getCookie('isLogin')
+    const dispatch = useDispatch()
+    const [flag, setFlag] = useState<boolean>(true)
 
-  return (
-    <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-      <div className="container">
-        <Link className="navbar-brand" to={'/main'}>
-          _ _ _  <FcLinux className={'fs30'}/>
-        </Link>
-        <DropdownBox />
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul className="navbar-nav ml-auto">
-            {!isLogin ?
-              (
-                <>
-                    <li className="nav-item">
-                        <Link className="nav-link" to={'/sign-in'}>
-                            Login
-                        </Link>
-                    </li>
+    const onLogoClick = () =>{
+        window.scrollTo({top:0, behavior:"smooth"})
 
-                    <li className="nav-item">
-                        <Link className="nav-link" to={'/sign-up'}>
-                            Sign up
-                        </Link>
-                    </li>
-                </>
-              ) : (
-                <>
-                  <li className="nav-item ">
-                    <Link className="nav-link" to={'/main'}>
-                      home
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to={'/my-page'}>
-                      MyPage
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <a type={"button"} className="nav-link" onClick={() => {
-                      logout().then((res) => {
-                        if (res.data === 1) {
-                          const param = {
-                            login:false,
-                            email:""
-                          }
-                          dispatch(loginAction.setIsLogin(param))
-                          toast.success("logout")
-                          navigator("/")
-                        }
-                      })
-                    }}>
-                      Logout
-                    </a>
-                  </li>
-                </>
-              )
+        if(flag){
+            setFlag(false)
+            dispatch(commonAction.setCall())
+            setTimeout(()=>setFlag(true), 2000)
+        }
+    }
+    const onAlimIconClick = () => {
+        navigate('/alim')
+    }
+
+    return (
+        <>
+            {isLogin &&
+                <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+                    <div className="container navbar-container-warp">
+                        <div className="navbar-brand" onClick={onLogoClick}>
+                            <img src={"/img/icons8-instagram-48.png"} style={{transform: "scale(0.7)"}}
+                                 alt={"인스타아이콘"}></img>
+                        </div>
+                        <div>
+                            <span className={"header-alim-icon"} onClick={onAlimIconClick}><i
+                                className="bi bi-bell fs20"></i></span>
+                            <span className="line"></span>
+                            <span className={"header-airplane-icon"}><SlPaperPlane className={'fs20'}/></span>
+                        </div>
+                    </div>
+                </nav>
             }
-          </ul>
-        </div>
-      </div>
-    </nav>
-  )
+        </>
+    )
 
 }
 

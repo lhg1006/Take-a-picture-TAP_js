@@ -12,6 +12,12 @@ export type FeedListType = {
     comments: string,
     commentsList: CommentType[],
     commentCount: number,
+    likeCount: number,
+    isLiked: number,
+}
+
+export type ListParamType = {
+    userMail: string
 }
 
 export type PostType = {

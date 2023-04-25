@@ -13,6 +13,8 @@ import MyPage from "./pages/mypage";
 import Footer from "./components/common/footer";
 import AddPost from "./pages/addPost";
 import NewFeed from "./pages/newFeed";
+import Alim from "./pages/alim/alim";
+import {getCookie} from "./utills";
 
 function App() {
   return (
@@ -30,6 +32,7 @@ function App() {
             <Route path="/my-page" element={<MyPage />} />
             <Route path="/add-post" element={<AddPost />} />
             <Route path={"/new-feed"} element={<NewFeed />} />
+            <Route path={"/alim"} element={<Alim />} />
           </Route>
         </Routes>
         <Footer />

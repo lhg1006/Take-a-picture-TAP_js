@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import {getCookie} from "../../utills";
+import DropdownBox from "../../components/common/dropdown";
 
 const MyPage = () => {
   const isLogin = getCookie('isLogin')
@@ -14,6 +15,7 @@ const MyPage = () => {
       {isLogin &&
           <div className={"main-wrapper"} >
               <div>My Page</div>
+              <DropdownBox />
           </div>
       }
     </>

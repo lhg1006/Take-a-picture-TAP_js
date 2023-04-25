@@ -82,7 +82,7 @@ const Forgot = () => {
   return(
     <>
       <div className="auth-wrapper">
-        <div className="auth-inner">
+        <div className="auth-inner forgot-password-inner">
       <form onSubmit={methods.handleSubmit(onSubmit)}>
         <h3>Forgot Password</h3>
         <Form.Floating className="mb-3">

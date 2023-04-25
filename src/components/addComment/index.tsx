@@ -1,10 +1,7 @@
 import React, {useCallback, useRef} from "react"
 import {useForm} from "react-hook-form";
-import {getFeedList} from "../../api/call/feed";
-import {CommentResultType} from "../../types/feedTypes";
 import {toast} from "react-toastify";
 import {getCookie} from "../../utills";
-import {feedAction} from "../../reducers/feed";
 import {useDispatch} from "react-redux";
 import {addComment} from "../../api/call/newFeed";
 import {AddCommentType} from "../../types/newFeedType";
@@ -30,7 +27,6 @@ const AddComment = ({postNo} : {postNo:number}) =>{
       if(res.data === 1){
         textRef.current.value = ""
         dispatch(commonAction.setCall())
-        toast.success("Add Comment Success")
       }else{
         toast.error("Failure . . .")
       }
@@ -50,6 +46,7 @@ const AddComment = ({postNo} : {postNo:number}) =>{
         <textarea className={'text-area-container'} cols={10} rows={1} maxLength={300}
                   ref={textRef}
                   onInput={handleResizeHeight}
+                  style={{marginLeft:"10px"}}
                   placeholder={" Add comment..."}  />
         <a className={"btn-btn card-comment-icon"}>
           <div onClick={method.handleSubmit(onAddComment)}>

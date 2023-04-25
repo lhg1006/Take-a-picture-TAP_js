@@ -66,7 +66,7 @@ const SignupPage = () => {
     <>
       {!isLogin &&
       <div className="auth-wrapper">
-        <div className="auth-inner">
+        <div className="auth-inner sign-up-inner">
           <form onSubmit={methods.handleSubmit(onSignUp)}>
             <h3>Sign Up</h3>
             <Form.Floating className="mb-3">

@@ -44,6 +44,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
     },
     devServer: {
+        open: false,
         hot: true,
         port: '3000',
         client: {

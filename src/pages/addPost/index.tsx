@@ -8,6 +8,7 @@ import AddPhoto from "../../components/addPost/addPhoto";
 import AddComments from "../../components/addPost/addComments";
 import {addPost} from "../../api/call/newFeed";
 import {toast} from "react-toastify";
+import DropdownBox from "../../components/common/dropdown";
 
 const AddPost = () => {
   const isLogin = getCookie('isLogin')
@@ -46,26 +47,26 @@ const AddPost = () => {
   }
 
   return (
-    <>
-      {isLogin &&
-          <div className={"main-wrapper"}>
-            <div className={"add-post-form"}>
-              <FormProvider {...methods}>
-                <Form onSubmit={methods.handleSubmit(onSubmit)}>
+      <>
+        {isLogin &&
+            <div className={"main-wrapper"} >
+              <div className={"add-post-form"}>
+                <FormProvider {...methods}>
+                  <Form onSubmit={methods.handleSubmit(onSubmit)}>
 
-                  <AddPhoto/>
-                  <AddComments />
+                    <AddPhoto/>
+                    <AddComments />
 
-                  <Button className={"mb-3"} variant="primary" type="submit">
-                    Submit
-                  </Button>
+                    <Button className={"mb-3"} variant="primary" type="submit">
+                      Submit
+                    </Button>
 
-                </Form>
-              </FormProvider>
+                  </Form>
+                </FormProvider>
+              </div>
             </div>
-          </div>
-      }
-    </>
+        }
+      </>
   )
 }
 

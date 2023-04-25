@@ -6,6 +6,7 @@ import {toast} from "react-toastify";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {getCookie} from "../../utills";
+import {SlMenu} from "react-icons/sl"
 
 const DropdownBox = () => {
   const navigator = useNavigate()
@@ -13,8 +14,8 @@ const DropdownBox = () => {
   const isLogin = getCookie("isLogin")
   return (
     <Dropdown className={"topHeaderDropDown"}>
-      <Dropdown.Toggle variant="light" id="dropdown-basic" style={{backgroundColor:"#ed197a", color:"white"}}>
-        Menu
+      <Dropdown.Toggle variant="white" id="dropdown-basic" style={{color:"black"}}>
+        {/*<SlMenu />*/}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
@@ -24,9 +25,9 @@ const DropdownBox = () => {
         <Dropdown.Divider />
         <Dropdown.Item href="/sign-up"><i className="bi bi-door-open-fill"></i> Sign up</Dropdown.Item>
         </>) : (<>
-        <Dropdown.Item href="/new-feed"><i className="bi bi-house"></i> home</Dropdown.Item>
+        <Dropdown.Item href="/new-feed"><i className="bi bi-grid"></i> Feed</Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item href="/my-page"><i className="bi bi-house-gear-fill"></i> MyPage</Dropdown.Item>
+        <Dropdown.Item href="/my-page"><i className="bi bi-person-square"></i> MyPage</Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item onClick={()=>{
           logout().then((res) => {

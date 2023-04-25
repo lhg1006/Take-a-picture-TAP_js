@@ -8,7 +8,11 @@ const Footer = () => {
   const navigator = useNavigate()
 
   const onIcoHome = () => {
-    navigator("/new-feed")
+    if(window.location.pathname === "/new-feed"){
+      window.scrollTo({top:0, behavior:"smooth"})
+    }else{
+      navigator("/new-feed")
+    }
   }
 
   const onIcoPlus = () => {
@@ -30,14 +34,14 @@ const Footer = () => {
               <Row style={{paddingTop: "10px"}}>
                   <Col ></Col>
                   <Col>
-                      <i onClick={onIcoHome} className="bi bi-house" style={icoStyle}></i>
+                      <i onClick={onIcoHome} className="bi bi-grid footer-grid-icon" style={icoStyle}></i>
                   </Col>
                   <Col ></Col>
                   <Col>
                       <i onClick={onIcoPlus} className="bi bi-plus-square" style={icoStyle}></i>
                   </Col>
                   <Col></Col>
-                  <Col><i onClick={onIcoGear} className="bi bi-gear" style={icoStyle}></i></Col>
+                  <Col><i onClick={onIcoGear} className="bi bi-person-square footer-person-square-icon" style={icoStyle}></i></Col>
                   <Col ></Col>
               </Row>
           </footer>

@@ -3,8 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 import {useDispatch, useSelector} from "react-redux";
 import {commonAction} from "../../reducers/common";
-import {commonType} from "../../types/commonType";
-import {FeedStateType} from "../../types/feedTypes";
+import {CommonType} from "../../types/commonType";
 import {getCookie} from "../../utills";
 import NewCard from "../../components/newFeed/newCard";
 import {getNewFeedList} from "../../api/call/newFeed";
@@ -13,40 +12,35 @@ import {FeedListType} from "../../types/newFeedType";
 const NewFeed = () => {
     const dispatch = useDispatch()
     const isLogin = getCookie('isLogin')
-    const {isLoading, isCall} = useSelector((state: commonType) => state.common)
+    const cookieMemberEmail = getCookie("memberEmail")
+    const {isLoading, isCall} = useSelector((state: CommonType) => state.common)
     const [list, setList] = useState<FeedListType[]>([])
 
     useEffect(() => {
         if (!isLogin) {
             window.location.replace("/")
         } else {
-            dispatch(commonAction.setIsLoading(true))   //setLoading
-
-            // getNewFeedList().then((res) => {
-            //
-            //     setList([...res.data.postList])
-            //
-            //     setTimeout(() => dispatch(commonAction.setIsLoading(false)), 500);
-            // })
+            dispatch(commonAction.setIsLoading(true))
         }
     }, [])
 
-    useEffect(()=>{
-        getNewFeedList().then((res) => {
+    useEffect(() => {
+        const param = {
+            userMail: cookieMemberEmail
+        }
+        getNewFeedList(param).then((res) => {
             setList([...res.data.postList])
             setTimeout(() => dispatch(commonAction.setIsLoading(false)), 500);
         })
-    },[isCall])
+    }, [isCall])
 
     return (
-        <div>
-            <div className={"main-wrapper"}>
-                {isLoading ? <h1><FontAwesomeIcon icon={faSpinner} spin/></h1> : list.length > 0
-                        ? list.map((item) => <NewCard key={item.id} data={item}/>)
-                        : <div>not found . . .</div>
-                }
+        <div className={"main-wrapper"}>
+            {isLoading ? <h1 style={{position:"relative", top:"340px"}}><FontAwesomeIcon icon={faSpinner} spin/></h1> : list.length > 0
+                ? list.map((item) => <NewCard key={item.id} data={item}/>)
+                : <div>not found . . .</div>
+            }
 
-            </div>
         </div>
     )
 }

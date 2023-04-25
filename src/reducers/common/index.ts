@@ -7,7 +7,7 @@ type initType = {
 
 const initialState: initType = {
   isLoading: false,
-  isCall: false
+  isCall: false,
 };
 
 export const commonReducer = createSlice({

@@ -52,7 +52,7 @@ const AddPhoto = () => {
 
 
   return (
-    <>
+    <div style={{border:"1px solid black", padding: "5px"}}>
       <label className="input-file-button" htmlFor="input-file">
         <span style={{fontSize:"20px"}}>Add Photo </span>
         <BiAddToQueue />
@@ -87,8 +87,7 @@ const AddPhoto = () => {
           )
         })}
       </Swiper>
-    </>
-
+    </div>
   )
 }
 export default AddPhoto
