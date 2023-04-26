@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import './App.css';
 import "./css/common/common.css"
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -14,12 +14,35 @@ import Footer from "./components/common/footer";
 import AddPost from "./pages/addPost";
 import NewFeed from "./pages/newFeed";
 import Alim from "./pages/alim/alim";
-import {getCookie} from "./utills";
+import LikeListPage from "./pages/likeList/likeList";
 
 function App() {
+  const scrollRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo(0, scrollRef.current.scrollTop);
+    }
+  }, []);
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      sessionStorage.setItem("scroll", scrollRef.current.scrollTop);
+    }
+  };
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      const scroll = sessionStorage.getItem("scroll");
+      if (scroll) {
+        scrollRef.current.scrollTo(0, scroll);
+      }
+    }
+  }, []);
+
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="App" onScroll={handleScroll} ref={scrollRef}>
         <Header/>
         <ToastContainer autoClose={1500}/>
         <Routes>
@@ -31,8 +54,9 @@ function App() {
             <Route path="/forgot" element={<Forgot />} />
             <Route path="/my-page" element={<MyPage />} />
             <Route path="/add-post" element={<AddPost />} />
-            <Route path={"/new-feed"} element={<NewFeed />} />
-            <Route path={"/alim"} element={<Alim />} />
+            <Route path="/new-feed" element={<NewFeed />} />
+            <Route path="/alim" element={<Alim />} />
+            <Route path="/likeList" element={<LikeListPage />} />
           </Route>
         </Routes>
         <Footer />

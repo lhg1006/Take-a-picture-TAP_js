@@ -8,7 +8,6 @@ import AddPhoto from "../../components/addPost/addPhoto";
 import AddComments from "../../components/addPost/addComments";
 import {addPost} from "../../api/call/newFeed";
 import {toast} from "react-toastify";
-import DropdownBox from "../../components/common/dropdown";
 
 const AddPost = () => {
   const isLogin = getCookie('isLogin')

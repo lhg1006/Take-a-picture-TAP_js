@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {FeedListType} from "../../types/newFeedType";
 import {FcImageFile} from "react-icons/fc";
 import {getCookie} from "../../utills";
 import {TiDeleteOutline} from "react-icons/ti";
 import moment from "moment";
-import {TfiCommentsSmiley, TfiMore} from "react-icons/tfi";
-import {BsArrowReturnRight} from "react-icons/bs";
+import {TfiCommentsSmiley} from "react-icons/tfi";
+import {BsArrowReturnRight, BsFillPersonFill} from "react-icons/bs";
 import {RiDeleteBack2Line} from "react-icons/ri";
 import {Modal} from "../common/modal";
 import AddComment from "../addComment";
@@ -14,6 +14,8 @@ import {toast} from "react-toastify";
 import {useDispatch} from "react-redux";
 import {delComment, delPost, likeDel, likeIns} from "../../api/call/newFeed";
 import {commonAction} from "../../reducers/common";
+import {useNavigate} from "react-router-dom";
+
 interface CurrentTargetDataset {
     postNo: number;
     userMail: string;
@@ -26,6 +28,8 @@ interface CurrentTargetDataset2 {
 
 const NewCard = ({data}: { data: FeedListType }) => {
     const dispatch = useDispatch()
+
+    const navigate = useNavigate()
 
     const cookieMemberEmail = getCookie("memberEmail")
 
@@ -117,10 +121,13 @@ const NewCard = ({data}: { data: FeedListType }) => {
             setClickFlag(false);
         }
     }
-    // <i className="bi bi-instagram"></i>
+    const onLikeCntClick = async (e:React.MouseEvent<HTMLElement>) => {
+        const {postNo} = e.currentTarget.dataset as unknown as CurrentTargetDataset
+        navigate('/likeList', { state: { postNo } });
+    }
     return (
         <div className="main-page-card card border-dark wd-25r">
-            <div className={"card-header-st"}>
+            <div className={"card-header-st fs14"}>
                 <a><img style={{transform: "scale(0.6)"}} src={"/img/icons8-instagram.gif"} alt={"로고gif"}/></a>
                 <span className="fw-bold card-header-txt">{data.postUserMail}</span>
                 {cookieMemberEmail === data.postUserMail &&
@@ -153,8 +160,10 @@ const NewCard = ({data}: { data: FeedListType }) => {
 
             <div className="card-body">
                 <div className={"d-flex"}>
-                    <span className={"random-color-text pulse-text"}
-                          style={{fontSize:"small", position:"relative", bottom:"10px", fontWeight: "bold"}}>
+                    <span className={"blush-text pulse-text2"}
+                          style={{fontSize:"small", position:"relative", bottom:"10px", fontWeight: "bold"}}
+                          data-post-no={data.id}
+                          onClick={(e)=>onLikeCntClick(e)}>
                             Likes {likeCnt}
                     </span>
                     <span style={{marginLeft:"auto", fontSize:"small", position:"relative", bottom:"10px"}}>
@@ -163,10 +172,12 @@ const NewCard = ({data}: { data: FeedListType }) => {
                 </div>
                 <div>
                     <div className={'card-body-wrap'}>
-                        <div className={'card-header-text content-text-limit'} onClick={onMoreComment}>
+                        <div className={'card-header-text content-text-limit fs15'} onClick={onMoreComment}>
                             {data.postContent}
                         </div>
                         <div className={'commentWrap'}>
+                            {data.commentCount > 3 &&
+                            <span className={'p-1 fs14'} style={{color:"#a9a9a9"}}>댓글 {data.commentCount}개 모두 보기</span>}
                             {data.commentsList != null ?
                                 data.commentsList.map((item, idx) => {
                                         const dateObject = moment(item.created_at);
@@ -175,8 +186,15 @@ const NewCard = ({data}: { data: FeedListType }) => {
                                             idx < 3 && (
                                                 <div key={item.id}>
                                                     <div className={'d-flex'}>
-                                                        <span className={'p-1'}>{item.user_mail}</span>
-                                                        <span className={`p-1 text-limit comment-filed`} onClick={onMoreComment}>{item.content}</span>
+                                                        <div className="comment-profile-img-box" style={{background: "#BDBDBD"}}>
+                                                            {item.profile_img !== null
+                                                                ? <img className="comment-profile-img"
+                                                                       src={item.profile_img}
+                                                                       alt={"프로필이미지"}/>
+                                                                : <BsFillPersonFill className="comment-profile-img"/>}
+                                                        </div>
+                                                        <span className={'p-1 fs14'}>{item.user_mail}</span>
+                                                        <span className={`p-1 text-limit comment-filed fs14`} onClick={onMoreComment}>{item.content}</span>
                                                         <span className={'post-date-time'}>{formattedDate}</span>
                                                         {item.user_mail === cookieMemberEmail &&
                                                             <div className={'p-1 comment-del-icon'}>
@@ -195,11 +213,6 @@ const NewCard = ({data}: { data: FeedListType }) => {
                                     <span style={{fontSize: "2rem", position: "relative", top: "-9px", color:"dimgray"}}><TfiCommentsSmiley/></span>
                                 </span>)
                             }
-                            {data.commentCount > 3 &&
-                                <div onClick={onMoreComment}
-                                     style={{marginLeft: "6px", cursor: "pointer", position: "relative", top: "-6px"}}>
-                                    <TfiMore/>
-                                </div>}
                             <Modal open={modalOpen} close={modalClose} header={data.postUserMail + " : " + data.postContent}>
                                 {data.commentsList != null && data.commentsList.map((data, idx) => {
                                     const dateObject = moment(data.created_at);

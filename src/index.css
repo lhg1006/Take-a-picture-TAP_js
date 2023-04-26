@@ -39,7 +39,7 @@ code {
         min-height: 4rem !important
     }
     .auth-inner{
-        padding-bottom: 280px !important;
+        padding-bottom: 267px !important;
         padding-top: 250px !important;
     }
     .sign-up-inner{
@@ -49,6 +49,14 @@ code {
     .forgot-password-inner{
         padding-bottom: 310px !important;
         padding-top: 280px !important;
+    }
+    .main-page-card{
+        max-width: 24.4rem !important;
+        min-width: 24.4rem !important;
+    }
+    .main-wrapper{
+        max-width: 24.4rem !important;
+        min-width: 24.4rem !important;
     }
 /*브라우저 창 width가 768px보다 작아지는 순간부터 적용*/
 /*모바일*/
@@ -77,6 +85,19 @@ code {
         max-height: 4rem !important;
         min-height: 4rem !important
     }
+    .main-page-card{
+        max-width: 24.4rem !important;
+        min-width: 24.4rem !important;
+    }
+    .main-wrapper{
+        max-width: 24.4rem !important;
+        min-width: 24.4rem !important;
+    }
+    .App{
+        max-width: 24.4rem !important;
+        min-width: 24.4rem !important;
+        min-height: 55rem !important;
+    }
 /*브라우저 창 width가 768px보다 커지는 순간부터 적용*/
 /*태블릿*/
 
@@ -94,6 +115,14 @@ code {
     }
     /*브라우저 창 width가 1024px보다 작아지는 순간부터 적용*/
     /*태블릿*/
+    .main-page-card{
+        max-width: 24.4rem !important;
+        min-width: 24.4rem !important;
+    }
+    .main-wrapper{
+        max-width: 24.4rem !important;
+        min-width: 24.4rem !important;
+    }
 
 }
 @media all and (min-width: 1024px){
@@ -127,9 +156,21 @@ code {
         max-height: 4rem !important;
         min-height: 4rem !important
     }
-
+    .main-page-card{
+        max-width: 24.4rem !important;
+        min-width: 24.4rem !important;
+    }
+    .main-wrapper{
+        max-width: 24.4rem !important;
+        min-width: 24.4rem !important;
+    }
 /*브라우저 창 width가 1024px보다 커지는 순간부터 적용*/
 /*데스크탑*/
+    .App{
+        max-width: 24.4rem !important;
+        min-width: 24.4rem !important;
+        min-height: 55rem !important;
+    }
 
 }
 
@@ -151,14 +192,21 @@ h1,h2,h3,h4,h5,h6,label,span {
     place-content: center;
     text-align: -webkit-center;
     width: 100%;
-    height: 80%;
+    height: 100%;
+
+}
+.App{
+    overflow: hidden !important;
+    border: 1px solid black;
 }
 
 .main-wrapper {
     text-align: -webkit-center;
     position: relative;
-    margin-top: 66px;
+    margin-top: 63px;
     margin-bottom: 50px;
+    min-height: 718px;
+
     max-width: 1000px;
     height: 100%;
     width: 100%;
@@ -181,7 +229,7 @@ h1,h2,h3,h4,h5,h6,label,span {
 }
 .navbar-light {
     background-color: #ffffff;
-    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+    box-shadow: 0 14px 80px rgba(34, 35, 58, 0.2);
 }
 .auth-wrapper {
     display: flex;
@@ -191,8 +239,6 @@ h1,h2,h3,h4,h5,h6,label,span {
     min-width: 400px;
     max-width: 500px;
     justify-content: center;
-    background: #ffffff;
-    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
     padding: 40px 55px 45px 55px;
     border-radius: 15px;
     transition: all .3s;
@@ -264,7 +310,7 @@ h1,h2,h3,h4,h5,h6,label,span {
 
 .delete-post-button{
     position: relative;
-    left: 220px;
+    left: 100px;
 }
 
 .add-post-form{

@@ -45,7 +45,7 @@
 }
 
 .card-heart-icon{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: red;
     cursor: pointer;
     float: left;
@@ -54,7 +54,7 @@
 .card-chat-icon{
     position: relative;
     top: -2px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: black;
     cursor: pointer;
     float: left;
@@ -62,7 +62,7 @@
 }
 
 .card-send-icon{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: black;
     cursor: pointer;
     float: left;
@@ -70,14 +70,14 @@
 }
 
 .card-bookmark-icon{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: black;
     cursor: pointer;
     float: right;
 }
 
 .card-header-st{
-    text-align: left;
+    max-height: 45px;
     background-color: #f7f7f7;
 }
 
@@ -131,6 +131,9 @@
     border: none;
 }
 
+.fs14 {
+    font-size: 14px;
+}
 .fs15 {
     font-size: 15px;
 }
@@ -182,7 +185,7 @@
     right: -3px;
 }
 
-.random-color-text {
+.blush-text {
     text-shadow: 0 0 1px #fff, 0 0 3px #fff, 0 0 5px #fff,
                 0 0 7px #fd62af, 0 0 9px #f566ad, 0 0 11px #f66bb0,
                 0 0 13px #ff71b8, 0 0 15px #ff68b3;
@@ -204,6 +207,29 @@
     }
 }
 
+.pulse-text2{
+    animation: pulse2 2s infinite;
+}
+
+@keyframes pulse2 {
+    0% {
+        color: #FF007F;
+    }
+    25% {
+        color: #fc835b;
+    }
+    50% {
+        color: #ff007f;
+    }
+    75% {
+        color: #fc835b;
+    }
+    100% {
+        color: #ff007f;
+    }
+}
+
+
 .content-text-limit {
     width: 100%;
     overflow: hidden;
@@ -212,4 +238,44 @@
     display: inline-block;
     max-height: 2.8em; /* 2줄까지 노출 */
     line-height: 1.4em;
+}
+
+.profile-img-box{
+    width: 55px;
+    height: 55px;
+    border-radius: 70%;
+    border: 0.5px solid black;
+    overflow: hidden;
+    margin-right:6px;
+    margin-left:6px;
+}
+.profile-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: whitesmoke;
+}
+
+.comment-profile-img-box{
+    width: 90px;
+    height: 22px;
+    border-radius: 70%;
+    border: 0.5px solid black;
+    overflow: hidden;
+    margin-right:6px;
+    margin-left:6px;
+}
+.comment-profile-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: whitesmoke;
+}
+
+
+.like-follow-button{
+    max-height: 30px;
+    margin-top: 10px;
+    margin-right: 6px;
+    font-size: 12px !important;
 }

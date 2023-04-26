@@ -32,10 +32,20 @@ export type CommentType = {
     content: string,
     user_mail: string,
     created_at: string,
+    profile_img: string,
 }
 
 export type AddCommentType = {
     postId:number,
     content:string,
     userMail:string
+}
+
+export type LikeListType = {
+    id: number,
+    postId: number
+    userMail: string,
+    createdAt: string,
+    profileImg: string,
+    name: string,
 }

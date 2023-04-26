@@ -23,3 +23,6 @@ export const likeIns = async (data : {postNo:number, userMail:string}) => {
 export const likeDel = async (data : {postNo:number, userMail:string}) => {
     return await axios.post(`api/newFeed/likeDel`, data)
 }
+export const getLikeList = async (data : {postNo:number}) => {
+    return await axios.get(`api/newFeed/getLikeList?postNo=${data.postNo}`)
+}
