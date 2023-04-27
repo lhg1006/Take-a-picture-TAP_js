@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react"
-import {getLikeList} from "../../api/call/newFeed";
-import {LikeListType} from "../../types/newFeedType";
+import {addFollow, delFollow, getFollowList, getLikeList} from "../../api/call/newFeed";
+import {FollowListType, LikeListType} from "../../types/newFeedType";
 import {useLocation} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
@@ -19,23 +19,43 @@ const LikeListPage = () => {
     const dispatch = useDispatch()
     const isLoading = useSelector((state: CommonType) => state.common.isLoading)
     const [likeList, setLikeList] = useState<LikeListType[]>([])
+    const [followList, setFollowList] = useState<FollowListType[]>([])
     useEffect(() => {
         dispatch(commonAction.setIsLoading(true))
-        getLikeList(state).then(async (res) => {
-            await setLikeList([...res.data])
-            dispatch(commonAction.setIsLoading(false))
+        getLikeList(state).then((res) => {
+            setLikeList([...res.data])
         })
+        getFollowList(cookieEmail).then((res)=>{
+            setFollowList([...res.data])
+        })
+        dispatch(commonAction.setIsLoading(false))
     }, [])
 
     const onFollowButton = (e: React.MouseEvent<HTMLElement>) => {
-        const {userMail} = e.currentTarget.dataset as unknown as CurrentTargetDataset
-        if (e.currentTarget.classList.contains('btn-primary')) {
-            e.currentTarget.classList.remove('btn-primary');
-            e.currentTarget.classList.add('btn-secondary');
-        } else {
-            e.currentTarget.classList.remove('btn-secondary');
-            e.currentTarget.classList.add('btn-primary');
+        const target = e.currentTarget
+        const {userMail} = target.dataset as unknown as CurrentTargetDataset
+
+        const param = {
+            followerEmail : cookieEmail,
+            followingEmail : userMail
         }
+
+        if (target.classList.contains('btn-primary')) {
+            addFollow(param).then((res)=>{
+                if(res.data === 1){
+                    target.classList.remove('btn-primary');
+                    target.classList.add('btn-secondary');
+                }
+            })
+        } else {
+            delFollow(param).then((res)=>{
+                if(res.data === 1){
+                    target.classList.remove('btn-secondary');
+                    target.classList.add('btn-primary');
+                }
+            })
+        }
+
     }
 
 
@@ -65,7 +85,7 @@ const LikeListPage = () => {
                                         </span>
                                         </div>
                                         {cookieEmail !== data.userMail &&
-                                        <button className="btn btn-primary like-follow-button"
+                                        <button className={`btn ${followList.some( fo => fo.followingEmail === data.userMail) ? 'btn-secondary' : 'btn-primary' } like-follow-button`}
                                                 data-user-mail={data.userMail}
                                                 onClick={(e)=>onFollowButton(e)}
                                                 type="button">

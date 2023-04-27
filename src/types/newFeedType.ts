@@ -49,3 +49,9 @@ export type LikeListType = {
     profileImg: string,
     name: string,
 }
+
+export type FollowListType = {
+    followerEmail: string,
+    followingEmail: string,
+    followDate: string
+}

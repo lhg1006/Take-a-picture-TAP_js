@@ -121,9 +121,9 @@ const NewCard = ({data}: { data: FeedListType }) => {
             setClickFlag(false);
         }
     }
-    const onLikeCntClick = async (e:React.MouseEvent<HTMLElement>) => {
+    const onLikeCntClick = async (e: React.MouseEvent<HTMLElement>) => {
         const {postNo} = e.currentTarget.dataset as unknown as CurrentTargetDataset
-        navigate('/likeList', { state: { postNo } });
+        navigate('/likeList', {state: {postNo}});
     }
     return (
         <div className="main-page-card card border-dark wd-25r">
@@ -161,12 +161,12 @@ const NewCard = ({data}: { data: FeedListType }) => {
             <div className="card-body">
                 <div className={"d-flex"}>
                     <span className={"blush-text pulse-text2"}
-                          style={{fontSize:"small", position:"relative", bottom:"10px", fontWeight: "bold"}}
+                          style={{fontSize: "small", position: "relative", bottom: "10px", fontWeight: "bold"}}
                           data-post-no={data.id}
-                          onClick={(e)=>onLikeCntClick(e)}>
+                          onClick={(e) => onLikeCntClick(e)}>
                             Likes {likeCnt}
                     </span>
-                    <span style={{marginLeft:"auto", fontSize:"small", position:"relative", bottom:"10px"}}>
+                    <span style={{marginLeft: "auto", fontSize: "small", position: "relative", bottom: "10px"}}>
                         {data.postCreatedAt}
                     </span>
                 </div>
@@ -176,44 +176,61 @@ const NewCard = ({data}: { data: FeedListType }) => {
                             {data.postContent}
                         </div>
                         <div className={'commentWrap'}>
-                            {data.commentCount > 3 &&
-                            <span className={'p-1 fs14'} style={{color:"#a9a9a9"}}>댓글 {data.commentCount}개 모두 보기</span>}
+                            {data.commentCount > 2 &&
+                                <div className={'fs14 position-relative'}
+                                      style={{color: "#a9a9a9", bottom: "12px"}}>댓글 {data.commentCount}개 모두 보기</div>}
                             {data.commentsList != null ?
                                 data.commentsList.map((item, idx) => {
                                         const dateObject = moment(item.created_at);
                                         const formattedDate = dateObject.format("YY.MM.DD HH:mm");
                                         return (
-                                            idx < 3 && (
+                                            idx < 2 && (
                                                 <div key={item.id}>
-                                                    <div className={'d-flex'}>
-                                                        <div className="comment-profile-img-box" style={{background: "#BDBDBD"}}>
-                                                            {item.profile_img !== null
-                                                                ? <img className="comment-profile-img"
-                                                                       src={item.profile_img}
-                                                                       alt={"프로필이미지"}/>
-                                                                : <BsFillPersonFill className="comment-profile-img"/>}
-                                                        </div>
-                                                        <span className={'p-1 fs14'}>{item.user_mail}</span>
-                                                        <span className={`p-1 text-limit comment-filed fs14`} onClick={onMoreComment}>{item.content}</span>
-                                                        <span className={'post-date-time'}>{formattedDate}</span>
-                                                        {item.user_mail === cookieMemberEmail &&
-                                                            <div className={'p-1 comment-del-icon'}>
-                                                                <TiDeleteOutline className={'cursor'} onClick={() => {
-                                                                    onDeleteComment({id: item.id, userMail: cookieMemberEmail})
-                                                                }}/>
+                                                    <div className={'d-flex'} style={{alignItems: "center"}}>
+                                                        <div className={'flex-grow-0'}>
+                                                            <div className="comment-profile-img-box"
+                                                                 style={{background: "#BDBDBD"}}>
+                                                                {item.profile_img !== null
+                                                                    ? <img className="comment-profile-img"
+                                                                           src={item.profile_img}
+                                                                           alt={"프로필이미지"}/>
+                                                                    : <BsFillPersonFill className="comment-profile-img"/>}
                                                             </div>
-                                                        } <br/>
+                                                        </div>
+                                                        <div className={'flex-grow-5'}>
+                                                            <div className={'fw-bold fs14'}>{item.user_mail}
+                                                                <div className={'fw-normal post-date-time'} style={{float:"right"}}>{formattedDate}</div>
+                                                                <br/>
+                                                                <div className={`fw-normal text-limit comment-filed fs14`}
+                                                                     onClick={onMoreComment}>{item.content}</div>
+                                                            </div>
+                                                        </div>
+                                                        <div className={'flex-grow-1'}>
+                                                            {item.user_mail === cookieMemberEmail &&
+                                                                <div className={'p-1 comment-del-icon'}>
+                                                                    <TiDeleteOutline className={'cursor'} onClick={() => {
+                                                                        onDeleteComment({
+                                                                            id: item.id,
+                                                                            userMail: cookieMemberEmail
+                                                                        })
+                                                                    }}/>
+                                                                </div>
+                                                            } <br/>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             )
                                         )
                                     }
                                 ) :
-                                (<span style={{marginLeft: "106px", position:"relative", top:"32px", color:"dimgray"}}>no comments . . .
-                                    <span style={{fontSize: "2rem", position: "relative", top: "-9px", color:"dimgray"}}><TfiCommentsSmiley/></span>
+                                (<span
+                                    style={{marginLeft: "106px", position: "relative", top: "32px", color: "dimgray"}}>no comments . . .
+                                    <span
+                                        style={{fontSize: "2rem", position: "relative", top: "-9px", color: "dimgray"}}><TfiCommentsSmiley/></span>
                                 </span>)
                             }
-                            <Modal open={modalOpen} close={modalClose} header={data.postUserMail + " : " + data.postContent}>
+                            <Modal open={modalOpen} close={modalClose}
+                                   header={data.postUserMail + " : " + data.postContent}>
                                 {data.commentsList != null && data.commentsList.map((data, idx) => {
                                     const dateObject = moment(data.created_at);
                                     const formattedDate = dateObject.format("YY.MM.DD HH:mm");
@@ -224,7 +241,8 @@ const NewCard = ({data}: { data: FeedListType }) => {
                                                     <span
                                                         className={'modal-post-date-time'}><BsArrowReturnRight/>{formattedDate}</span>
                                                     </span>
-                                                <span className={`p-1 text-limit-none comment-filed`}>{data.content}</span>
+                                                <span
+                                                    className={`p-1 text-limit-none comment-filed`}>{data.content}</span>
                                                 {data.user_mail === cookieMemberEmail &&
                                                     <div className={'p-1 comment-del-icon-modal'}>
                                                         <TiDeleteOutline className={'cursor'} onClick={() => {
