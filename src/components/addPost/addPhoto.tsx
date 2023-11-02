@@ -12,6 +12,7 @@ import {BiAddToQueue} from "react-icons/bi";
 import {imageUpload} from "../../api/call/photo";
 
 const AddPhoto = () => {
+    const photoBaseUrl = process.env.REACT_APP_PHOTO_URL
   const methods = useFormContext()
   const [prevList, setPrevList] = useState<PrevImgList>()
 
@@ -35,7 +36,7 @@ const AddPhoto = () => {
       imageUpload(fd).then((res)=> {
           const result = {
               imagePath: res.data.imageData[0].imagePath,
-              imageUrl: res.data.imageData[0].imageUrl,
+              imageUrl: photoBaseUrl + res.data.imageData[0].imageUrl,
               fileName: res.data.imageData[0].imageName
           }
           setPrevList(result)

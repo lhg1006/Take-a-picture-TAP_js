@@ -1,6 +1,5 @@
 import axiosLib from 'axios'
 export const axiosFile = axiosLib.create({
-    // baseURL: `http://limepiece.com:8803`,
-    baseURL: 'http://localhost:8000',
+    baseURL: 'http://18.141.231.81:8060',
 })
 

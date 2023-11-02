@@ -39,6 +39,7 @@ const NewCard = ({data}: { data: FeedListType }) => {
 
     const [clickFlag, setClickFlag] = useState<boolean>(false)
 
+    const photoBaseUrl = process.env.REACT_APP_PHOTO_URL
     const onMoreComment = () => {
         document.body.style.overflow = "hidden";
         setModalOpen(true);
@@ -145,7 +146,7 @@ const NewCard = ({data}: { data: FeedListType }) => {
                 ? <h1 style={{marginTop: "100px", marginBottom: "100px", textAlign: "center"}}>
                     <FcImageFile
                         style={{fontSize: "4em"}}/></h1>
-                : <img src={data.imagePath} className="card-img-top" alt="..."/>
+                : <img src={photoBaseUrl+data.imagePath} className="card-img-top" alt="..."/>
             }
             <div className={"card-header"} style={{borderTop: "0.1rem solid"}}>
                 <i className={`card-heart-icon ${data.isLiked === 1 ? "bi-heart-fill" : "bi-heart"}`}

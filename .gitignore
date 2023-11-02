@@ -70,3 +70,5 @@ bin/
 
 ### img upload ###
 /public/uploadFiles/
+
+package-lock.json
