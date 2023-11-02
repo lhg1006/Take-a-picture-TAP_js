@@ -33,7 +33,7 @@ const AddProfilePhoto = () => {
         imageUpload(fd).then((res)=> {
             const param = {
                 userMail : getCookie("memberEmail"),
-                imagePath : res.data.pathUrl
+                imagePath : res.data.imageData[0].imagePath
             }
             profilePhotoUpd(param).then((res)=>{
                 if(res.data === 1) {

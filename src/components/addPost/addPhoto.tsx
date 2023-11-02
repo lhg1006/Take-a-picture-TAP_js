@@ -34,9 +34,9 @@ const AddPhoto = () => {
 
       imageUpload(fd).then((res)=> {
           const result = {
-              imagePath: res.data.pathUrl,
-              imageUrl: res.data.pathUrl,
-              fileName: res.data.fileName
+              imagePath: res.data.imageData[0].imagePath,
+              imageUrl: res.data.imageData[0].imageUrl,
+              fileName: res.data.imageData[0].imageName
           }
           setPrevList(result)
 
@@ -64,6 +64,7 @@ const AddPhoto = () => {
       //     imageList = data.imagePath
       //
       // })
+      console.log(prevList)
   },[prevList])
 
 
