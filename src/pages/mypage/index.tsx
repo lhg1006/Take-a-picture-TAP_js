@@ -10,6 +10,7 @@ const MyPage = () => {
     const isLogin = getCookie('isLogin')
     const cookieEmail = getCookie("memberEmail")
     const [memData, setMemData] = useState<MemberSelectType>()
+    const photoUrl = process.env.REACT_APP_PHOTO_URL;
 
 
     useEffect(() => {
@@ -64,7 +65,7 @@ const MyPage = () => {
                                 return (
                                         <div className="col my-img-field" key={data.id}>
                                             <div data-user-mail={data.userMail} data-post-no={data.id}>
-                                                <img className={"my-feed-img"} src={data.imagePath} alt={"게시물"}/>
+                                                <img className={"my-feed-img"} src={photoUrl+data.imagePath} alt={"게시물"}/>
                                             </div>
                                         </div>
                                 )
