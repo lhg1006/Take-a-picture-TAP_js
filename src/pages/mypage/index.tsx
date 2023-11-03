@@ -59,8 +59,8 @@ const MyPage = () => {
 
                     </div>
                     <AddProfilePhoto/>
-                    <div className="container text-center">
-                        <div className="row row-cols-3 justify-content-center">
+                    <div className="container text-center" style={{marginLeft:'4px'}}>
+                        <div className="row row-cols-3 justify-content-start">
                             {memData?.posts.map((data) => {
                                 return (
                                         <div className="col my-img-field" key={data.id}>
