@@ -193,7 +193,7 @@ const NewCard = ({data}: { data: FeedListType }) => {
                                                                  style={{background: "#BDBDBD"}}>
                                                                 {item.profile_img !== null
                                                                     ? <img className="comment-profile-img"
-                                                                           src={item.profile_img}
+                                                                           src={photoBaseUrl+item.profile_img}
                                                                            alt={"프로필이미지"}/>
                                                                     : <BsFillPersonFill className="comment-profile-img"/>}
                                                             </div>

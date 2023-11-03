@@ -40,9 +40,9 @@ const MyPage = () => {
 
                         <div className={"flex-grow-2"}>
                             <div className="container text-center">
-                                <div className="row row-cols-2">
+                                <div className="row row-cols-2 fw-bold">
                                     <div className={"col"}>
-                                        <div>{memData?.profile.email}</div>
+                                        <div >{memData?.profile.email}</div>
                                         <div>{memData?.profile.name}</div>
                                     </div>
                                     <div className={"col"}>
