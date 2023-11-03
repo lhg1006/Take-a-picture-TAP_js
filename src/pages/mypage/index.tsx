@@ -10,7 +10,7 @@ const MyPage = () => {
     const isLogin = getCookie('isLogin')
     const cookieEmail = getCookie("memberEmail")
     const [memData, setMemData] = useState<MemberSelectType>()
-    const photoUrl = process.env.REACT_APP_PHOTO_URL;
+    const photoUrl : any = process.env.REACT_APP_PHOTO_URL;
 
 
     useEffect(() => {
@@ -30,10 +30,10 @@ const MyPage = () => {
             {isLogin &&
                 (<div className={"main-wrapper"}>
                     <div className={'d-flex align-items-center'}>
-                        <div className={"my-profile-img-box flex-grow-0"}>
+                        <div className={"my-profile-img-box flex-grow-0 m-3"}>
                             {memData?.profile.profileImg !== null
                                 ? <img className="my-profile-img"
-                                       src={memData?.profile.profileImg}
+                                       src={photoUrl + memData?.profile.profileImg}
                                        alt={"프로필이미지"}/>
                                 : <BsFillPersonFill className="comment-profile-img"/>}
                         </div>

@@ -1,5 +1,6 @@
 import axiosLib from 'axios'
+const photoUrl = process.env.REACT_APP_PHOTO_URL
 export const axiosFile = axiosLib.create({
-    baseURL: 'http://18.141.231.81:8060',
+    baseURL: photoUrl,
 })
 
