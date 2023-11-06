@@ -9,12 +9,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import LoginPage from "./pages/login/login";
 import SignupPage from "./pages/signup/signup";
 import Forgot from "./pages/forgot/forgot";
-import MyPage from "./pages/mypage";
 import Footer from "./components/common/footer";
 import AddPost from "./pages/addPost";
 import NewFeed from "./pages/newFeed";
 import Alim from "./pages/alim/alim";
 import LikeListPage from "./pages/likeList/likeList";
+import UserPage from "./pages/userpage";
+import MessageList from "./pages/message/list";
 
 function App() {
   const scrollRef = useRef<any>(null);
@@ -52,11 +53,12 @@ function App() {
             <Route path="/sign-in" element={<LoginPage/>}/>
             <Route path="/sign-up" element={<SignupPage/>}/>
             <Route path="/forgot" element={<Forgot />} />
-            <Route path="/my-page" element={<MyPage />} />
+            <Route path="/user-page" element={<UserPage />} />
             <Route path="/add-post" element={<AddPost />} />
             <Route path="/new-feed" element={<NewFeed />} />
             <Route path="/alim" element={<Alim />} />
             <Route path="/likeList" element={<LikeListPage />} />
+            <Route path="/message/list" element={<MessageList />} />
           </Route>
         </Routes>
         <Footer />

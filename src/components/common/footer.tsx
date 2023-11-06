@@ -6,6 +6,7 @@ import {getCookie} from "../../utills";
 const Footer = () => {
   const isLogin = getCookie("isLogin")
   const navigator = useNavigate()
+  const cookieMemberEmail = getCookie("memberEmail")
 
   const onIcoHome = () => {
     if(window.location.pathname === "/new-feed"){
@@ -20,7 +21,7 @@ const Footer = () => {
   }
 
   const onIcoGear = () => {
-    navigator("/my-page")
+    navigator(`/user-page?email=${cookieMemberEmail}`)
   }
 
   const icoStyle = {

@@ -6,6 +6,6 @@ export const memberSelect = async (data : string) => {
 export const profilePhotoUpd = async (data : any) => {
     return await axios.post(`/api/member/profile/photoIns`, data)
 }
-export const myPageData = async (data: string) =>{
-    return await axios.get(`/api/member/select/myPage?email=${data}`)
+export const userPageData = async (data: string) =>{
+    return await axios.get(`/api/member/select/userPage?email=${data}`)
 }

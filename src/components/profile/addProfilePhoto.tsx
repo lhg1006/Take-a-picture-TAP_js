@@ -1,23 +1,15 @@
-import {useFormContext} from "react-hook-form";
-import React, {useEffect, useState} from "react";
-import {PrevImgList} from "../../types/feedTypes";
+import React, {useState} from "react";
 import {toast} from "react-toastify";
-import {addPhotoImg} from "../../api/call/feed";
-import {BiAddToQueue} from "react-icons/bi";
 import {profilePhotoUpd} from "../../api/call/member";
 import {getCookie} from "../../utills";
 import {imageUpload} from "../../api/call/photo";
+import {BsFillPersonFill} from "react-icons/bs";
 
-const AddProfilePhoto = () => {
-    const methods = useFormContext()
-    const [prevList, setPrevList] = useState<PrevImgList[]>([])
+const AddProfilePhoto = ({url} : {url:string}) => {
+    const basePhotoUrl: any = process.env.REACT_APP_PHOTO_URL;
+    const [photoUrl, setPhotoUrl] = useState<string>(url)
 
     const handleChangeFile = (e: any) => {
-        if(prevList.length > 4){
-            toast.warning("파일 개수는 다섯 개를 초과할 수 없습니다.")
-            return;
-        }
-
         if (e.target.files.length > 0) {
             for (let i = 0; i < e.target.files.length; i++) {
                 onPhotoUpload(e.target.files[i])
@@ -38,6 +30,7 @@ const AddProfilePhoto = () => {
             profilePhotoUpd(param).then((res)=>{
                 if(res.data === 1) {
                     toast.success("변경 성공")
+                    setPhotoUrl(basePhotoUrl+param.imagePath)
                 } else {
                     toast.error("System ERROR . . .")
                 }
@@ -50,20 +43,15 @@ const AddProfilePhoto = () => {
         })
     }
 
-    useEffect(() => {
-        let imageList : string = ""
-        prevList.map(data=>{
-            imageList = data.imagePath
-            methods.setValue("imagePath",imageList)
-        })
-    },[prevList])
-
 
     return (
-        <div style={{maxWidth:"24.4rem",padding: "5px"}}>
+        <>
             <label className="input-file-button" htmlFor="input-file">
-                <span style={{fontSize:"20px"}}>Add Photo </span>
-                <BiAddToQueue />
+                { photoUrl != ''
+                    ? <img className="my-profile-img"
+                       src={photoUrl}
+                       alt={"프로필이미지"}/>
+                    : <BsFillPersonFill className="comment-profile-img"/>}
             </label>
             <input className={"mb-3"}
                    type="file"
@@ -73,7 +61,7 @@ const AddProfilePhoto = () => {
                    style={{display: "none"}}
                    onChange={(e) => handleChangeFile(e)}
             />
-        </div>
+        </>
     )
 }
 export default AddProfilePhoto

@@ -130,7 +130,7 @@ const NewCard = ({data}: { data: FeedListType }) => {
         <div className="main-page-card card border-dark wd-25r">
             <div className={"card-header-st fs14"}>
                 <a><img style={{transform: "scale(0.6)"}} src={"/img/icons8-instagram.gif"} alt={"로고gif"}/></a>
-                <span className="fw-bold card-header-txt">{data.postUserMail}</span>
+                <span className="fw-bold card-header-txt" onClick={()=> navigate(`/user-page?email=${data.postUserMail}`)}>{data.postUserMail}</span>
                 {cookieMemberEmail === data.postUserMail &&
                     <span className={'delete-post-button'}
                           data-post-no={data.id}
@@ -191,15 +191,16 @@ const NewCard = ({data}: { data: FeedListType }) => {
                                                         <div className={'flex-grow-0'}>
                                                             <div className="comment-profile-img-box"
                                                                  style={{background: "#BDBDBD"}}>
-                                                                {item.profile_img !== null
+                                                                {item.profile_img !== ''
                                                                     ? <img className="comment-profile-img"
                                                                            src={photoBaseUrl+item.profile_img}
                                                                            alt={"프로필이미지"}/>
                                                                     : <BsFillPersonFill className="comment-profile-img"/>}
                                                             </div>
                                                         </div>
-                                                        <div className={'flex-grow-5'}>
-                                                            <div className={'fw-bold fs14'}>{item.user_mail}
+                                                        <div className={'flex-grow-5 w-100'}>
+                                                            <div className={'fw-bold fs14 comment-wrap-2'}>
+                                                                <div className={'comment-user-img'} onClick={()=> navigate(`/user-page?email=${item.user_mail}`)}>{item.user_mail}</div>
                                                                 <div className={'fw-normal post-date-time'} style={{float:"right"}}>{formattedDate}</div>
                                                                 <br/>
                                                                 <div className={`fw-normal text-limit comment-filed fs14`}

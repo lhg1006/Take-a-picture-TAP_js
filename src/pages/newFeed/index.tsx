@@ -40,7 +40,6 @@ const NewFeed = () => {
                 ? list.map((item) => <NewCard key={item.id} data={item}/>)
                 : <div>not found . . .</div>
             }
-
         </div>
     )
 }

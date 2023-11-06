@@ -26,6 +26,9 @@ const Header = () => {
     const onAlimIconClick = () => {
         navigate('/alim')
     }
+    const onMessageClick = () => {
+        navigate('/message/list')
+    }
 
     return (
         <>
@@ -41,7 +44,7 @@ const Header = () => {
                             <span className={"header-alim-icon"} onClick={onAlimIconClick}><i
                                 className="bi bi-bell fs20"></i></span>
                             <span className="line"></span>
-                            <span className={"header-airplane-icon"}><SlPaperPlane className={'fs20'}/></span>
+                            <span className={"header-airplane-icon"} onClick={onMessageClick}><SlPaperPlane className={'fs20'}/></span>
                         </div>
                     </div>
                 </nav>

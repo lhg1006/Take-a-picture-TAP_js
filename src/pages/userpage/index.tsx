@@ -2,15 +2,22 @@ import React, {useEffect, useState} from "react";
 import {getCookie} from "../../utills";
 import DropdownBox from "../../components/common/dropdown";
 import AddProfilePhoto from "../../components/profile/addProfilePhoto";
-import {myPageData} from "../../api/call/member";
+import {userPageData} from "../../api/call/member";
 import {MemberSelectType} from "../../types/member";
 import {BsFillPersonFill} from "react-icons/bs";
+import {useLocation} from 'react-router-dom';
+import FollowBlock from "../../components/profile/followBlock";
 
-const MyPage = () => {
+const UserPage = () => {
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const email = searchParams.get('email');
     const isLogin = getCookie('isLogin')
     const cookieEmail = getCookie("memberEmail")
     const [memData, setMemData] = useState<MemberSelectType>()
-    const photoUrl : any = process.env.REACT_APP_PHOTO_URL;
+    const photoUrl: any = process.env.REACT_APP_PHOTO_URL;
+    const [isMine, setIsMine] = useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(true)
 
 
     useEffect(() => {
@@ -18,31 +25,36 @@ const MyPage = () => {
             window.location.replace("/")
             return;
         } else {
-            myPageData(cookieEmail).then((res) => {
-                console.log(res)
-                setMemData(res.data)
-            })
+            if (email != null) {
+                userPageData(email).then((res) => {
+                    setIsMine(cookieEmail === email)
+                    setMemData(res.data)
+                    setLoading(false)
+                })
+            }
         }
     }, [])
 
+    const profilePhotoClick = () =>{
+
+    }
+
     return (
         <>
-            {isLogin &&
+            {!loading && isLogin &&
                 (<div className={"main-wrapper"}>
-                    <div className={'d-flex align-items-center'}>
+                    <div className={'d-flex align-items-center '}>
                         <div className={"my-profile-img-box flex-grow-0 m-3"}>
-                            {memData?.profile.profileImg !== null
-                                ? <img className="my-profile-img"
-                                       src={photoUrl + memData?.profile.profileImg}
-                                       alt={"프로필이미지"}/>
-                                : <BsFillPersonFill className="comment-profile-img"/>}
+                            <AddProfilePhoto
+                                url={memData?.profile.profileImg !== null  ? photoUrl + memData?.profile.profileImg : ''}
+                            />
                         </div>
 
                         <div className={"flex-grow-2"}>
                             <div className="container text-center">
                                 <div className="row row-cols-2 fw-bold">
                                     <div className={"col"}>
-                                        <div >{memData?.profile.email}</div>
+                                        <div>{memData?.profile.email}</div>
                                         <div>{memData?.profile.name}</div>
                                     </div>
                                     <div className={"col"}>
@@ -58,16 +70,17 @@ const MyPage = () => {
                         </div>
 
                     </div>
-                    <AddProfilePhoto/>
-                    <div className="container text-center" style={{marginLeft:'4px'}}>
+                    {!isMine && <FollowBlock/>}
+                    <div className="container text-center">
                         <div className="row row-cols-3 justify-content-start">
                             {memData?.posts.map((data) => {
                                 return (
-                                        <div className="col my-img-field" key={data.id}>
-                                            <div data-user-mail={data.userMail} data-post-no={data.id}>
-                                                <img className={"my-feed-img"} src={photoUrl+data.imagePath} alt={"게시물"}/>
-                                            </div>
+                                    <div className="col my-img-field" key={data.id}>
+                                        <div data-user-mail={data.userMail} data-post-no={data.id}>
+                                            <img className={"my-feed-img"} src={photoUrl + data.imagePath}
+                                                 alt={"게시물"}/>
                                         </div>
+                                    </div>
                                 )
                             })}
                         </div>
@@ -77,4 +90,4 @@ const MyPage = () => {
         </>
     )
 }
-export default MyPage
+export default UserPage
