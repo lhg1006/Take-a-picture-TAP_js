@@ -1,11 +1,43 @@
 import React, { useState } from "react";
+import {addFollow, delFollow} from "../../api/call/newFeed";
+import {getCookie} from "../../utills";
 
-const FollowBlock = () => {
+const FollowBlock = ({followerEmail} : {followerEmail:string}) => {
     const [isFollowing, setIsFollowing] = useState(false);
+    const cookieEmail = getCookie("memberEmail")
 
-    const toggleFollow = () => {
-        setIsFollowing(!isFollowing);
+    const toggleFollow = (e: React.MouseEvent<HTMLButtonElement>) => {
+        const target = e.currentTarget
+
+        const param = {
+            userEmail : cookieEmail,
+            followerEmail : followerEmail
+        }
+
+        if (target.classList.contains('follow-button')) {
+            addFollow(param).then((res)=>{
+                if(res.data === 1){
+                    setIsFollowing(true);
+                }
+            })
+        } else {
+            setIsFollowing(false);
+            // delFollow(param).then((res)=>{
+            //     if(res.data === 1){
+            //         target.classList.remove('btn-secondary');
+            //         target.classList.add('btn-primary');
+            //     }
+            // })
+        }
+
+
     };
+
+
+    const onFollowButton = (e: React.MouseEvent<HTMLElement>) => {
+
+
+    }
 
     const handleContact = () => {
 
@@ -15,7 +47,7 @@ const FollowBlock = () => {
         <div className="follow-block">
             <button
                 className={isFollowing ? "unfollow-button" : "follow-button common-button"}
-                onClick={toggleFollow}
+                onClick={(e)=> toggleFollow(e)}
             >
                 {isFollowing ? "팔로우 취소" : "팔로우"}
             </button>

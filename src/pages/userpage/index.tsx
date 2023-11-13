@@ -11,7 +11,7 @@ import FollowBlock from "../../components/profile/followBlock";
 const UserPage = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    const email = searchParams.get('email');
+    const email = searchParams.get('email') as string;
     const isLogin = getCookie('isLogin')
     const cookieEmail = getCookie("memberEmail")
     const [memData, setMemData] = useState<MemberSelectType>()
@@ -70,7 +70,7 @@ const UserPage = () => {
                         </div>
 
                     </div>
-                    {!isMine && <FollowBlock/>}
+                    {!isMine && <FollowBlock followerEmail={email}/>}
                     <div className="container text-center">
                         <div className="row row-cols-3 justify-content-start">
                             {memData?.posts.map((data) => {
