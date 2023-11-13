@@ -3,6 +3,8 @@ export type MemberSelectType = {
     profile: ProfileType,
     posts: PostsType[],
     follows: FollowType[],
+    followCnt : number,
+    followerCnt : number
 }
 
 export type ProfileType = {

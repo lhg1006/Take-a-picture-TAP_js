@@ -4,8 +4,7 @@ import DropdownBox from "../../components/common/dropdown";
 import AddProfilePhoto from "../../components/profile/addProfilePhoto";
 import {userPageData} from "../../api/call/member";
 import {MemberSelectType} from "../../types/member";
-import {BsFillPersonFill} from "react-icons/bs";
-import {useLocation} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import FollowBlock from "../../components/profile/followBlock";
 
 const UserPage = () => {
@@ -18,7 +17,7 @@ const UserPage = () => {
     const photoUrl: any = process.env.REACT_APP_PHOTO_URL;
     const [isMine, setIsMine] = useState<boolean>(false)
     const [loading, setLoading] = useState<boolean>(true)
-
+    const navigator = useNavigate()
 
     useEffect(() => {
         if (!isLogin) {
@@ -35,41 +34,52 @@ const UserPage = () => {
         }
     }, [])
 
-    const profilePhotoClick = () =>{
-
-    }
-
     return (
         <>
             {!loading && isLogin &&
                 (<div className={"main-wrapper"}>
-                    <div className={'d-flex align-items-center '}>
-                        <div className={"my-profile-img-box flex-grow-0 m-3"}>
-                            <AddProfilePhoto
-                                url={memData?.profile.profileImg !== null  ? photoUrl + memData?.profile.profileImg : ''}
-                            />
-                        </div>
+                    <div className="container text-center">
+                        <div className="row">
+                            <div className="col">
+                                <div className={"my-profile-img-box mt-2"}>
+                                    <AddProfilePhoto
+                                        url={memData?.profile.profileImg !== null  ? photoUrl + memData?.profile.profileImg : ''}
+                                    />
+                                </div>
+                            </div>
 
-                        <div className={"flex-grow-2"}>
-                            <div className="container text-center">
-                                <div className="row row-cols-2 fw-bold">
-                                    <div className={"col"}>
-                                        <div>{memData?.profile.email}</div>
-                                        <div>{memData?.profile.name}</div>
-                                    </div>
-                                    <div className={"col"}>
-                                        <div>follower</div>
-                                        <div>follow</div>
+                            <div className="col-6 align-self-center">
+                                <div className="container">
+                                    <div className="row">
+                                        <div className={"col"}>
+                                            <div className="fw-bold">{memData?.profile.email}</div>
+                                            <div className={"fw-bold"}>{memData?.profile.name}</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className={"flex-grow-1"}>
-                            <DropdownBox/>
+                            <div className="col">
+                                <DropdownBox/>
+                            </div>
                         </div>
-
                     </div>
+
+                    <div className={"mt-1 border border-2 p-2"}>
+                        <div className="row fw-bold">
+                            <div className={"d-flex"}>
+                                <div className={"col border-end"} onClick={()=>navigator(`/follow/list?type=follower&email=${memData?.profile.email}`)}>
+                                    <div className={"mb-1"}>팔로워</div>
+                                    <div>{memData?.followerCnt}</div>
+                                </div>
+                                <div className={"col"} onClick={()=>navigator(`/follow/list?type=follow&email=${memData?.profile.email}`)}>
+                                    <div className="mb-1 ms-3">팔로우</div>
+                                    <div>{memData?.followCnt}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     {!isMine && <FollowBlock followerEmail={email}/>}
                     <div className="container text-center">
                         <div className="row row-cols-3 justify-content-start">

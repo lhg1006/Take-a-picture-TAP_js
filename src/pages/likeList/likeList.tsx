@@ -19,15 +19,15 @@ const LikeListPage = () => {
     const dispatch = useDispatch()
     const isLoading = useSelector((state: CommonType) => state.common.isLoading)
     const [likeList, setLikeList] = useState<LikeListType[]>([])
-    const [followList, setFollowList] = useState<FollowListType[]>([])
+    // const [followList, setFollowList] = useState<FollowListType[]>([])
     useEffect(() => {
         dispatch(commonAction.setIsLoading(true))
         getLikeList(state).then((res) => {
             setLikeList([...res.data])
         })
-        getFollowList(cookieEmail).then((res)=>{
-            setFollowList([...res.data])
-        })
+        // getFollowList(cookieEmail).then((res)=>{
+        //     setFollowList([...res.data])
+        // })
         dispatch(commonAction.setIsLoading(false))
     }, [])
 
@@ -84,13 +84,13 @@ const LikeListPage = () => {
                                             <span className={'d-flex justify-content-start'} style={{color: "dimgrey"}}>{data.name}</span>
                                         </span>
                                         </div>
-                                        {cookieEmail !== data.userMail &&
-                                        <button className={`btn ${followList.some( fo => fo.followingEmail === data.userMail) ? 'btn-secondary' : 'btn-primary' } like-follow-button`}
+                                        {cookieEmail !== data.userMail && <button>팔로우</button>
+                                        /*<button className={`btn ${followList.some( fo => fo.followingEmail === data.userMail) ? 'btn-secondary' : 'btn-primary' } like-follow-button`}
                                                 data-user-mail={data.userMail}
                                                 onClick={(e)=>onFollowButton(e)}
                                                 type="button">
                                             팔로우
-                                        </button>}
+                                        </button>*/}
                                     </div>
                                     <hr/>
                                 </div>

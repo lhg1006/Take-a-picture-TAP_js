@@ -12,26 +12,26 @@ export const delComment = async (data : {id:number; userMail:string}) =>{
     return await axios.post(`/api/newFeed/delComment`, data);
 }
 export const addPost = async (data : AddPostInputType) => {
-    return await axios.post(`api/newFeed/addPost`, data);
+    return await axios.post(`/api/newFeed/addPost`, data);
 }
 export const delPost = async (data : {postNo:number, userMail:string}) => {
-    return await axios.post(`api/newFeed/delPost`, data)
+    return await axios.post(`/api/newFeed/delPost`, data)
 }
 export const likeIns = async (data : {postNo:number, userMail:string}) => {
-    return await axios.post(`api/newFeed/likeIns`, data)
+    return await axios.post(`/api/newFeed/likeIns`, data)
 }
 export const likeDel = async (data : {postNo:number, userMail:string}) => {
-    return await axios.post(`api/newFeed/likeDel`, data)
+    return await axios.post(`/api/newFeed/likeDel`, data)
 }
 export const getLikeList = async (data : {postNo:number}) => {
-    return await axios.get(`api/newFeed/getLikeList?postNo=${data.postNo}`)
+    return await axios.get(`/api/newFeed/getLikeList?postNo=${data.postNo}`)
 }
-export const getFollowList = async (data : string)=>{
-    return await axios.get(`api/newFeed/getFollowList?email=${data}`)
+export const getFollowList = async (data : {email:string; type:string})=>{
+    return await axios.get(`/api/newFeed/getFollowList?email=${data.email}&type=${data.type}`)
 }
 export const addFollow = async (data: any) => {
-    return await axios.post(`api/newFeed/followIns`, data)
+    return await axios.post(`/api/newFeed/followIns`, data)
 }
 export const delFollow = async (data: any) => {
-    return await axios.post(`api/newFeed/followDel`, data)
+    return await axios.post(`/api/newFeed/followDel`, data)
 }
