@@ -85,7 +85,7 @@ const UserPage = () => {
                         <div className="row row-cols-3 justify-content-start">
                             {memData?.posts.map((data) => {
                                 return (
-                                    <div className="col my-img-field" key={data.id}>
+                                    <div className="col my-img-field" key={data.id} onClick={()=>navigator(`/feed/view?email=${data.userMail}`)}>
                                         <div data-user-mail={data.userMail} data-post-no={data.id}>
                                             <img className={"my-feed-img"} src={photoUrl + data.imagePath}
                                                  alt={"게시물"}/>

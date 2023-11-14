@@ -4,3 +4,10 @@ export type CommonType = {
     isCall: boolean
   }
 }
+
+export type FollowListType = {
+  profileImg:string
+  userEmail:string
+  followerEmail:string
+  followTime:string
+}

@@ -1,10 +1,16 @@
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 import {AddCommentType, ListParamType} from "../../types/newFeedType";
 import {AddPostInputType} from "../../schema/addPost";
+import {FollowListType} from "../../types/commonType";
 
 export const getNewFeedList = async (data : ListParamType) => {
     return await axios.get(`/api/newFeed/list?userMail=${data.userMail}`)
 }
+
+export const getTargetFeedList = async (data : ListParamType) => {
+    return await axios.get(`/api/newFeed/list/target?userMail=${data.userMail}`)
+}
+
 export const addComment = async (data : AddCommentType) => {
     return await axios.post(`/api/newFeed/addComment`, data)
 }
@@ -26,8 +32,8 @@ export const likeDel = async (data : {postNo:number, userMail:string}) => {
 export const getLikeList = async (data : {postNo:number}) => {
     return await axios.get(`/api/newFeed/getLikeList?postNo=${data.postNo}`)
 }
-export const getFollowList = async (data : {email:string; type:string})=>{
-    return await axios.get(`/api/newFeed/getFollowList?email=${data.email}&type=${data.type}`)
+export const getFollowList = async (param : {email:string; type:string}) :  Promise<AxiosResponse<FollowListType[]>> =>{
+    return await axios.get(`/api/newFeed/getFollowList?email=${param.email}&type=${param.type}`);
 }
 export const addFollow = async (data: any) => {
     return await axios.post(`/api/newFeed/followIns`, data)

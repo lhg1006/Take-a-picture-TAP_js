@@ -17,6 +17,7 @@ import LikeListPage from "./pages/likeList/likeList";
 import UserPage from "./pages/userpage";
 import MessageList from "./pages/message/list";
 import FollowList from "./pages/follow/list";
+import FeedView from "./pages/feed/view";
 
 function App() {
   const scrollRef = useRef<any>(null);
@@ -61,6 +62,7 @@ function App() {
             <Route path="/likeList" element={<LikeListPage />} />
             <Route path="/message/list" element={<MessageList />} />
             <Route path="/follow/list" element={<FollowList />} />
+            <Route path="/feed/view" element={<FeedView />} />
           </Route>
         </Routes>
         <Footer />
