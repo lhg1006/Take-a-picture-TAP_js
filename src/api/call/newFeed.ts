@@ -41,3 +41,6 @@ export const addFollow = async (data: any) => {
 export const delFollow = async (data: any) => {
     return await axios.post(`/api/newFeed/followDel`, data)
 }
+export const isFollowed = async (param : {userEmail:string; followerEmail:string}) => {
+    return await axios.get(`/api/newFeed/isFollowed`,{params: param})
+}

@@ -1,10 +1,23 @@
-import React, { useState } from "react";
-import {addFollow, delFollow} from "../../api/call/newFeed";
+import React, {useEffect, useState} from "react";
+import {addFollow, delFollow, isFollowed} from "../../api/call/newFeed";
 import {getCookie} from "../../utills";
 
 const FollowBlock = ({followerEmail} : {followerEmail:string}) => {
     const [isFollowing, setIsFollowing] = useState(false);
     const cookieEmail = getCookie("memberEmail")
+
+    useEffect(()=>{
+        const param = {
+            userEmail : cookieEmail,
+            followerEmail : followerEmail
+        }
+
+        isFollowed(param).then((res)=>{
+            if(res.data === 1){
+                setIsFollowing(true)
+            }
+        })
+    },[])
 
     const toggleFollow = (e: React.MouseEvent<HTMLButtonElement>) => {
         const target = e.currentTarget
