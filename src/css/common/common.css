@@ -92,6 +92,7 @@
     position: relative;
     right: 6px;
     top: 3px;
+    cursor: pointer;
 }
 
 .card-comment-icon{

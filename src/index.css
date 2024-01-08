@@ -290,13 +290,6 @@ h1,h2,h3,h4,h5,h6,label,span {
     height: 100%;
 }
 
-.comment-filed{
-    font-family: sans-serif;
-}
-.commentWrap{
-    min-height: 120px;
-    max-height: 120px;
-}
 .card-img-top{
     border-top: 0.1px solid black;
     border-radius: 0 !important;
@@ -333,13 +326,7 @@ h1,h2,h3,h4,h5,h6,label,span {
     margin: 0 1em; /* 원하는 위치에 조정 가능 */
 }
 
-.follow-block {
-    text-align: center;
-    padding: 20px;
-    margin-bottom: 10px;
-    border-top: 1px solid #000; /* 위쪽에 1px 두께의 선 추가 */
-    border-bottom: 1px solid #000; /* 아래쪽에 1px 두께의 선 추가 */
-}
+
 
 .common-button {
     width: 140px;
@@ -351,6 +338,13 @@ h1,h2,h3,h4,h5,h6,label,span {
     border-radius: 5px;
 }
 
+.follow-block {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-top: 1px solid #000; /* 위쪽에 1px 두께의 선 추가 */
+    border-bottom: 1px solid #000; /* 아래쪽에 1px 두께의 선 추가 */
+}
 .unfollow-button {
     width: 140px;
     margin-right: 50px;
@@ -361,7 +355,6 @@ h1,h2,h3,h4,h5,h6,label,span {
     cursor: pointer;
     border-radius: 5px;
 }
-
 .follow-button{
     margin-right: 50px;
 }
@@ -370,9 +363,20 @@ h1,h2,h3,h4,h5,h6,label,span {
     display: none;
 }
 
+.comment-filed{
+    font-family: sans-serif;
+}
+
+.commentWrap{
+    min-height: 120px;
+    max-height: 120px;
+}
+
 .comment-user-img{
     float: left;
+    cursor: pointer;
 }
+
 .comment-wrap-2{
     width: 280px;
 }
