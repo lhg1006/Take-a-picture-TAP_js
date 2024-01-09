@@ -16,19 +16,21 @@ interface CurrentTargetDataset{
 const LikeListPage = () => {
     const {state} = useLocation();
     const cookieEmail = getCookie("memberEmail")
-    const dispatch = useDispatch()
-    const isLoading = useSelector((state: CommonType) => state.common.isLoading)
+    const [isLoading, setIsLoading] = useState<boolean>(true)
     const [likeList, setLikeList] = useState<LikeListType[]>([])
+    // const dispatch = useDispatch()
+    // const isLoading = useSelector((state: CommonType) => state.common.isLoading)
     // const [followList, setFollowList] = useState<FollowListType[]>([])
     useEffect(() => {
-        dispatch(commonAction.setIsLoading(true))
+        // dispatch(commonAction.setIsLoading(true))
         getLikeList(state).then((res) => {
             setLikeList([...res.data])
+            setIsLoading(false);
         })
         // getFollowList(cookieEmail).then((res)=>{
         //     setFollowList([...res.data])
         // })
-        dispatch(commonAction.setIsLoading(false))
+        // dispatch(commonAction.setIsLoading(false))
     }, [])
 
     const onFollowButton = (e: React.MouseEvent<HTMLElement>) => {
@@ -74,7 +76,7 @@ const LikeListPage = () => {
                                         <div className="profile-img-box" style={{background: "#BDBDBD"}}>
                                             {data.profileImg !== null
                                                 ? <img className="profile-img"
-                                                       src={data.profileImg}
+                                                       src={process.env.REACT_APP_PHOTO_URL + data.profileImg}
                                                        alt={"프로필이미지"}/>
                                                 : <BsFillPersonFill className="profile-img"/>}
                                         </div>

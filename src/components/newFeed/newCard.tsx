@@ -178,7 +178,7 @@ const NewCard = ({data}: { data: FeedListType }) => {
                         </div>
                         <div className={'commentWrap'}>
                             {data.commentCount > 2 &&
-                                <div className={'fs14 position-relative'}
+                                <div className={'fs14 position-relative'} onClick={onMoreComment}
                                       style={{color: "#a9a9a9", bottom: "12px"}}>댓글 {data.commentCount}개 모두 보기</div>}
                             {data.commentsList != null ?
                                 data.commentsList.map((item, idx) => {
