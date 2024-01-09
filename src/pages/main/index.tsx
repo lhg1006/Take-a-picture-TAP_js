@@ -9,6 +9,7 @@ import {getFeedList} from "../../api/call/feed";
 import {FeedStateType} from "../../types/feedTypes";
 import Card from "../../components/feed/card";
 import {getCookie} from "../../utills";
+import "../../css/pages/main/main.css"
 
 const MainPage = () => {
   const dispatch = useDispatch()

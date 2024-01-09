@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import "../../css/pages/login/login.css";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup"
@@ -55,7 +56,7 @@ const LoginPage = () => {
     <>
       {!isLogin &&
       <div className="auth-wrapper">
-        <div className="auth-inner">
+        <div className="auth-inner sign-inner-pd">
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <h3>Sign In</h3>
           <Form.Floating className="mb-3">

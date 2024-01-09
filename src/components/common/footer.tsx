@@ -9,10 +9,10 @@ const Footer = () => {
   const cookieMemberEmail = getCookie("memberEmail")
 
   const onIcoHome = () => {
-    if(window.location.pathname === "/new-feed"){
+    if(window.location.pathname === "/main"){
       window.scrollTo({top:0, behavior:"smooth"})
     }else{
-      navigator("/new-feed")
+      navigator("/main")
     }
   }
 

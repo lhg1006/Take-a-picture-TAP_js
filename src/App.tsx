@@ -3,13 +3,11 @@ import './App.css';
 import "./css/common/common.css"
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Header from "./components/common/header";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoginPage from "./pages/login/login";
 import SignupPage from "./pages/signup/signup";
 import Forgot from "./pages/forgot/forgot";
-import Footer from "./components/common/footer";
 import AddPost from "./pages/addPost";
 import NewFeed from "./pages/newFeed";
 import Alim from "./pages/alim/alim";
@@ -18,6 +16,7 @@ import UserPage from "./pages/userpage";
 import MessageList from "./pages/message/list";
 import FollowList from "./pages/follow/list";
 import FeedView from "./pages/feed/view";
+import Layout from "./components/common/layout";
 
 function App() {
   const scrollRef = useRef<any>(null);
@@ -46,26 +45,24 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App" onScroll={handleScroll} ref={scrollRef}>
-        <Header/>
         <ToastContainer autoClose={1500}/>
         <Routes>
           <Route>
-            <Route path= "/main" element={<NewFeed/>}/>
+            <Route path= "/main" element={<Layout> <NewFeed/> </Layout>}/>
+            <Route path="/add-post" element={<Layout> <AddPost /> </Layout>}/>
+            <Route path="/user-page" element={<Layout> <UserPage /> </Layout>}/>
+            <Route path="/feed/view" element={<Layout> <FeedView /> </Layout>}/>
+            <Route path="/follow/list" element={<Layout> <FollowList /> </Layout>}/>
+            <Route path="/likeList" element={<Layout> <LikeListPage /> </Layout>}/>
+
             <Route path="/" element={<LoginPage />}/>
             <Route path="/sign-in" element={<LoginPage/>}/>
             <Route path="/sign-up" element={<SignupPage/>}/>
             <Route path="/forgot" element={<Forgot />} />
-            <Route path="/user-page" element={<UserPage />} />
-            <Route path="/add-post" element={<AddPost />} />
-            <Route path="/new-feed" element={<NewFeed />} />
             <Route path="/alim" element={<Alim />} />
-            <Route path="/likeList" element={<LikeListPage />} />
             <Route path="/message/list" element={<MessageList />} />
-            <Route path="/follow/list" element={<FollowList />} />
-            <Route path="/feed/view" element={<FeedView />} />
           </Route>
         </Routes>
-        <Footer />
       </div>
     </BrowserRouter>
   );

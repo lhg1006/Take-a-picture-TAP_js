@@ -7,7 +7,6 @@ body {
 }
 
 @media (max-width: 992px) {
-
     .header-container.desktop {
         display: none;
     }
@@ -400,37 +399,37 @@ body {
     }
 }
 
-.header-container.desktop #header-wrapper {
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0.4rem 0;
-    width: 1024px;
-}
-.header-container.desktop #header-wrapper-left{
-    width: 100%;
-    align-items: center;
-}
-.header-container.desktop #header-wrapper-left .insta-logo {
-    width: 40%;
-}
-.header-container.desktop #header-wrapper-center{
-    width: 100%;
-    text-align: center;
-}
-.header-container.desktop #header-wrapper-right{
-    width: 100%;
+/*.header-container.desktop #header-wrapper {*/
+/*    background-color: white;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    padding: 0.4rem 0;*/
+/*    width: 1024px;*/
+/*}*/
+/*.header-container.desktop #header-wrapper-left{*/
+/*    width: 100%;*/
+/*    align-items: center;*/
+/*}*/
+/*.header-container.desktop #header-wrapper-left .insta-logo {*/
+/*    width: 40%;*/
+/*}*/
+/*.header-container.desktop #header-wrapper-center{*/
+/*    width: 100%;*/
+/*    text-align: center;*/
+/*}*/
+/*.header-container.desktop #header-wrapper-right{*/
+/*    width: 100%;*/
 
-    display: flex;
-    justify-content: right;
-    align-items: center;
-}
-.header-container.desktop #header-wrapper-right .header-items{
-    width: 25px;
-    margin-right: 16px;
-}
+/*    display: flex;*/
+/*    justify-content: right;*/
+/*    align-items: center;*/
+/*}*/
+/*.header-container.desktop #header-wrapper-right .header-items{*/
+/*    width: 25px;*/
+/*    margin-right: 16px;*/
+/*}*/
 
 #header-wrapper-center input{
     background-image: url("../img/insta-logo/search@3x.png");
@@ -454,33 +453,6 @@ body {
     margin-right: 0.7rem;
 
     border-radius: 50%;
-}
-
-.post-like-msg-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    margin-left: 1rem;
-}
-
-.post-comment {
-    margin-top: 1rem;
-    margin-left: 1.5rem;
-}
-
-.friends-comment {
-    margin-left: 1.5rem;
-}
-
-.post-time {
-    margin-top: 1rem;
-    margin-bottom: 3rem;
-}
-
-.post-time > p {
-    color: rgb(214, 214, 214);
-    font-weight: 900;
 }
 
 b {

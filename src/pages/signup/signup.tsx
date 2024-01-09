@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import "../../css/pages/login/login.css";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {SignUpInputs} from "../../types/loginDataType";

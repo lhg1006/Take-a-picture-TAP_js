@@ -127,7 +127,7 @@ const NewCard = ({data}: { data: FeedListType }) => {
         navigate('/likeList', {state: {postNo}});
     }
     return (
-        <div className="main-page-card card border-dark wd-25r">
+        <div className="main-page-card card wd-25r">
             <div className={"card-header-st fs14"}>
                 <a><img style={{transform: "scale(0.6)"}} src={"/img/icons8-instagram.gif"} alt={"로고gif"}/></a>
                 <span className="fw-bold card-header-txt" onClick={()=> navigate(`/user-page?email=${data.postUserMail}`)}>{data.postUserMail}</span>

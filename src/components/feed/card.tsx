@@ -65,7 +65,7 @@ const Card = ({data, targetComment}: { data: FeedResultType; targetComment: Comm
 
   return (
     <>
-      <div className="main-page-card card border-dark wd-25r">
+      <div className="main-page-card card wd-25r">
         <div className="card-header fw-bold"><i className="bi bi-instagram"></i> {data.memberEmail}</div>
         <img src={data.photoUrl} className="card-img-top" alt="..."/>
         <div className={"card-header"} style={{borderTop: "0.1rem solid"}}>

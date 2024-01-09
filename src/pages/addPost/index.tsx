@@ -33,7 +33,7 @@ const AddPost = () => {
       addPost(data).then((res)=>{
         if(res.data === 1){
           toast.success("성공")
-          window.location.replace("new-feed")
+          window.location.replace("main")
         }else{
           toast.error("실패")
         }

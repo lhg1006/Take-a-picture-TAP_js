@@ -14,10 +14,8 @@ const FeedView = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const email = searchParams.get('email') as string;
-    const dispatch = useDispatch()
     const [list, setList] = useState<FeedListType[]>([])
-
-    const {isLoading, isCall} = useSelector((state: CommonType) => state.common)
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const param = {
@@ -25,9 +23,9 @@ const FeedView = () => {
         }
         getTargetFeedList(param).then((res) => {
             setList([...res.data.postList])
-            setTimeout(() => dispatch(commonAction.setIsLoading(false)), 500);
+            setIsLoading(false)
         })
-    }, [isCall])
+    }, [])
 
 
     return(
