@@ -12,6 +12,7 @@ import {toast} from "react-toastify";
 const AddPost = () => {
   const isLogin = getCookie('isLogin')
   const cookieMail = getCookie("memberEmail")
+  const cookieNo = getCookie("memberNo")
 
   useEffect(() => {
     if (!isLogin) {
@@ -29,6 +30,7 @@ const AddPost = () => {
 
   const onSubmit = (data:AddPostInputType) => {
     methods.setValue("userMail", cookieMail)
+    methods.setValue("userNo", cookieNo)
     try {
       addPost(data).then((res)=>{
         if(res.data === 1){

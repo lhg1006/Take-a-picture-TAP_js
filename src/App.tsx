@@ -54,12 +54,12 @@ function App() {
             <Route path="/feed/view" element={<Layout> <FeedView /> </Layout>}/>
             <Route path="/follow/list" element={<Layout> <FollowList /> </Layout>}/>
             <Route path="/likeList" element={<Layout> <LikeListPage /> </Layout>}/>
+            <Route path="/alim" element={<Layout> <Alim /> </Layout>}/>
 
             <Route path="/" element={<LoginPage />}/>
             <Route path="/sign-in" element={<LoginPage/>}/>
             <Route path="/sign-up" element={<SignupPage/>}/>
             <Route path="/forgot" element={<Forgot />} />
-            <Route path="/alim" element={<Alim />} />
             <Route path="/message/list" element={<MessageList />} />
           </Route>
         </Routes>

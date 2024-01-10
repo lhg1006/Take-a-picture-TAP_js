@@ -23,6 +23,7 @@ interface CurrentTargetDataset {
 
 interface CurrentTargetDataset2 {
     postNo: number;
+    postUserNo: string;
     isLiked: number;
 }
 
@@ -32,6 +33,8 @@ const NewCard = ({data}: { data: FeedListType }) => {
     const navigate = useNavigate()
 
     const cookieMemberEmail = getCookie("memberEmail")
+
+    const cookieMemberNo = getCookie("memberNo")
 
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -97,7 +100,9 @@ const NewCard = ({data}: { data: FeedListType }) => {
 
             const param = {
                 postNo: dataset.postNo,
-                userMail: cookieMemberEmail
+                postMemNo: dataset.postUserNo,
+                userMail: cookieMemberEmail,
+                myMemNo: cookieMemberNo,
             }
 
             if (+dataset.isLiked === 1) {
@@ -152,6 +157,7 @@ const NewCard = ({data}: { data: FeedListType }) => {
                 <i className={`card-heart-icon ${data.isLiked === 1 ? "bi-heart-fill" : "bi-heart"}`}
                    data-post-no={data.id}
                    data-is-liked={data.isLiked}
+                   data-post-user-no={data.postUserNo}
                    onClick={(e) => likeHandler(e)}
                 ></i>
                 <i className="bi bi-chat card-chat-icon" onClick={onMoreComment}></i>

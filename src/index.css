@@ -132,7 +132,6 @@ code {
     .topHeaderDropDown{
         display: block;
         position: relative;
-        left: 275px;
     }
     .prev-photo{
         max-width: 22.4rem !important;

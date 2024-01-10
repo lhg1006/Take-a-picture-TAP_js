@@ -4,7 +4,7 @@ export type NewFeedListType = {
 
 export type FeedListType = {
     id: number,
-    title: string,
+    postUserNo: string,
     postContent: string,
     postUserMail: string,
     postCreatedAt: string,

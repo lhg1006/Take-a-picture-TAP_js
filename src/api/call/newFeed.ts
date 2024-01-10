@@ -23,7 +23,7 @@ export const addPost = async (data : AddPostInputType) => {
 export const delPost = async (data : {postNo:number, userMail:string}) => {
     return await axios.post(`/api/newFeed/delPost`, data)
 }
-export const likeIns = async (data : {postNo:number, userMail:string}) => {
+export const likeIns = async (data : {postNo:number, userMail:string, myMemNo:string, postMemNo:string}) => {
     return await axios.post(`/api/newFeed/likeIns`, data)
 }
 export const likeDel = async (data : {postNo:number, userMail:string}) => {
