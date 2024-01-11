@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import {getFollowList} from "../../api/call/newFeed";
-import {FollowListType} from "../../types/commonType";
+import {FollowListType} from "../../types/commonTypes";
 import {BsFillPersonFill} from "react-icons/bs";
 
 const FollowList = () =>{

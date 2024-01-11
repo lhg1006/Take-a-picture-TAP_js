@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 import {useDispatch, useSelector} from "react-redux";
 import {commonAction} from "../../reducers/common";
-import {CommonType} from "../../types/commonType";
+import {CommonTypes} from "../../types/commonTypes";
 import {feedAction} from "../../reducers/feed";
 import {getFeedList} from "../../api/call/feed";
 import {FeedStateType} from "../../types/feedTypes";
@@ -14,7 +14,7 @@ import "../../css/pages/main/main.css"
 const MainPage = () => {
   const dispatch = useDispatch()
   const isLogin = getCookie('isLogin')
-  const {isLoading} = useSelector((state: CommonType) => state.common)
+  const {isLoading} = useSelector((state: CommonTypes) => state.common)
   const {list, comment} = useSelector((state: FeedStateType) => state.feed.feedList)
 
   useEffect(() => {

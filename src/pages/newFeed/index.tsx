@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 import {useDispatch, useSelector} from "react-redux";
 import {commonAction} from "../../reducers/common";
-import {CommonType} from "../../types/commonType";
+import {CommonTypes} from "../../types/commonTypes";
 import {getCookie} from "../../utills";
 import NewCard from "../../components/newFeed/newCard";
 import {getNewFeedList} from "../../api/call/newFeed";
@@ -13,7 +13,7 @@ const NewFeed = () => {
     const dispatch = useDispatch()
     const isLogin = getCookie('isLogin')
     const cookieMemberEmail = getCookie("memberEmail")
-    const {isLoading, isCall} = useSelector((state: CommonType) => state.common)
+    const {isLoading, isCall} = useSelector((state: CommonTypes) => state.common)
     const [list, setList] = useState<FeedListType[]>([])
 
     useEffect(() => {

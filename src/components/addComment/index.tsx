@@ -7,14 +7,17 @@ import {addComment} from "../../api/call/newFeed";
 import {AddCommentType} from "../../types/newFeedType";
 import {commonAction} from "../../reducers/common";
 
-const AddComment = ({postNo} : {postNo:number}) =>{
+const AddComment = ({ postNo, postMemNo } : { postNo:number; postMemNo:string }) =>{
   const dispatch = useDispatch()
-  const rememberEmail = getCookie("memberEmail")
+  const cookieEmail = getCookie("memberEmail")
+  const cookieNo = getCookie("memberNo")
 
   const method = useForm<AddCommentType>({
     defaultValues: {
+      sendMemNo : cookieNo,
+      receiveMemNo : postMemNo,
       postId : postNo,
-      userMail : rememberEmail,
+      userMail : cookieEmail,
       content: ""
     }
   })

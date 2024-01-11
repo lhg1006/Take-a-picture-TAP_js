@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import "../../css/pages/login/login.css";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {SignUpInputs} from "../../types/loginDataType";
+import {SignUpInputs} from "../../types/loginDataTypes";
 import {confirmEmailDuplication, signUp} from "../../api/call/auth";
 import {getCookie, phoneNumberAutoFormat} from "../../utills";
 import {useNavigate} from "react-router-dom";

@@ -1,4 +1,4 @@
-export type CommonType = {
+export type CommonTypes = {
   common:{
     isLoading : boolean
     isCall: boolean

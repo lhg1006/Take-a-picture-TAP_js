@@ -5,7 +5,7 @@ import {useLocation} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 import {useDispatch, useSelector} from "react-redux";
-import {CommonType} from "../../types/commonType";
+import {CommonTypes} from "../../types/commonTypes";
 import {commonAction} from "../../reducers/common";
 import {getCookie} from "../../utills";
 import {BsFillPersonFill} from "react-icons/bs";
@@ -19,7 +19,7 @@ const LikeListPage = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [likeList, setLikeList] = useState<LikeListType[]>([])
     // const dispatch = useDispatch()
-    // const isLoading = useSelector((state: CommonType) => state.common.isLoading)
+    // const isLoading = useSelector((state: CommonTypes) => state.common.isLoading)
     // const [followList, setFollowList] = useState<FollowListType[]>([])
     useEffect(() => {
         // dispatch(commonAction.setIsLoading(true))

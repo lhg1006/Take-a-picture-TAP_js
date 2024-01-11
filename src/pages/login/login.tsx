@@ -4,7 +4,7 @@ import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup"
 import {login} from "../../api/call/auth";
-import {LoginInputs} from "../../types/loginDataType";
+import {LoginInputs} from "../../types/loginDataTypes";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
 import {addLocalStorageItem, delLocalStorageItem, getCookie, getLocalStorageItem} from "../../utills";

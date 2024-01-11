@@ -263,10 +263,10 @@ const NewCard = ({data}: { data: FeedListType }) => {
                                         </div>
                                     )
                                 })}
-                                <AddComment postNo={data.id}/>
+                                <AddComment postNo={data.id} postMemNo={data.postUserNo}/>
                             </Modal>
                         </div>
-                        <AddComment postNo={data.id}/>
+                        <AddComment postNo={data.id} postMemNo={data.postUserNo}/>
                     </div>
                 </div>
             </div>

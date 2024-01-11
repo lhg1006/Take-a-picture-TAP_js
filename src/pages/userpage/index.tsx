@@ -3,7 +3,7 @@ import {getCookie} from "../../utills";
 import DropdownBox from "../../components/common/dropdown";
 import AddProfilePhoto from "../../components/profile/addProfilePhoto";
 import {userPageData} from "../../api/call/member";
-import {MemberSelectType} from "../../types/member";
+import {MemberSelectType} from "../../types/memberTypes";
 import {useLocation, useNavigate} from 'react-router-dom';
 import FollowBlock from "../../components/profile/followBlock";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";

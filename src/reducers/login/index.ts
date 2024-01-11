@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {loginParamType} from "../../types/loginDataType";
+import {loginParamType} from "../../types/loginDataTypes";
 
 type stateType = {
   isLogin: boolean

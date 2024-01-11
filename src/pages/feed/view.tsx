@@ -4,7 +4,7 @@ import {useLocation} from "react-router-dom";
 import { getTargetFeedList } from "../../api/call/newFeed";
 import {commonAction} from "../../reducers/common";
 import {useDispatch, useSelector} from "react-redux";
-import {CommonType} from "../../types/commonType";
+import {CommonTypes} from "../../types/commonTypes";
 import {FeedListType} from "../../types/newFeedType";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";

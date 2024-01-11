@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {ChangePwInputs, ForgotInputs} from "../../types/loginDataType";
+import {ChangePwInputs, ForgotInputs} from "../../types/loginDataTypes";
 import {phoneNumberAutoFormat} from "../../utills";
 import {changePassword, forgotPassword} from "../../api/call/auth";
 import {toast} from "react-toastify";

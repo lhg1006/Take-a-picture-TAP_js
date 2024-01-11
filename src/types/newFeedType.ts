@@ -1,3 +1,5 @@
+import {mixed} from "yup";
+
 export type NewFeedListType = {
     list : FeedListType[]
 }
@@ -36,6 +38,8 @@ export type CommentType = {
 }
 
 export type AddCommentType = {
+    sendMemNo:string,
+    receiveMemNo: string,
     postId:number,
     content:string,
     userMail:string

@@ -1,7 +1,7 @@
 import axios, {AxiosResponse} from "axios";
 import {AddCommentType, ListParamType} from "../../types/newFeedType";
 import {AddPostInputType} from "../../schema/addPost";
-import {FollowListType} from "../../types/commonType";
+import {FollowListType} from "../../types/commonTypes";
 
 export const getNewFeedList = async (data : ListParamType) => {
     return await axios.get(`/api/newFeed/list?userMail=${data.userMail}`)

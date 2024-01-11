@@ -1,55 +1,78 @@
 import React, {useEffect, useState} from "react";
-import {useLocation} from "react-router-dom";
-import {getFollowList} from "../../api/call/newFeed";
-import {FollowListType} from "../../types/commonType";
 import {BsFillPersonFill} from "react-icons/bs";
+import {getAlimList} from "../../api/call/alim";
+import {getCookie} from "../../utills";
+import {AlimTypes} from "../../types/alimTypes";
+import {useNavigate} from "react-router-dom";
 
-const AlimList = () =>{
-    const location = useLocation();
-    const searchParams = new URLSearchParams(location.search);
-    const type = searchParams.get('type') as string;
-    const email = searchParams.get('email') as string;
-    const [followList, setFollowList] = useState<FollowListType[]>([])
+interface dataSet {
+    email : string
+}
+
+const AlimList = () => {
+    const isLogin = getCookie('isLogin')
+    const navigate = useNavigate()
+    const [alimList, setAlimList] = useState<AlimTypes[]>([])
     const photoBasePath = process.env.REACT_APP_PHOTO_URL
+    const cookieMemberNo = getCookie("memberNo")
 
 
-    useEffect(()=>{
-        const param = { email, type }
-        getFollowList(param).then((res)=>{
-            setFollowList([... res.data]);
-        })
-    },[])
+    useEffect(() => {
+        if (!isLogin) {
+            window.location.replace("/")
+        } else {
+            getAlimList(cookieMemberNo).then((res) => {
+                setAlimList([...res.data]);
+            })
+        }
+    }, [])
 
-    return(
+    const goUserPage = (e: React.MouseEvent<HTMLSpanElement>) => {
+        const {email} = e.currentTarget.dataset as unknown as dataSet
+        navigate(`/user-page?email=${email}`)
+    }
+
+    return (
         <div className={"main-wrapper"}>
-            <div className='border-bottom mb-1 bg-primary p-2' style={{ color:'white' }}>내 알림</div>
-            {followList != null && followList.map((item: any) => (
-                <div key={item.followerAutoNo}>
-                    <div className="container text-center border-bottom">
-                        <div className="row mb-1">
-                            <div className="col align-self-center p-1">
-                                <div style={{ background: "#BDBDBD", borderRadius: "50%", overflow: "hidden", width: "75px", height: "75px"}}>
-                                    {item.profileImg !== null
-                                        ? <img className="profile-img" style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                                               src={photoBasePath + item.profileImg}
+            <h2 style={{borderBottom: "1px solid #e5e5e5"}}>Notifications</h2>
+            <div>
+                {alimList != null && alimList.map((item: any) => (
+                    <div key={item.autoNo} className="container" style={{borderBottom: "1px solid #e5e5e5"}}>
+                        <div className="row mb-1 mt-1">
+                            <div className="col-1">
+                                <div className="profile-img-container"
+                                     data-email={item.sendEmail}
+                                     style={{background: "#BDBDBD",
+                                         borderRadius: "50%",
+                                         overflow: "hidden",
+                                         width: "40px",
+                                         height: "40px"}}
+                                     onClick={(e)=>{goUserPage(e)}}>
+                                    {item.sendProfileImg !== null
+                                        ? <img className="profile-img"
+                                               style={{width: "100%", height: "100%", objectFit: "cover"}}
+                                               src={photoBasePath + item.sendProfileImg}
                                                alt={"프로필이미지"}/>
-                                        : <BsFillPersonFill className="profile-img" style={{ width: "100%", height: "100%", objectFit: "cover" }} />}
+                                        : <BsFillPersonFill className="profile-img" style={{
+                                            width: "100%",
+                                            height: "100%",
+                                            objectFit: "cover"
+                                        }}/>}
                                 </div>
                             </div>
-                            <div className="col align-self-center">
-                                <div className='fw-bold'>{ type === 'follow' ? item.followerEmail : item.userEmail }</div>
-                            </div>
-                            <div className="col align-self-center">
+                            <div className="col-11" style={{alignSelf: "center"}}>
                                 <div>
-                                    <button style={{ padding: "8px 16px", background: "#4CAF50", color: "white", border: "none", borderRadius: "4px" }}>
-                                        팔로우
-                                    </button>
+                                    <span className={"fw-bold"}
+                                          data-email={item.sendEmail}
+                                          onClick={(e)=>{goUserPage(e)}}>{item.sendName}</span>
+                                    <span>님이 </span>
+                                    <span dangerouslySetInnerHTML={{__html: item.alimCodeKor}}/>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     )
 }

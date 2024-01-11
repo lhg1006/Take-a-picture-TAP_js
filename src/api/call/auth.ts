@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {ChangePwInputs, ForgotInputs, LoginInputs, SignUpInputs} from "../../types/loginDataType";
+import {ChangePwInputs, ForgotInputs, LoginInputs, SignUpInputs} from "../../types/loginDataTypes";
 
 export const login = async (data: LoginInputs) => {
   return await axios.get(`/api/login/auth`, {params: data})
