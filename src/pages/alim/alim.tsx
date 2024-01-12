@@ -8,6 +8,10 @@ import {useNavigate} from "react-router-dom";
 interface dataSet {
     email : string
 }
+interface dataSet2{
+    userMail : string
+    postNo : number
+}
 
 const AlimList = () => {
     const isLogin = getCookie('isLogin')
@@ -15,6 +19,7 @@ const AlimList = () => {
     const [alimList, setAlimList] = useState<AlimTypes[]>([])
     const photoBasePath = process.env.REACT_APP_PHOTO_URL
     const cookieMemberNo = getCookie("memberNo")
+    const cookieMemberEmail = getCookie("memberEmail")
 
 
     useEffect(() => {
@@ -30,6 +35,11 @@ const AlimList = () => {
     const goUserPage = (e: React.MouseEvent<HTMLSpanElement>) => {
         const {email} = e.currentTarget.dataset as unknown as dataSet
         navigate(`/user-page?email=${email}`)
+    }
+
+    const goSingView = (e: React.MouseEvent<HTMLSpanElement>) => {
+        const {userMail, postNo} = e.currentTarget.dataset as unknown as dataSet2
+        navigate(`/single?userMail=${userMail}&postNo=${postNo}`)
     }
 
     return (
@@ -66,7 +76,12 @@ const AlimList = () => {
                                           data-email={item.sendEmail}
                                           onClick={(e)=>{goUserPage(e)}}>{item.sendName}</span>
                                     <span>님이 </span>
-                                    <span dangerouslySetInnerHTML={{__html: item.alimCodeKor}}/>
+                                    <span
+                                        data-user-mail={cookieMemberEmail}
+                                        data-post-no={item.postNo}
+                                        onClick={(e) => {goSingView(e)}}>
+                                        {item.alimCodeKor}<span className='font-red fw-bold'>♥</span>
+                                    </span>
                                 </div>
                             </div>
                         </div>

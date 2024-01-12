@@ -17,6 +17,7 @@ import MessageList from "./pages/message/list";
 import FollowList from "./pages/follow/list";
 import FeedView from "./pages/feed/view";
 import Layout from "./components/common/layout";
+import SingView from "./pages/feed/single";
 
 function App() {
   const scrollRef = useRef<any>(null);
@@ -55,6 +56,7 @@ function App() {
             <Route path="/follow/list" element={<Layout> <FollowList /> </Layout>}/>
             <Route path="/likeList" element={<Layout> <LikeListPage /> </Layout>}/>
             <Route path="/alim" element={<Layout> <Alim /> </Layout>}/>
+            <Route path="/single" element={<Layout> <SingView/> </Layout>}/>
 
             <Route path="/" element={<LoginPage />}/>
             <Route path="/sign-in" element={<LoginPage/>}/>

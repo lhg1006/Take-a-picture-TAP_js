@@ -1,5 +1,5 @@
 import axios, {AxiosResponse} from "axios";
-import {AddCommentType, ListParamType} from "../../types/newFeedType";
+import {AddCommentType, ListParamType, singleParamType} from "../../types/newFeedType";
 import {AddPostInputType} from "../../schema/addPost";
 import {FollowListType} from "../../types/commonTypes";
 
@@ -10,7 +10,9 @@ export const getNewFeedList = async (data : ListParamType) => {
 export const getTargetFeedList = async (data : ListParamType) => {
     return await axios.get(`/api/newFeed/list/target?userMail=${data.userMail}`)
 }
-
+export const getSingleView = async (data : singleParamType) => {
+    return await axios.get(`/api/newFeed/list/single?userMail=${data.userMail}&postNo=${data.postNo}`)
+}
 export const addComment = async (data : AddCommentType) => {
     return await axios.post(`/api/newFeed/addComment`, data)
 }

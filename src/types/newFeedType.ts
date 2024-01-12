@@ -22,6 +22,11 @@ export type ListParamType = {
     userMail: string
 }
 
+export type singleParamType = {
+    userMail: string
+    postNo: string
+}
+
 export type PostType = {
     id: number,
     title: string,
