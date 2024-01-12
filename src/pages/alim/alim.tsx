@@ -11,6 +11,7 @@ interface dataSet {
 interface dataSet2{
     userMail : string
     postNo : number
+    alimCode : number
 }
 
 const AlimList = () => {
@@ -37,9 +38,10 @@ const AlimList = () => {
         navigate(`/user-page?email=${email}`)
     }
 
-    const goSingView = (e: React.MouseEvent<HTMLSpanElement>) => {
-        const {userMail, postNo} = e.currentTarget.dataset as unknown as dataSet2
-        navigate(`/single?userMail=${userMail}&postNo=${postNo}`)
+    const goAlimView = (e: React.MouseEvent<HTMLSpanElement>) => {
+        const {userMail, postNo, alimCode} = e.currentTarget.dataset as unknown as dataSet2
+        const targetPath = alimCode != 3 ? `/single?userMail=${userMail}&postNo=${postNo}` : `/follow/list?type=follower&email=${cookieMemberEmail}`
+        navigate(targetPath)
     }
 
     return (
@@ -79,7 +81,8 @@ const AlimList = () => {
                                     <span
                                         data-user-mail={cookieMemberEmail}
                                         data-post-no={item.postNo}
-                                        onClick={(e) => {goSingView(e)}}>
+                                        data-alim-code={item.alimCode}
+                                        onClick={(e) => {goAlimView(e)}}>
                                         {item.alimCodeKor}<span className='font-red fw-bold'>♥</span>
                                     </span>
                                 </div>

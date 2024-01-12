@@ -2,9 +2,10 @@ import React, {useEffect, useState} from "react";
 import {addFollow, delFollow, isFollowed} from "../../api/call/newFeed";
 import {getCookie} from "../../utills";
 
-const FollowBlock = ({followerEmail} : {followerEmail:string}) => {
+const FollowBlock = ({followerEmail, followMemNo} : {followerEmail:string; followMemNo: string}) => {
     const [isFollowing, setIsFollowing] = useState(false);
     const cookieEmail = getCookie("memberEmail")
+    const cookieMemNo = getCookie("memberNo")
 
     useEffect(()=>{
         const param = {
@@ -24,7 +25,9 @@ const FollowBlock = ({followerEmail} : {followerEmail:string}) => {
 
         const param = {
             userEmail : cookieEmail,
-            followerEmail : followerEmail
+            userMemNo : cookieMemNo,
+            followerEmail : followerEmail,
+            followMemNo: followMemNo
         }
 
         if (target.classList.contains('follow-button')) {
@@ -34,18 +37,13 @@ const FollowBlock = ({followerEmail} : {followerEmail:string}) => {
                 }
             })
         } else {
-            setIsFollowing(false);
-            // delFollow(param).then((res)=>{
-            //     if(res.data === 1){
-            //         target.classList.remove('btn-secondary');
-            //         target.classList.add('btn-primary');
-            //     }
-            // })
+            delFollow(param).then((res)=>{
+                if(res.data === 1){
+                    setIsFollowing(false);
+                }
+            })
         }
-
-
     };
-
 
     const onFollowButton = (e: React.MouseEvent<HTMLElement>) => {
 

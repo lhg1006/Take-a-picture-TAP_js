@@ -88,7 +88,7 @@ const UserPage = () => {
                                     </div>
                                 </div>
 
-                                {!isMine && <FollowBlock followerEmail={email}/>}
+                                {!isMine && <FollowBlock followerEmail={email} followMemNo={memData?.profile.memberNo as string}/>}
                                 <div className="container text-center">
                                     <div className="row row-cols-3 justify-content-start">
                                         {memData?.posts.map((data) => {

@@ -8,6 +8,7 @@ export type MemberSelectType = {
 }
 
 export type ProfileType = {
+    memberNo: string,
     email: string,
     name: string,
     profileImg: string
