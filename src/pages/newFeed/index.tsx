@@ -8,6 +8,7 @@ import {getCookie} from "../../utills";
 import NewCard from "../../components/newFeed/newCard";
 import {getNewFeedList} from "../../api/call/newFeed";
 import {FeedListType} from "../../types/newFeedType";
+import NotFound from "../../components/common/notFound";
 
 const NewFeed = () => {
     const dispatch = useDispatch()
@@ -38,7 +39,7 @@ const NewFeed = () => {
         <div className={"main-wrapper"}>
             {isLoading ? <h1 style={{position:"relative", top:"340px"}}><FontAwesomeIcon icon={faSpinner} spin/></h1> : list.length > 0
                 ? list.map((item) => <NewCard key={item.id} data={item}/>)
-                : <div>not found . . .</div>
+                : <NotFound />
             }
         </div>
     )

@@ -9,6 +9,7 @@ import {CommonTypes} from "../../types/commonTypes";
 import {commonAction} from "../../reducers/common";
 import {getCookie} from "../../utills";
 import {BsFillPersonFill} from "react-icons/bs";
+import NoList from "../../components/common/noList";
 
 interface CurrentTargetDataset{
     userMail: string
@@ -100,7 +101,7 @@ const LikeListPage = () => {
                         })
                     }
                 </div>)
-                : <div>not found . . .</div>
+                : <NoList />
             }
         </div>
     )

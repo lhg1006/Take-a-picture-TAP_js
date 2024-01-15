@@ -8,6 +8,7 @@ import {CommonTypes} from "../../types/commonTypes";
 import {FeedListType} from "../../types/newFeedType";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
+import NotFound from "../../components/common/notFound";
 
 
 const FeedView = () => {
@@ -32,7 +33,7 @@ const FeedView = () => {
         <div className='main-wrapper'>
             {isLoading ? <h1 style={{position:"relative", top:"340px"}}><FontAwesomeIcon icon={faSpinner} spin/></h1> : list.length > 0
                 ? list.map((item) => <NewCard key={item.id} data={item}/>)
-                : <div>not found . . .</div>
+                : <NotFound />
             }
         </div>
     )

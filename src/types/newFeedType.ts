@@ -5,6 +5,7 @@ export type NewFeedListType = {
 }
 
 export type FeedListType = {
+    postState: number,
     id: number,
     postUserNo: string,
     postContent: string,

@@ -57,12 +57,13 @@ function App() {
             <Route path="/likeList" element={<Layout> <LikeListPage /> </Layout>}/>
             <Route path="/alim" element={<Layout> <Alim /> </Layout>}/>
             <Route path="/single" element={<Layout> <SingView/> </Layout>}/>
+            <Route path="/message/list" element={<Layout> <MessageList /> </Layout>}/>
 
             <Route path="/" element={<LoginPage />}/>
             <Route path="/sign-in" element={<LoginPage/>}/>
             <Route path="/sign-up" element={<SignupPage/>}/>
             <Route path="/forgot" element={<Forgot />} />
-            <Route path="/message/list" element={<MessageList />} />
+
           </Route>
         </Routes>
       </div>

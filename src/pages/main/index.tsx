@@ -10,6 +10,7 @@ import {FeedStateType} from "../../types/feedTypes";
 import Card from "../../components/feed/card";
 import {getCookie} from "../../utills";
 import "../../css/pages/main/main.css"
+import NotFound from "../../components/common/notFound";
 
 const MainPage = () => {
   const dispatch = useDispatch()
@@ -41,7 +42,7 @@ const MainPage = () => {
                 return (
                   <Card key={data.autoNo} data={data} targetComment={targetComment}/>
                 )
-              }) : <div>not found . . .</div>}
+              }) : <NotFound /> }
 
             {isLoading &&
                 <h1>
