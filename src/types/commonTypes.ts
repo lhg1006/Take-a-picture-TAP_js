@@ -5,9 +5,3 @@ export type CommonTypes = {
   }
 }
 
-export type FollowListType = {
-  profileImg:string
-  userEmail:string
-  followerEmail:string
-  followTime:string
-}

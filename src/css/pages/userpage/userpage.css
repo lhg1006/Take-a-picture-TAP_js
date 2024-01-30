@@ -1,0 +1,27 @@
+.info-container{
+    padding: 5px;
+}
+.user-image{
+
+}
+.user-info{
+    font-size: medium;
+
+}
+.user-info-name{
+    font-size: medium;
+
+}
+.user-info-mail{
+    margin-bottom: 3px;
+    color: #6c757d;
+}
+.follow-info{
+    font-size: small;
+}
+.follow-info-text{
+    color: #6c757d;
+}
+.follow-info-cnt{
+    font-weight: bold;
+}

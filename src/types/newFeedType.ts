@@ -1,5 +1,3 @@
-import {mixed} from "yup";
-
 export type NewFeedListType = {
     list : FeedListType[]
 }
@@ -61,7 +59,8 @@ export type LikeListType = {
 }
 
 export type FollowListType = {
-    followerEmail: string,
-    followingEmail: string,
-    followDate: string
+    profileImg:string
+    userEmail:string
+    followerEmail:string
+    followTime:string
 }

@@ -18,6 +18,7 @@ import {useNavigate} from "react-router-dom";
 
 interface CurrentTargetDataset {
     postNo: number;
+    postUserNo: number;
     userMail: string;
 }
 
@@ -128,8 +129,8 @@ const NewCard = ({data}: { data: FeedListType }) => {
         }
     }
     const onLikeCntClick = async (e: React.MouseEvent<HTMLElement>) => {
-        const {postNo} = e.currentTarget.dataset as unknown as CurrentTargetDataset
-        navigate('/likeList', {state: {postNo}});
+        const {postNo, postUserNo} = e.currentTarget.dataset as unknown as CurrentTargetDataset
+        navigate('/likeList', {state: {postNo, postUserNo}});
     }
     return (
         <div className="main-page-card card wd-25r">
@@ -162,7 +163,7 @@ const NewCard = ({data}: { data: FeedListType }) => {
                 ></i>
                 <i className="bi bi-chat card-chat-icon" onClick={onMoreComment}></i>
                 <i className="bi bi-send card-send-icon"></i>
-                <i className={`card-bookmark-icon bi bi-bookmark`} data-url={""}></i>
+                {/*<i className={`card-bookmark-icon bi bi-bookmark`} data-url={""}></i>*/}
             </div>
 
             <div className="card-body">
@@ -170,6 +171,7 @@ const NewCard = ({data}: { data: FeedListType }) => {
                     <span className={"blush-text pulse-text2"}
                           style={{fontSize: "small", position: "relative", bottom: "10px", fontWeight: "bold"}}
                           data-post-no={data.id}
+                          data-post-user-no={data.postUserNo}
                           onClick={(e) => onLikeCntClick(e)}>
                             Likes {likeCnt}
                     </span>

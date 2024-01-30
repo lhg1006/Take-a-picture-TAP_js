@@ -297,39 +297,6 @@ h1,h2,h3,h4,h5,h6,label,span {
     margin: 0 1em; /* 원하는 위치에 조정 가능 */
 }
 
-
-
-.common-button {
-    width: 140px;
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.follow-block {
-    text-align: center;
-    padding: 20px;
-    margin-bottom: 10px;
-    border-top: 1px solid #000; /* 위쪽에 1px 두께의 선 추가 */
-    border-bottom: 1px solid #000; /* 아래쪽에 1px 두께의 선 추가 */
-}
-.unfollow-button {
-    width: 140px;
-    margin-right: 50px;
-    background-color: #e74c3c;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-.follow-button{
-    margin-right: 50px;
-}
-
 .prf-upload-button{
     display: none;
 }
