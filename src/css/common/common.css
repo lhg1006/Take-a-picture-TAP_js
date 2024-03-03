@@ -309,3 +309,12 @@
     width: 130px;
     height: 100%; /* 세로 크기를 자동으로 조정하여 비율을 유지합니다 */
 }
+
+.time-text {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.alim-cont-div{
+    font-size: small;
+    text-align: left;
+}

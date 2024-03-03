@@ -51,7 +51,7 @@ const AlimList = () => {
                 {alimList != null && alimList.map((item: any) => (
                     <div key={item.autoNo} className="container" style={{borderBottom: "1px solid #e5e5e5"}}>
                         <div className="row mb-1 mt-1">
-                            <div className="col-1">
+                            <div className="col-2">
                                 <div className="profile-img-container"
                                      data-email={item.sendEmail}
                                      style={{background: "#BDBDBD",
@@ -72,8 +72,8 @@ const AlimList = () => {
                                         }}/>}
                                 </div>
                             </div>
-                            <div className="col-11" style={{alignSelf: "center"}}>
-                                <div>
+                            <div className="col-10" style={{alignSelf: "center"}}>
+                                <div className={"alim-cont-div"}>
                                     <span className={"fw-bold"}
                                           data-email={item.sendEmail}
                                           onClick={(e)=>{goUserPage(e)}}>{item.sendName}</span>
@@ -83,7 +83,10 @@ const AlimList = () => {
                                         data-post-no={item.postNo}
                                         data-alim-code={item.alimCode}
                                         onClick={(e) => {goAlimView(e)}}>
+
                                         {item.alimCodeKor}<span className='font-red fw-bold'>♥</span>
+
+                                        <span className={"time-text"}> {item.insDateKor}</span>
                                     </span>
                                 </div>
                             </div>

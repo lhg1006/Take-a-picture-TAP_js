@@ -9,5 +9,5 @@ export type AlimTypes = {
     sendEmail: string,
     alimCodeKor: string,
     sendProfileImg: string
-
+    insDateKor:string,
 }
