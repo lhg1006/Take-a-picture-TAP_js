@@ -6,17 +6,18 @@ import {commonAction} from "../../reducers/common";
 import {getCookie} from "../../utills";
 import {IoIosArrowBack} from "react-icons/io";
 
-
-const Header = () => {
+interface HeaderProps {
+    onClickToScrollTop: () => void; // onLogoClick 함수를 받는 props 타입 정의
+}
+const  Header: React.FC<HeaderProps> = ({ onClickToScrollTop }) => {
     const { pathname } = useLocation();
     const navigate = useNavigate()
     const isLogin = getCookie('isLogin')
     const dispatch = useDispatch()
     const [flag, setFlag] = useState<boolean>(true)
 
-    const onLogoClick = () =>{
-        window.scrollTo({top:0, behavior:"smooth"})
-
+    const onLogoClickBind = () =>{
+        onClickToScrollTop()
         if(flag){
             setFlag(false)
             dispatch(commonAction.setCall())
@@ -35,7 +36,7 @@ const Header = () => {
             {isLogin &&
                 <nav className="navbar navbar-expand-lg navbar-light fixed-top">
                     <div className="container">
-                        <div className="navbar-brand" onClick={onLogoClick}>
+                        <div className="navbar-brand" onClick={onLogoClickBind}>
                             {pathname !== "/main" && <IoIosArrowBack onClick={()=>navigate(-1)}/> }
                             <img src={"/img/icons8-instagram-48.png"} style={{transform: "scale(0.7)"}}
                                  alt={"인스타아이콘"}></img>
