@@ -6,17 +6,19 @@ import Footer from "./footer";
 const Layout = ({ children } : any) => {
     return (
         <>
+            <header>
+                <Header/>
+            </header>
+
             <div className={"layout-side"}>
-                <header className={"layout-header"}>
-                    <Header/>
-                </header>
                 <main>
                     {children}
                 </main>
-                <footer>
-                    <Footer />
-                </footer>
             </div>
+
+            <footer className={"layout-footer"}>
+                <Footer />
+            </footer>
         </>
     );
 };

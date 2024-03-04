@@ -154,7 +154,7 @@ const NewCard = ({data}: { data: FeedListType }) => {
                         style={{fontSize: "4em"}}/></h1>
                 : <img src={photoBaseUrl+data.imagePath} className="card-img-top" alt="..."/>
             }
-            <div className={"card-header"} style={{borderTop: "0.1rem solid"}}>
+            <div className={"card-header"}>
                 <i className={`card-heart-icon ${data.isLiked === 1 ? "bi-heart-fill" : "bi-heart"}`}
                    data-post-no={data.id}
                    data-is-liked={data.isLiked}

@@ -24,6 +24,8 @@ const UserPage = () => {
     const navigator = useNavigate()
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+
         if (!isLogin) {
             window.location.replace("/")
             return;

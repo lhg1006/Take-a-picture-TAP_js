@@ -33,17 +33,17 @@ const Footer = () => {
       {isLogin &&
           <footer className={'footer'}>
               <Row style={{paddingTop: "10px"}}>
-                  <Col ></Col>
+
                   <Col>
                       <i onClick={onIcoHome} className="bi bi-grid footer-grid-icon" style={icoStyle}></i>
                   </Col>
-                  <Col ></Col>
+
                   <Col>
                       <i onClick={onIcoPlus} className="bi bi-plus-square" style={icoStyle}></i>
                   </Col>
-                  <Col></Col>
+
                   <Col><i onClick={onIcoGear} className="bi bi-person-square footer-person-square-icon" style={icoStyle}></i></Col>
-                  <Col ></Col>
+
               </Row>
           </footer>
       }

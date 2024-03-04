@@ -4,14 +4,17 @@
 }
 
 .auth-inner {
+    padding: 200px 55px 267px 55px !important;
     min-width: 400px;
     max-width: 500px;
-    height: 100vh;
     justify-content: center;
-    padding: 40px 55px 45px 55px;
     border-radius: 15px;
     transition: all .3s;
     border: 1px solid;
+}
+
+.sign-up-inner{
+    padding-top: 45px !important;
 }
 
 .auth-wrapper .form-control:focus {

@@ -1,3 +1,7 @@
+html body{
+
+}
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -22,45 +26,35 @@ code {
         max-height: 18rem !important;
         min-height: 18rem !important;
     }
-    /*.navbar{*/
-    /*    max-width: 24.4rem !important;*/
-    /*    min-width: 24.4rem !important;*/
-    /*    max-height: 4rem !important;*/
-    /*    min-height: 4rem !important;*/
-    /*}*/
     .fixed-top{
         right: auto !important;
         left: auto !important;
     }
-    .footer{
-        max-width: 24.4rem !important;
-        min-width: 24.4rem !important;
-        max-height: 4rem !important;
-        min-height: 4rem !important
+    .navbar{
+        max-width: 23.4rem !important;
+        min-width: 23.4rem !important;
     }
-    .auth-inner{
-        padding-bottom: 267px !important;
-        padding-top: 250px !important;
-    }
-    .sign-up-inner{
-        padding-bottom: 165px !important;
-        padding-top: 140px !important;
+    .layout-footer{
+        max-width: 23.4rem !important;
+        min-width: 23.4rem !important;
+        /*max-height: 4rem !important;*/
+        /*min-height: 4rem !important*/
     }
     .forgot-password-inner{
         padding-bottom: 310px !important;
         padding-top: 280px !important;
     }
-    .main-page-card{
-        max-width: 24.4rem !important;
-        min-width: 24.4rem !important;
-    }
     .main-wrapper{
-        max-width: 24.4rem !important;
-        min-width: 24.4rem !important;
+        max-width: 23.4rem !important;
+        min-width: 23.4rem !important;
+    }
+    .layout-side{
+        max-width: 23.4rem !important;
+        min-width: 23.4rem !important;
     }
     .App{
-        max-width: 24.4rem !important;
-        min-width: 24.4rem !important;
+        max-width: 23.4rem !important;
+        min-width: 23.4rem !important;
         min-height: 55rem !important;
     }
 /*브라우저 창 width가 768px보다 작아지는 순간부터 적용*/
@@ -74,27 +68,29 @@ code {
         max-height: 22.4rem !important;
         min-height: 22.4rem !important;
     }
-    /*.navbar{*/
-    /*    max-width: 24.4rem !important;*/
-    /*    min-width: 24.4rem !important;*/
-    /*    max-height: 4rem !important;*/
-    /*    min-height: 4rem !important;*/
-    /*}*/
     .fixed-top{
         right: auto !important;
         left: auto !important;
     }
-    .footer{
+    .navbar{
         max-width: 24.4rem !important;
         min-width: 24.4rem !important;
-        max-height: 4rem !important;
-        min-height: 4rem !important
     }
-    .main-page-card{
+    .layout-header{
         max-width: 24.4rem !important;
         min-width: 24.4rem !important;
+    }
+    .layout-footer{
+        max-width: 24.4rem !important;
+        min-width: 24.4rem !important;
+        /*max-height: 4rem !important;*/
+        /*min-height: 4rem !important*/
     }
     .main-wrapper{
+        max-width: 24.4rem !important;
+        min-width: 24.4rem !important;
+    }
+    .layout-side{
         max-width: 24.4rem !important;
         min-width: 24.4rem !important;
     }
@@ -108,25 +104,6 @@ code {
 
 }
 @media all and (max-width: 1024px){
-    .main-page-card{
-        width: 100%;
-    }
-    .prev-photo{
-        max-width: 22.4rem !important;
-        min-width: 22.4rem !important;
-        max-height: 22.4rem !important;
-        min-height: 22.4rem !important;
-    }
-    /*브라우저 창 width가 1024px보다 작아지는 순간부터 적용*/
-    /*태블릿*/
-    .main-page-card{
-        max-width: 24.4rem !important;
-        min-width: 24.4rem !important;
-    }
-    .main-wrapper{
-        max-width: 24.4rem !important;
-        min-width: 24.4rem !important;
-    }
 }
 @media all and (min-width: 1024px){
     .topHeaderDropDown{
@@ -139,38 +116,33 @@ code {
         max-height: 22.4rem !important;
         min-height: 22.4rem !important;
     }
-    /*.navbar{*/
-    /*    max-width: 24.4rem !important;*/
-    /*    min-width: 24.4rem !important;*/
-    /*    max-height: 4rem !important;*/
-    /*    min-height: 4rem !important;*/
-    /*}*/
     .fixed-top{
         right: auto !important;
         left: auto !important;
     }
-    .footer{
+    .navbar{
         max-width: 24.4rem !important;
         min-width: 24.4rem !important;
-        max-height: 4rem !important;
-        min-height: 4rem !important
     }
-    .main-page-card{
+    .layout-footer{
         max-width: 24.4rem !important;
         min-width: 24.4rem !important;
+        /*max-height: 4rem !important;*/
+        /*min-height: 4rem !important*/
     }
     .main-wrapper{
         max-width: 24.4rem !important;
         min-width: 24.4rem !important;
     }
-/*브라우저 창 width가 1024px보다 커지는 순간부터 적용*/
-/*데스크탑*/
+    .layout-side{
+        max-width: 24.4rem !important;
+        min-width: 24.4rem !important;
+    }
     .App{
         max-width: 24.4rem !important;
         min-width: 24.4rem !important;
         min-height: 55rem !important;
     }
-
 }
 
 * {
@@ -180,6 +152,7 @@ code {
 body {
     font-weight: 400;
     font-family: 'Fira Sans', sans-serif;
+    overflow: hidden;
 }
 h1,h2,h3,h4,h5,h6,label,span {
     font-weight: 500;
@@ -191,15 +164,12 @@ h1,h2,h3,h4,h5,h6,label,span {
     place-content: center;
     text-align: -webkit-center;
     width: 100%;
-    /*height: 100vh;*/
 }
-.App{}
 
 .main-wrapper {
     text-align: -webkit-center;
     position: relative;
-    margin-top: 63px;
-    margin-bottom: 50px;
+    padding-bottom: 60px;
 }
 
 .content-wrapper {
@@ -212,10 +182,16 @@ h1,h2,h3,h4,h5,h6,label,span {
     display: none!important;
 }
 .navbar {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    border: 0.5px solid rgb(128, 128, 128);
+    border-bottom: none;
     padding: 0 !important;
     min-height: 60px;
     text-align: -webkit-center;
     width: 100%;
+    min-width:383px;
     max-width:390px;
 }
 .navbar-light {
@@ -244,15 +220,6 @@ h1,h2,h3,h4,h5,h6,label,span {
     text-align: left;
 }
 
-.footer{
-    position: fixed;
-    bottom: 0;
-    height: 70px;
-    width: 100%;
-    background: white;
-    border: 0.5px solid gray;
-}
-
 .custom-ui{
     border : black;
 }
@@ -262,15 +229,16 @@ h1,h2,h3,h4,h5,h6,label,span {
 }
 
 .card-img-top{
-    border-top: 0.1px solid black;
+    /*border-top: 0.1px solid black;*/
     border-radius: 0 !important;
     min-height: 335px;
     max-height: 335px;
+    max-width: 390px
 }
 
 .delete-post-button{
     position: relative;
-    left: 100px;
+    left: 90px;
 }
 
 .add-post-form{
@@ -283,7 +251,7 @@ h1,h2,h3,h4,h5,h6,label,span {
     margin-bottom: 0.1rem !important;
 }
 
-.headerheader-alim-icon{
+.header-alim-icon{
     position: relative;
     left: -5px;
 }
@@ -321,4 +289,7 @@ h1,h2,h3,h4,h5,h6,label,span {
 
 .font-red{
     color: red;
+}
+.card-header{
+    border-top: 0.5px solid rgb(128, 128, 128);
 }

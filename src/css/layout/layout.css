@@ -1,9 +1,36 @@
 .layout-side{
-    height: 100%;
-    border: 1px solid;
+    border: 0.5px solid rgb(128, 128, 128);
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    max-height: calc(100vh - 130px);
+    width: 100%;
+    min-width:383px;
+    max-width:390px;
 }
 
-.layout-header {
+.layout-footer {
+    position: fixed;
+    bottom: 0;
+    height: 70px;
+    width: 100%;
+    max-width: 390px;
+    background: white;
+    border: 0.5px solid rgb(128, 128, 128);
+}
 
+/* 스크롤바 */
+.layout-side::-webkit-scrollbar {
+    width: 8px;
+}
+.layout-side::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+}
+.layout-side::-webkit-scrollbar-track {
+    background-color: rgba(84, 84, 84, 0.03);
 }
 

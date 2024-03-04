@@ -34,7 +34,7 @@ const Header = () => {
         <>
             {isLogin &&
                 <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-                    <div className="container navbar-container-warp">
+                    <div className="container">
                         <div className="navbar-brand" onClick={onLogoClick}>
                             {pathname !== "/main" && <IoIosArrowBack onClick={()=>navigate(-1)}/> }
                             <img src={"/img/icons8-instagram-48.png"} style={{transform: "scale(0.7)"}}
