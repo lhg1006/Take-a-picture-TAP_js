@@ -38,8 +38,8 @@ const  Header: React.FC<HeaderProps> = ({ onClickToScrollTop }) => {
                     <div className="container">
                         <div className="navbar-brand" onClick={onLogoClickBind}>
                             {pathname !== "/main" && <IoIosArrowBack onClick={()=>navigate(-1)}/> }
-                            <img src={"/img/icons8-instagram-48.png"} style={{transform: "scale(0.7)"}}
-                                 alt={"인스타아이콘"}></img>
+                            <img src={"/lhg-camera-removebg.png"} style={{transform: "scale(0.7)", width: "48px", height: "48px"}}
+                                 alt={"로고"}></img>
                         </div>
                         <div>
                             <span className={"header-alim-icon"} onClick={onAlimIconClick}><i

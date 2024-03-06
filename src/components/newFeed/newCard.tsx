@@ -145,7 +145,12 @@ const NewCard = ({data}: { data: FeedListType }) => {
     return (
         <div className="main-page-card card wd-25r">
             <div className={"card-header-st fs14"}>
-                <a><img style={{transform: "scale(0.6)"}} src={"/img/icons8-instagram.gif"} alt={"로고gif"}/></a>
+                <a>
+                    {data.profileImg !== ''
+                        ? <img className={'card-header-profile'} src={photoBaseUrl + data.profileImg} alt={"프로필사진"}/>
+                        : <BsFillPersonFill className={'card-header-profile'}/>}
+
+                </a>
                 <span className="fw-bold card-header-txt" onClick={()=> navigate(`/user-page?email=${data.postUserMail}`)}>{data.postUserMail}</span>
                 {cookieMemberEmail === data.postUserMail &&
                     <span className={'delete-post-button'}

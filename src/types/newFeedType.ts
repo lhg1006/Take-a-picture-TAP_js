@@ -15,6 +15,7 @@ export type FeedListType = {
     commentCount: number,
     likeCount: number,
     isLiked: number,
+    profileImg: string
 }
 
 export type ListParamType = {

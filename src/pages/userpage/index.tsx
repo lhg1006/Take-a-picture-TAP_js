@@ -21,6 +21,7 @@ const UserPage = () => {
     const [isMine, setIsMine] = useState<boolean>(false)
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [flwCnt, setFlwCnt] = useState<number>(0)
+    const [postCnt, setPostCnt] = useState<number>(0)
     const navigator = useNavigate()
 
     useEffect(() => {
@@ -32,9 +33,11 @@ const UserPage = () => {
         } else {
             if (email != null) {
                 userPageData(email).then((res) => {
+                    const { data } = res
                     setIsMine(cookieEmail === email)
-                    setMemData(res.data)
-                    setFlwCnt(res.data.followerCnt)
+                    setMemData(data)
+                    setFlwCnt(data.followerCnt)
+                    setPostCnt(data.postCnt)
                     setIsLoading(false)
                 })
             }
@@ -70,7 +73,7 @@ const UserPage = () => {
                                                 <div className={"d-flex follow-info"}>
                                                     <div className={"col border-end"}>
                                                         <div className={"follow-info-text mb-1"}>게시물</div>
-                                                        <div className={'follow-info-cnt'}>{memData?.followerCnt}</div>
+                                                        <div className={'follow-info-cnt'}>{postCnt}</div>
                                                     </div>
                                                     <div className={"col border-end"}
                                                          onClick={() => navigator(`/follow/list?type=follower&email=${memData?.profile.email}`)}>
