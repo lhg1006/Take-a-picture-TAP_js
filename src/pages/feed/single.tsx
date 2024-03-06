@@ -36,7 +36,7 @@ const SingView = () => {
         <div className='main-wrapper'>
             {isLoading ? <h1 style={{position:"relative", top:"340px"}}><FontAwesomeIcon icon={faSpinner} spin/></h1> : post != undefined
                 ?  <NewCard data={post}/>
-                :  <NotFound />
+                :  <NotFound tag={'1'}/>
             }
         </div>
     )

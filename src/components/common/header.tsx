@@ -28,7 +28,7 @@ const  Header: React.FC<HeaderProps> = ({ onClickToScrollTop }) => {
         navigate('/alim')
     }
     const onMessageClick = () => {
-        navigate('/message/list')
+        // navigate('/message/list')
     }
 
     return (
@@ -44,8 +44,8 @@ const  Header: React.FC<HeaderProps> = ({ onClickToScrollTop }) => {
                         <div>
                             <span className={"header-alim-icon"} onClick={onAlimIconClick}><i
                                 className="bi bi-bell fs20"></i></span>
-                            <span className="line"></span>
-                            <span className={"header-airplane-icon"} onClick={onMessageClick}><SlPaperPlane className={'fs20'}/></span>
+                            {/*<span className="line"></span>*/}
+                            {/*<span className={"header-airplane-icon"} onClick={onMessageClick}><SlPaperPlane className={'fs20'}/></span>*/}
                         </div>
                     </div>
                 </nav>

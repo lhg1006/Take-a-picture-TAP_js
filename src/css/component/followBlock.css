@@ -1,10 +1,7 @@
 .follow-block-container {
     text-align: center;
-    /*margin-bottom: 10px;*/
-    /*border-top: 1px solid #000; !* 위쪽에 1px 두께의 선 추가 *!*/
     margin-top: 0px;
     padding: 0 0 0 0;
-    border-bottom: 1px solid #000; /* 아래쪽에 1px 두께의 선 추가 */
 }
 
 .follow-block-content{
@@ -26,7 +23,7 @@
 }
 
 .unfollow-button {
-    margin-right: 50px;
+    /*margin-right: 50px;*/
     background-color: #e74c3c;
     color: white;
     padding: 10px 20px;
@@ -35,5 +32,5 @@
     border-radius: 5px;
 }
 .follow-button{
-    margin-right: 50px;
+    /*margin-right: 50px;*/
 }

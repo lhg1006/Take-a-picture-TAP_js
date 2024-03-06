@@ -16,7 +16,7 @@ const UserPage = () => {
     const email = searchParams.get('email') as string;
     const isLogin = getCookie('isLogin')
     const cookieEmail = getCookie("memberEmail")
-    const [memData, setMemData] = useState<MemberSelectType>()
+    const [memData, setMemData] = useState<MemberSelectType | null>(null)
     const photoUrl: any = process.env.REACT_APP_PHOTO_URL;
     const [isMine, setIsMine] = useState<boolean>(false)
     const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -39,7 +39,7 @@ const UserPage = () => {
                 })
             }
         }
-    }, [])
+    }, [email])
 
     return (
         <>
@@ -68,8 +68,7 @@ const UserPage = () => {
                                                     </div>
                                                 </div>
                                                 <div className={"d-flex follow-info"}>
-                                                    <div className={"col border-end"}
-                                                         onClick={() => navigator(`/follow/list?type=follower&email=${memData?.profile.email}`)}>
+                                                    <div className={"col border-end"}>
                                                         <div className={"follow-info-text mb-1"}>게시물</div>
                                                         <div className={'follow-info-cnt'}>{memData?.followerCnt}</div>
                                                     </div>
@@ -103,7 +102,7 @@ const UserPage = () => {
                                         {memData?.posts.map((data) => {
                                             return (
                                                 <div className="col my-img-field" key={data.id}
-                                                     onClick={() => navigator(`/feed/view?email=${data.userMail}`)}>
+                                                     onClick={() => navigator(`/feed/view?email=${data.userMail}&postNo=${data.id}`)}>
                                                     <div data-user-mail={data.userMail} data-post-no={data.id}>
                                                         <img className={"my-feed-img"} src={photoUrl + data.imagePath}
                                                              alt={"게시물"}/>

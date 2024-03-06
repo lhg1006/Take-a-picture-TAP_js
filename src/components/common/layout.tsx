@@ -17,19 +17,17 @@ const Layout = ({ children } : any) => {
 
     return (
         <>
+            <header>
+                <Header onClickToScrollTop={onClickToScrollTop} />
+            </header>
             <div className={"layout-side"} ref={mainRef}>
-                <header>
-                    <Header onClickToScrollTop={onClickToScrollTop} />
-                </header>
-
                 <main>
                     {children}
                 </main>
-
-                <footer className={"layout-footer"}>
-                    <Footer onClickToScrollTop={onClickToScrollTop} />
-                </footer>
             </div>
+            <footer className={"layout-footer"}>
+                <Footer onClickToScrollTop={onClickToScrollTop} />
+            </footer>
         </>
     );
 };

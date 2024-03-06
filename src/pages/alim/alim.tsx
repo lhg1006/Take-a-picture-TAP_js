@@ -4,6 +4,7 @@ import {getAlimList} from "../../api/call/alim";
 import {getCookie} from "../../utills";
 import {AlimTypes} from "../../types/alimTypes";
 import {useNavigate} from "react-router-dom";
+import NotFound from "../../components/common/notFound";
 
 interface dataSet {
     email : string
@@ -48,18 +49,23 @@ const AlimList = () => {
         <div className={"main-wrapper"}>
             <h2 style={{borderBottom: "1px solid #e5e5e5"}}>Notifications</h2>
             <div>
-                {alimList != null && alimList.map((item: any) => (
+                {alimList.length === 0 && <NotFound tag={'2'}/>}
+                {alimList.map((item: any) => (
                     <div key={item.autoNo} className="container" style={{borderBottom: "1px solid #e5e5e5"}}>
                         <div className="row mb-1 mt-1">
                             <div className="col-2">
                                 <div className="profile-img-container"
                                      data-email={item.sendEmail}
-                                     style={{background: "#BDBDBD",
+                                     style={{
+                                         background: "#BDBDBD",
                                          borderRadius: "50%",
                                          overflow: "hidden",
                                          width: "40px",
-                                         height: "40px"}}
-                                     onClick={(e)=>{goUserPage(e)}}>
+                                         height: "40px"
+                                     }}
+                                     onClick={(e) => {
+                                         goUserPage(e)
+                                     }}>
                                     {item.sendProfileImg !== null
                                         ? <img className="profile-img"
                                                style={{width: "100%", height: "100%", objectFit: "cover"}}
@@ -76,13 +82,17 @@ const AlimList = () => {
                                 <div className={"alim-cont-div"}>
                                     <span className={"fw-bold"}
                                           data-email={item.sendEmail}
-                                          onClick={(e)=>{goUserPage(e)}}>{item.sendName}</span>
+                                          onClick={(e) => {
+                                              goUserPage(e)
+                                          }}>{item.sendName}</span>
                                     <span>님이 </span>
                                     <span
                                         data-user-mail={cookieMemberEmail}
                                         data-post-no={item.postNo}
                                         data-alim-code={item.alimCode}
-                                        onClick={(e) => {goAlimView(e)}}>
+                                        onClick={(e) => {
+                                            goAlimView(e)
+                                        }}>
 
                                         {item.alimCodeKor}<span className='font-red fw-bold'>♥</span>
 

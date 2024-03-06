@@ -14,7 +14,7 @@ import {toast} from "react-toastify";
 import {useDispatch} from "react-redux";
 import {delComment, delPost, likeDel, likeIns} from "../../api/call/newFeed";
 import {commonAction} from "../../reducers/common";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 interface CurrentTargetDataset {
     postNo: number;
@@ -44,6 +44,12 @@ const NewCard = ({data}: { data: FeedListType }) => {
     const [clickFlag, setClickFlag] = useState<boolean>(false)
 
     const photoBaseUrl = process.env.REACT_APP_PHOTO_URL
+
+    const location = useLocation();
+    const currentPath = location.pathname;
+    const pathSegments = currentPath.split('/').filter(segment => segment !== '');
+    const newPath = '/' + pathSegments.join('/');
+
     const onMoreComment = () => {
         document.body.style.overflow = "hidden";
         setModalOpen(true);
@@ -79,7 +85,11 @@ const NewCard = ({data}: { data: FeedListType }) => {
                     onConfirm: () => {
                         delPost({postNo, userMail}).then((res) => {
                             if (res.data === 1) {
-                                dispatch(commonAction.setCall())
+                                if(newPath === '/feed/view'){
+                                    navigate(-1)
+                                }else{
+                                    dispatch(commonAction.setCall())
+                                }
                                 toast.success("삭제되었습니다.")
                             } else {
                                 toast.error("System Error")

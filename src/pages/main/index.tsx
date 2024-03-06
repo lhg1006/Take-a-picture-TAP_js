@@ -42,7 +42,7 @@ const MainPage = () => {
                 return (
                   <Card key={data.autoNo} data={data} targetComment={targetComment}/>
                 )
-              }) : <NotFound /> }
+              }) : <NotFound tag={'1'}/> }
 
             {isLoading &&
                 <h1>

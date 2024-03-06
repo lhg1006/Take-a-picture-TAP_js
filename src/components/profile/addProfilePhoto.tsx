@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {toast} from "react-toastify";
 import {profilePhotoUpd} from "../../api/call/member";
 import {getCookie} from "../../utills";
@@ -8,6 +8,10 @@ import {BsFillPersonFill} from "react-icons/bs";
 const AddProfilePhoto = ({url} : {url:string}) => {
     const basePhotoUrl: any = process.env.REACT_APP_PHOTO_URL;
     const [photoUrl, setPhotoUrl] = useState<string>(url)
+
+    useEffect(() => {
+        setPhotoUrl(url);
+    }, [url]);
 
     const handleChangeFile = (e: any) => {
         if (e.target.files.length > 0) {

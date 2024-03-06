@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {getFollowList} from "../../api/call/newFeed";
 import {BsFillPersonFill} from "react-icons/bs";
 import {FollowListType} from "../../types/newFeedType";
 
 const FollowList = () =>{
     const location = useLocation();
+    const navigate = useNavigate();
     const searchParams = new URLSearchParams(location.search);
     const type = searchParams.get('type') as string;
     const email = searchParams.get('email') as string;
@@ -37,14 +38,16 @@ const FollowList = () =>{
                                 </div>
                             </div>
                             <div className="col align-self-center">
-                                <div className='fw-bold'>{ type === 'follow' ? item.followerEmail : item.userEmail }</div>
+                                <div className='fw-bold' onClick={()=> navigate(`/user-page?email=${ type === 'follow' ? item.followerEmail : item.userEmail }`)}>
+                                    { type === 'follow' ? item.followerEmail : item.userEmail }
+                                </div>
                             </div>
                             <div className="col align-self-center">
-                                <div>
-                                    <button style={{ padding: "8px 16px", background: "#4CAF50", color: "white", border: "none", borderRadius: "4px" }}>
-                                        팔로우
-                                    </button>
-                                </div>
+                                {/*<div>*/}
+                                {/*    <button style={{ padding: "8px 16px", background: "#4CAF50", color: "white", border: "none", borderRadius: "4px" }}>*/}
+                                {/*        팔로우*/}
+                                {/*    </button>*/}
+                                {/*</div>*/}
                             </div>
                         </div>
                     </div>

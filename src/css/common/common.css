@@ -296,7 +296,7 @@
 }
 
 .my-img-field {
-    border : 1px solid white;
+    border : 1px solid #0000001a;
     width: 100px; /* 원하는 틀의 가로 크기를 설정하세요 */
     height: 120px; /* 원하는 틀의 세로 크기를 설정하세요 */
     overflow: hidden; /* 틀을 벗어나는 이미지를 숨깁니다 */

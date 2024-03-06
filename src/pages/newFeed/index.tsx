@@ -39,7 +39,7 @@ const NewFeed = () => {
         <div className={"main-wrapper"}>
             {isLoading ? <h1 style={{position:"relative", top:"340px"}}><FontAwesomeIcon icon={faSpinner} spin/></h1> : list.length > 0
                 ? list.map((item) => <NewCard key={item.id} data={item}/>)
-                : <NotFound />
+                : <NotFound tag={'1'}/>
             }
         </div>
     )

@@ -21,7 +21,7 @@ const SignupPage = () => {
 
   const onSignUp = (data: SignUpInputs) => {
     if (!emailOk) {
-      window.alert("이메일 중복확인")
+      toast.error("이메일을 확인하세요.")
       return;
     }
     signUp(data).then((res) => {
@@ -121,7 +121,9 @@ const SignupPage = () => {
               />
               <label htmlFor="floatingInputCustom">Password</label>
             </Form.Floating>
-
+            <span className={"form-error-message"}>
+                {methods.formState?.errors?.chkPassword?.message ? methods.formState?.errors?.chkPassword?.message : ""}
+            </span>
             <Form.Floating className="mb-3">
               <Form.Control
                 id="floatingInputCustom"

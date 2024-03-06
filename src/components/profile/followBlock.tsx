@@ -11,7 +11,6 @@ interface FollowBlockType {
 }
 const FollowBlock = ({flwCnt, setFlwCnt, followerEmail, followMemNo}: FollowBlockType) => {
     const [isFollowing, setIsFollowing] = useState(false);
-    const navigator = useNavigate()
     const cookieEmail = getCookie("memberEmail")
     const cookieMemNo = getCookie("memberNo")
 
@@ -56,14 +55,6 @@ const FollowBlock = ({flwCnt, setFlwCnt, followerEmail, followMemNo}: FollowBloc
         }
     };
 
-    const onFollowButton = (e: React.MouseEvent<HTMLElement>) => {
-
-
-    }
-
-    const handleContact = () => {
-
-    }
 
     return (
         <div className="follow-block-container">
@@ -72,11 +63,11 @@ const FollowBlock = ({flwCnt, setFlwCnt, followerEmail, followMemNo}: FollowBloc
                     className={isFollowing ? "unfollow-button" : "follow-button common-button"}
                     onClick={(e)=> toggleFollow(e)}
                 >
-                    {isFollowing ? "팔로우" : "팔로우"}
+                    {isFollowing ? "UnFollow" : "Follow"}
                 </button>
-                <button className="contact-button common-button" onClick={handleContact}>
-                    메시지
-                </button>
+                {/*<button className="contact-button common-button" onClick={handleContact}>*/}
+                {/*    메시지*/}
+                {/*</button>*/}
             </div>
         </div>
     );
