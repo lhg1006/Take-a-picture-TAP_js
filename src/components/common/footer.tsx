@@ -3,18 +3,14 @@ import {Col, Row} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {getCookie} from "../../utills";
 
-interface FooterProps {
-  onClickToScrollTop: () => void; // onLogoClick 함수를 받는 props 타입 정의
-}
-
-const Footer: React.FC<FooterProps> = ({ onClickToScrollTop }) => {
+const Footer = () => {
   const isLogin = getCookie("isLogin")
   const navigator = useNavigate()
   const cookieMemberEmail = getCookie("memberEmail")
 
   const onIcoHome = () => {
     if(window.location.pathname === "/main"){
-      onClickToScrollTop()
+      window.scrollTo(0, 0)
     }else{
       navigator("/main")
     }

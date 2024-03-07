@@ -31,7 +31,11 @@ const FeedView = () => {
     useEffect(() => {
         if(postNo != null || postNo != undefined){
             if (postNo && postRef.current) {
-                postRef.current.scrollIntoView({ block: 'end' });
+                // postRef.current.scrollIntoView();
+                window.scrollTo({
+                    top: postRef.current.offsetTop,
+                    behavior: 'smooth' // 부드러운 스크롤 효과를 위해 'smooth' 사용
+                });
             }
         }
     }, [list]);

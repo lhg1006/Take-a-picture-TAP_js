@@ -6,10 +6,7 @@ import {commonAction} from "../../reducers/common";
 import {getCookie} from "../../utills";
 import {IoIosArrowBack} from "react-icons/io";
 
-interface HeaderProps {
-    onClickToScrollTop: () => void; // onLogoClick 함수를 받는 props 타입 정의
-}
-const  Header: React.FC<HeaderProps> = ({ onClickToScrollTop }) => {
+const  Header = () => {
     const { pathname } = useLocation();
     const navigate = useNavigate()
     const isLogin = getCookie('isLogin')
@@ -17,7 +14,7 @@ const  Header: React.FC<HeaderProps> = ({ onClickToScrollTop }) => {
     const [flag, setFlag] = useState<boolean>(true)
 
     const onLogoClickBind = () =>{
-        onClickToScrollTop()
+        window.scrollTo(0, 0)
         if(flag){
             setFlag(false)
             dispatch(commonAction.setCall())

@@ -55,7 +55,7 @@ code {
     .App{
         max-width: 23.4rem !important;
         min-width: 23.4rem !important;
-        min-height: 55rem !important;
+        /*min-height: 55rem !important;*/
     }
 /*브라우저 창 width가 768px보다 작아지는 순간부터 적용*/
 /*모바일*/
@@ -97,7 +97,7 @@ code {
     .App{
         max-width: 24.4rem !important;
         min-width: 24.4rem !important;
-        min-height: 55rem !important;
+        /*min-height: 55rem !important;*/
     }
 /*브라우저 창 width가 768px보다 커지는 순간부터 적용*/
 /*태블릿*/
@@ -141,7 +141,7 @@ code {
     .App{
         max-width: 24.4rem !important;
         min-width: 24.4rem !important;
-        min-height: 55rem !important;
+        /*min-height: 55rem !important;*/
     }
 }
 
@@ -152,7 +152,6 @@ code {
 body {
     font-weight: 400;
     font-family: 'Fira Sans', sans-serif;
-    overflow: hidden;
 }
 h1,h2,h3,h4,h5,h6,label,span {
     font-weight: 500;
@@ -169,7 +168,10 @@ h1,h2,h3,h4,h5,h6,label,span {
 .main-wrapper {
     text-align: -webkit-center;
     position: relative;
+    border: 0.5px solid rgb(128, 128, 128);
+    width: 100%;
     padding-bottom: 60px;
+    min-height: calc(100vh - 120px);
 }
 
 .content-wrapper {

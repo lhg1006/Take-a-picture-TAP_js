@@ -3,31 +3,20 @@ import "../../css/layout/layout.css"
 import Header from "./header";
 import Footer from "./footer";
 
-const Layout = ({ children } : any) => {
-    const mainRef = useRef<HTMLDivElement | null>(null);
-
-    const onClickToScrollTop = () => {
-        if (mainRef.current) {
-            mainRef.current.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        }
-    }
-
+const Layout = ({children}: any) => {
     return (
         <>
-            <header>
-                <Header onClickToScrollTop={onClickToScrollTop} />
-            </header>
-            <div className={"layout-side"} ref={mainRef}>
-                <main>
+            <main>
+                <header className={"layout-header"}>
+                    <Header/>
+                </header>
+                <div>
                     {children}
-                </main>
-            </div>
-            <footer className={"layout-footer"}>
-                <Footer onClickToScrollTop={onClickToScrollTop} />
-            </footer>
+                </div>
+                <footer className={"layout-footer"}>
+                    <Footer/>
+                </footer>
+            </main>
         </>
     );
 };
