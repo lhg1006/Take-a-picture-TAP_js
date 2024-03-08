@@ -38,6 +38,7 @@ const  Header = () => {
                             <img src={"/lhg-camera-removebg.png"} style={{transform: "scale(0.7)", width: "48px", height: "48px"}}
                                  alt={"로고"}></img>
                         </div>
+                        <div className={'tap-style'} style={{marginRight:"auto"}}>take a picture : TAP</div>
                         <div>
                             <span className={"header-alim-icon"} onClick={onAlimIconClick}><i
                                 className="bi bi-bell fs20"></i></span>
