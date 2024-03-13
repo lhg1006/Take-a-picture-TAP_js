@@ -1,7 +1,8 @@
 export type CommonTypes = {
   common:{
-    isLoading : boolean
+    isLoading: boolean
     isCall: boolean
+    rememberPostNo: number
   }
 }
 

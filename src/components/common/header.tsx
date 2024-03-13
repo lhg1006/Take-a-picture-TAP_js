@@ -17,7 +17,7 @@ const  Header = () => {
         window.scrollTo(0, 0)
         if(flag){
             setFlag(false)
-            dispatch(commonAction.setCall())
+            dispatch(commonAction.setCall(0))
             setTimeout(()=>setFlag(true), 2000)
         }
     }

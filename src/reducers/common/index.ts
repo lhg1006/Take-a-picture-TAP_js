@@ -3,11 +3,13 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 type initType = {
   isLoading: boolean
   isCall: boolean
+  rememberPostNo: number
 }
 
 const initialState: initType = {
   isLoading: false,
   isCall: false,
+  rememberPostNo:0
 };
 
 export const commonReducer = createSlice({
@@ -17,7 +19,9 @@ export const commonReducer = createSlice({
     setIsLoading: (state, action:PayloadAction<boolean>) => {
       state.isLoading = action.payload
     },
-    setCall: (state) => {
+    setCall: (state, action:PayloadAction<number>) => {
+      state.rememberPostNo = action.payload
+
       state.isCall = !state.isCall
     },
   },

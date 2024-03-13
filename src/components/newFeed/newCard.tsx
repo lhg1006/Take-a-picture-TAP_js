@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {SyntheticEvent, useState} from "react";
 import {FeedListType} from "../../types/newFeedType";
 import {FcImageFile} from "react-icons/fc";
 import {getCookie} from "../../utills";
@@ -67,7 +67,7 @@ const NewCard = ({data}: { data: FeedListType }) => {
                 onConfirm: () => {
                     delComment(data).then((res) => {
                         if (res.data == 1) {
-                            dispatch(commonAction.setCall())
+                            dispatch(commonAction.setCall(data.id))
                             toast.success("Delete success")
                         } else {
                             toast.error("Delete fail ...")
@@ -88,7 +88,7 @@ const NewCard = ({data}: { data: FeedListType }) => {
                                 if(newPath === '/feed/view'){
                                     navigate(-1)
                                 }else{
-                                    dispatch(commonAction.setCall())
+                                    dispatch(commonAction.setCall(0))
                                 }
                                 toast.success("삭제되었습니다.")
                             } else {
@@ -142,12 +142,21 @@ const NewCard = ({data}: { data: FeedListType }) => {
         const {postNo, postUserNo} = e.currentTarget.dataset as unknown as CurrentTargetDataset
         navigate('/likeList', {state: {postNo, postUserNo}});
     }
+
+    const addDefaultImg = (e: SyntheticEvent<HTMLImageElement, Event>) => {
+        e.currentTarget.src = "/img/xbox.png";
+    };
+
     return (
         <div className="main-page-card card wd-25r">
             <div className={"card-header-st fs14"}>
                 <a>
                     {data.profileImg !== ''
-                        ? <img className={'card-header-profile'} src={photoBaseUrl + data.profileImg} alt={"프로필사진"}/>
+                        ? <img
+                            className={'card-header-profile'}
+                            src={photoBaseUrl + data.profileImg}
+                            onError={addDefaultImg}
+                            alt={"프로필사진"}/>
                         : <BsFillPersonFill className={'card-header-profile'}/>}
 
                 </a>
@@ -205,8 +214,8 @@ const NewCard = ({data}: { data: FeedListType }) => {
                                       style={{color: "#a9a9a9", bottom: "12px"}}>댓글 {data.commentCount}개 모두 보기</div>}
                             {data.commentsList != null ?
                                 data.commentsList.map((item, idx) => {
-                                        const dateObject = moment(item.created_at);
-                                        const formattedDate = dateObject.format("YY.MM.DD HH:mm");
+                                        // const dateObject = moment(item.created_at);
+                                        // const formattedDate = dateObject.format("YY.MM.DD HH:mm");
                                         return (
                                             idx < 2 && (
                                                 <div key={item.id}>
@@ -224,7 +233,7 @@ const NewCard = ({data}: { data: FeedListType }) => {
                                                         <div className={'flex-grow-5 w-100'}>
                                                             <div className={'fw-bold fs14 comment-wrap-2'}>
                                                                 <div className={'comment-user-img'} onClick={()=> navigate(`/user-page?email=${item.user_mail}`)}>{item.user_mail}</div>
-                                                                <div className={'fw-normal post-date-time'} style={{float:"right"}}>{formattedDate}</div>
+                                                                <div className={'fw-normal post-date-time'} style={{float:"right"}}>{item.insDateKor}</div>
                                                                 <br/>
                                                                 <div className={`fw-normal text-limit comment-filed fs14`}
                                                                      onClick={onMoreComment}>{item.content}</div>

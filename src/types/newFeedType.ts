@@ -20,11 +20,12 @@ export type FeedListType = {
 
 export type ListParamType = {
     userMail: string
+    pageNo: number
 }
 
 export type singleParamType = {
     userMail: string
-    postNo: string
+    postNo: number
 }
 
 export type PostType = {
@@ -40,6 +41,7 @@ export type CommentType = {
     user_mail: string,
     created_at: string,
     profile_img: string,
+    insDateKor: string
 }
 
 export type AddCommentType = {

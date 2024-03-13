@@ -29,7 +29,7 @@ const AddComment = ({ postNo, postMemNo } : { postNo:number; postMemNo:string })
     addComment(data).then( (res) => {
       if(res.data === 1){
         textRef.current.value = ""
-        dispatch(commonAction.setCall())
+        dispatch(commonAction.setCall(data.postId))
       }else{
         toast.error("Failure . . .")
       }

@@ -8,6 +8,8 @@ import {AxiosResponse} from "axios";
 import {getCookie} from "../../utills";
 import {useLocation} from "react-router-dom";
 import NotFound from "../../components/common/notFound";
+import {useSelector} from "react-redux";
+import {CommonTypes} from "../../types/commonTypes";
 
 
 const SingView = () => {
@@ -17,11 +19,12 @@ const SingView = () => {
     const postNo = searchParams.get('postNo') as string;
     const [post, setPost] = useState<FeedListType | null>(null)
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const {isCall} = useSelector((state: CommonTypes) => state.common)
 
     useEffect(() => {
         const param = {
             userMail: cookieEmail,
-            postNo: postNo
+            postNo: +postNo
         }
         getSingleView(param).then((res : AxiosResponse<FeedListType>) => {
             if (res.data.postState !== -99) {
@@ -29,7 +32,7 @@ const SingView = () => {
             }
             setIsLoading(false)
         })
-    }, [])
+    }, [isCall])
 
 
     return(

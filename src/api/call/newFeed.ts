@@ -3,7 +3,7 @@ import {AddCommentType, FollowListType, ListParamType, singleParamType} from "..
 import {AddPostInputType} from "../../schema/addPost";
 
 export const getNewFeedList = async (data : ListParamType) => {
-    return await axios.get(`/api/newFeed/list?userMail=${data.userMail}`)
+    return await axios.get(`/api/newFeed/list?userMail=${data.userMail}&pageNo=${data.pageNo}`)
 }
 
 export const getTargetFeedList = async (data : ListParamType) => {

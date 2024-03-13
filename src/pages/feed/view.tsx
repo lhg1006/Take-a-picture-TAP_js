@@ -15,11 +15,13 @@ const FeedView = () => {
     const postNo = searchParams.get('postNo') as string;
     const [list, setList] = useState<FeedListType[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [pageNo, setPageNo] = useState<number>(1);
     const postRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         const param = {
-            userMail: email
+            userMail: email,
+            pageNo:pageNo,
         }
         getTargetFeedList(param).then((res) => {
             setList([...res.data.postList])
@@ -31,14 +33,13 @@ const FeedView = () => {
     useEffect(() => {
         if(postNo != null || postNo != undefined){
             if (postNo && postRef.current) {
-                // postRef.current.scrollIntoView();
                 window.scrollTo({
                     top: postRef.current.offsetTop,
-                    behavior: 'smooth' // 부드러운 스크롤 효과를 위해 'smooth' 사용
+                    behavior:"auto"
                 });
             }
         }
-    }, [list]);
+    }, [postNo,postRef.current]);
 
 
     return(
