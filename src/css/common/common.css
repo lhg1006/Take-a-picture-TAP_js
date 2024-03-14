@@ -321,6 +321,10 @@
     color: rgba(0, 0, 0, 0.4);
 }
 
+.alim-cont-wrapper {
+    margin-bottom: 20px;
+}
+
 .alim-cont-div{
     font-size: small;
     text-align: left;

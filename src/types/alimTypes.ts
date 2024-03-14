@@ -1,3 +1,7 @@
+export type AlimParamTypes = {
+    memNo: string
+    pageNo: number
+}
 export type AlimTypes = {
     autoNo: number,
     sendMemNo: number,

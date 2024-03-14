@@ -18,6 +18,7 @@ const SingView = () => {
     const searchParams = new URLSearchParams(location.search);
     const postNo = searchParams.get('postNo') as string;
     const [post, setPost] = useState<FeedListType | null>(null)
+    const [postState, setPostState] = useState<number>(0);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const {isCall} = useSelector((state: CommonTypes) => state.common)
 
@@ -27,7 +28,10 @@ const SingView = () => {
             postNo: +postNo
         }
         getSingleView(param).then((res : AxiosResponse<FeedListType>) => {
-            if (res.data.postState !== -99) {
+            const state = res.data.postState
+            setPostState(state)
+
+            if (state !== -99) {
                 setPost(res.data);
             }
             setIsLoading(false)
@@ -37,9 +41,10 @@ const SingView = () => {
 
     return(
         <div className='main-wrapper'>
-            {isLoading ? <h1 style={{position:"relative", top:"340px"}}><FontAwesomeIcon icon={faSpinner} spin/></h1> : post != undefined
-                ?  <NewCard data={post}/>
-                :  <NotFound tag={'1'}/>
+            {isLoading ? <h1 style={{position: "relative", top: "340px"}}><FontAwesomeIcon icon={faSpinner} spin/>
+            </h1> : (postState != -99 && post != undefined
+                ? <NewCard data={post}/>
+                : <NotFound tag={'1'}/>)
             }
         </div>
     )

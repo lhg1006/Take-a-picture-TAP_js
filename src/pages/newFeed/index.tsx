@@ -14,9 +14,7 @@ const NewFeed = () => {
     const cookieMemberEmail = getCookie("memberEmail")
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [list, setList] = useState<FeedListType[]>([])
-    const [totalCnt, setTotalCnt] = useState<number>(0)
     const [pageNo, setPageNo] = useState<number>(0)
-    const [didMount, setDidMount] = useState(false)
     const [stopPaging, setStopPaging] = useState<boolean>(false)
     const {isCall, rememberPostNo } = useSelector((state: CommonTypes) => state.common)
 
@@ -36,7 +34,6 @@ const NewFeed = () => {
             pageNo: pageNo
         };
         getNewFeedList(param).then((res) => {
-            setTotalCnt(res.data.totalCnt)
             setList(prevList => [...prevList, ...res.data.postList]);
             setStopPaging( res.data.stopPaging )
         });
@@ -56,31 +53,23 @@ const NewFeed = () => {
     };
 
     useEffect(() => {
-        const options: IntersectionObserverInit = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.1
-        };
-        if (observerRef.current) {
-            const observer = new IntersectionObserver(handleObserver, options);
-            observer.observe(observerRef.current); // 옵저버 대상 등록
-            return () => {
-                observer.disconnect(); // 컴포넌트가 언마운트될 때 옵저버 해제
+        if (!isLogin) {
+            window.location.replace("/")
+        }else{
+            const options: IntersectionObserverInit = {
+                root: null,
+                rootMargin: "-20px",
+                threshold: 0.1
             };
+            if (observerRef.current) {
+                const observer = new IntersectionObserver(handleObserver, options);
+                observer.observe(observerRef.current); // 옵저버 대상 등록
+                return () => {
+                    observer.disconnect(); // 컴포넌트가 언마운트될 때 옵저버 해제
+                };
+            }
         }
     }, []);
-
-    useEffect(() => {
-        if (didMount) {
-            const param = {
-                userMail: cookieMemberEmail,
-                pageNo: pageNo
-            }
-            getNewFeedList(param).then((res) => {
-                setList(prevList => [...prevList, ...res.data.postList]);
-            })
-        }
-    }, [didMount, pageNo]);
 
     useEffect(() => {
         if (pageNo > 0) {
@@ -107,7 +96,7 @@ const NewFeed = () => {
         <div className={"main-wrapper"}>
             {isLoading ? <h1 style={{position:"relative", top:"340px"}}><FontAwesomeIcon icon={faSpinner} spin/></h1> : list.length > 0
                 ? list.map((item) => <NewCard key={item.id} data={item}/>)
-                : <NotFound tag={'1'}/>
+                : <NotFound tag={'0'}/>
             }
             <div ref={observerRef}></div>
         </div>
