@@ -31,15 +31,18 @@ const FeedView = () => {
 
 
     useEffect(() => {
-        if(postNo != null || postNo != undefined){
-            if (postNo && postRef.current) {
-                window.scrollTo({
-                    top: postRef.current.offsetTop,
-                    behavior:"auto"
-                });
+        if(postNo != null && postRef.current){
+            const offsetTop = postRef.current.offsetTop
+
+            const scrollOptions : ScrollToOptions = {
+                top: offsetTop,
+                behavior:"auto"
             }
+            setTimeout(() => {
+                window.scrollTo(scrollOptions);
+            }, 0);
         }
-    }, [postNo,postRef.current]);
+    }, [isLoading]);
 
 
     return(

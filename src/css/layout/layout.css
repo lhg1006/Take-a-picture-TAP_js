@@ -1,13 +1,5 @@
-.layout-side{
-    /*border: 0.5px solid rgb(128, 128, 128);*/
-    /*margin-top: 60px;*/
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*flex-grow: 1 !important;*/
-    /*width: 100%;*/
-    /*overflow-x: hidden;*/
-    /*overflow-y: auto;*/
-    /*max-height: calc(100vh - 120px);*/
+.layout-wrapper{
+    -webkit-overflow-scrolling: touch;
 }
 
 .layout-header{
@@ -19,7 +11,7 @@
     bottom: 0;
     height: 70px;
     width: 100%;
-    max-width: 390px;
+    /*max-width: 390px;*/
     background: white;
     border: 0.5px solid rgb(128, 128, 128);
 }

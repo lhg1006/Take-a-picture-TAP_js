@@ -1,6 +1,4 @@
-html body{
-
-}
+html{ }
 
 body {
     margin: 0;
@@ -9,6 +7,10 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-family: 'Fira Sans', sans-serif;
+    background-color: #ffffff;
+    -webkit-overflow-scrolling: touch;
 }
 
 code {
@@ -149,10 +151,6 @@ code {
     box-sizing: border-box !important;
 }
 
-body {
-    font-weight: 400;
-    font-family: 'Fira Sans', sans-serif;
-}
 h1,h2,h3,h4,h5,h6,label,span {
     font-weight: 500;
     font-family: 'Fira Sans', sans-serif;
@@ -199,7 +197,7 @@ h1,h2,h3,h4,h5,h6,label,span {
     text-align: -webkit-center;
     width: 100%;
     min-width:383px;
-    max-width:390px;
+    /*max-width:390px;*/
 }
 .navbar-light {
     background-color: #ffffff;

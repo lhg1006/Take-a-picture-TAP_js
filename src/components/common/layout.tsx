@@ -6,7 +6,7 @@ import Footer from "./footer";
 const Layout = ({children}: any) => {
     return (
         <>
-            <main>
+            <main className={'layout-wrapper'}>
                 <header className={"layout-header"}>
                     <Header/>
                 </header>
