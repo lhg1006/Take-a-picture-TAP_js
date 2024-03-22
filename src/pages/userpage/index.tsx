@@ -58,6 +58,7 @@ const UserPage = () => {
                                             <div className={"my-profile-img-box mt-2"}>
                                                 <AddProfilePhoto
                                                     url={memData?.profile.profileImg !== null ? photoUrl + memData?.profile.profileImg : ''}
+                                                    isMine={isMine}
                                                 />
                                             </div>
                                             <div className={"user-info-name"}>{memData?.profile.name}</div>

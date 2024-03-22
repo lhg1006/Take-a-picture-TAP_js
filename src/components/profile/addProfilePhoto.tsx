@@ -5,7 +5,7 @@ import {getCookie} from "../../utills";
 import {imageUpload} from "../../api/call/photo";
 import {BsFillPersonFill} from "react-icons/bs";
 
-const AddProfilePhoto = ({url} : {url:string}) => {
+const AddProfilePhoto = ({url, isMine}: { url: string, isMine: boolean }) => {
     const basePhotoUrl: any = process.env.REACT_APP_PHOTO_URL;
     const [photoUrl, setPhotoUrl] = useState<string>(url)
 
@@ -26,15 +26,15 @@ const AddProfilePhoto = ({url} : {url:string}) => {
 
         fd.append("file", file)
 
-        imageUpload(fd).then((res)=> {
+        imageUpload(fd).then((res) => {
             const param = {
-                userMail : getCookie("memberEmail"),
-                imagePath : res.data.imageData[0].imagePath
+                userMail: getCookie("memberEmail"),
+                imagePath: res.data.imageData[0].imagePath
             }
-            profilePhotoUpd(param).then((res)=>{
-                if(res.data === 1) {
+            profilePhotoUpd(param).then((res) => {
+                if (res.data === 1) {
                     toast.success("변경 성공")
-                    setPhotoUrl(basePhotoUrl+param.imagePath)
+                    setPhotoUrl(basePhotoUrl + param.imagePath)
                 } else {
                     toast.error("System ERROR . . .")
                 }
@@ -51,20 +51,22 @@ const AddProfilePhoto = ({url} : {url:string}) => {
     return (
         <>
             <label className="input-file-button" htmlFor="input-file">
-                { photoUrl != ''
+                {photoUrl != ''
                     ? <img className="my-profile-img"
-                       src={photoUrl}
-                       alt={"프로필이미지"}/>
+                           src={photoUrl}
+                           alt={"프로필이미지"}/>
                     : <BsFillPersonFill className="comment-profile-img"/>}
             </label>
-            <input className={"mb-3"}
-                   type="file"
-                   accept="image/jpeg, image/png"
-                   id="input-file"
-                   name="uploadFile"
-                   style={{display: "none"}}
-                   onChange={(e) => handleChangeFile(e)}
-            />
+            {isMine &&
+                <input className={"mb-3"}
+                       type="file"
+                       accept="image/jpeg, image/png"
+                       id="input-file"
+                       name="uploadFile"
+                       style={{display: "none"}}
+                       onChange={(e) => handleChangeFile(e)}
+                />
+            }
         </>
     )
 }

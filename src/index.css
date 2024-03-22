@@ -23,41 +23,38 @@ code {
 
 @media all and (max-width: 768px){
     .prev-photo{
-        max-width: 18rem !important;
-        min-width: 18rem !important;
-        max-height: 18rem !important;
-        min-height: 18rem !important;
+        max-width: 18.5rem !important;
+        min-width: 18.5rem !important;
+        max-height: 18.5rem !important;
+        min-height: 18.5rem !important;
     }
     .fixed-top{
         right: auto !important;
         left: auto !important;
     }
-    .navbar{
-        max-width: 23.4rem !important;
-        min-width: 23.4rem !important;
-    }
-    .layout-footer{
-        max-width: 23.4rem !important;
-        min-width: 23.4rem !important;
-        /*max-height: 4rem !important;*/
-        /*min-height: 4rem !important*/
-    }
     .forgot-password-inner{
         padding-bottom: 310px !important;
         padding-top: 280px !important;
     }
+    .navbar{
+        max-width: 24.6rem !important;
+        min-width: 24.6rem !important;
+    }
+    .layout-footer{
+        max-width: 24.6rem !important;
+        min-width: 24.6rem !important;
+    }
     .main-wrapper{
-        max-width: 23.4rem !important;
-        min-width: 23.4rem !important;
+        max-width: 24.6rem !important;
+        min-width: 24.6rem !important;
     }
     .layout-side{
-        max-width: 23.4rem !important;
-        min-width: 23.4rem !important;
+        max-width: 24.6rem !important;
+        min-width: 24.6rem !important;
     }
     .App{
-        max-width: 23.4rem !important;
-        min-width: 23.4rem !important;
-        /*min-height: 55rem !important;*/
+        max-width: 24.6rem !important;
+        min-width: 24.6rem !important;
     }
 /*브라우저 창 width가 768px보다 작아지는 순간부터 적용*/
 /*모바일*/
@@ -236,9 +233,9 @@ h1,h2,h3,h4,h5,h6,label,span {
 .card-img-top{
     /*border-top: 0.1px solid black;*/
     border-radius: 0 !important;
-    min-height: 335px;
-    max-height: 335px;
-    max-width: 390px
+    /*min-height: 335px;*/
+    /*max-height: 335px;*/
+    /*max-width: 390px*/
 }
 
 .delete-post-button{
