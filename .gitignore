@@ -72,3 +72,4 @@ bin/
 /public/uploadFiles/
 
 package-lock.json
+.env
