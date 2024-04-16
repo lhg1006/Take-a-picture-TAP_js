@@ -60,14 +60,14 @@ const NewCard = ({data}: { data: FeedListType }) => {
         setModalOpen(false);
     };
 
-    const onDeleteComment = (data: { id: number, userMail: string }) => {
+    const onDeleteComment = (data: {cardId: number, id: number, userMail: string }) => {
         CustomConfirm(
             {
                 title: "Delete Comment?",
                 onConfirm: () => {
                     delComment(data).then((res) => {
                         if (res.data == 1) {
-                            dispatch(commonAction.setCall(data.id))
+                            dispatch(commonAction.setCall(data.cardId))
                             toast.success("Delete success")
                         } else {
                             toast.error("Delete fail ...")
@@ -244,6 +244,7 @@ const NewCard = ({data}: { data: FeedListType }) => {
                                                                 <div className={'p-1 comment-del-icon'}>
                                                                     <TiDeleteOutline className={'cursor'} onClick={() => {
                                                                         onDeleteComment({
+                                                                            cardId: data.id,
                                                                             id: item.id,
                                                                             userMail: cookieMemberEmail
                                                                         })
@@ -265,22 +266,22 @@ const NewCard = ({data}: { data: FeedListType }) => {
                             }
                             <Modal open={modalOpen} close={modalClose}
                                    header={data.postUserMail + " : " + data.postContent}>
-                                {data.commentsList != null && data.commentsList.map((data, idx) => {
-                                    const dateObject = moment(data.created_at);
+                                {data.commentsList != null && data.commentsList.map((item, idx) => {
+                                    const dateObject = moment(item.created_at);
                                     const formattedDate = dateObject.format("YY.MM.DD HH:mm");
                                     return (
                                         <div key={idx}>
                                             <div className={'d-flex'}>
-                                                    <span className={'p-1'}>{data.user_mail} <br/>
+                                                    <span className={'p-1'}>{item.user_mail} <br/>
                                                     <span
                                                         className={'modal-post-date-time'}><BsArrowReturnRight/>{formattedDate}</span>
                                                     </span>
                                                 <span
-                                                    className={`p-1 text-limit-none comment-filed`}>{data.content}</span>
-                                                {data.user_mail === cookieMemberEmail &&
+                                                    className={`p-1 text-limit-none comment-filed`}>{item.content}</span>
+                                                {item.user_mail === cookieMemberEmail &&
                                                     <div className={'p-1 comment-del-icon-modal'}>
                                                         <TiDeleteOutline className={'cursor'} onClick={() => {
-                                                            onDeleteComment({id: data.id, userMail: cookieMemberEmail})
+                                                            onDeleteComment({cardId: data.id, id: item.id, userMail: cookieMemberEmail})
                                                         }}/>
                                                     </div>
                                                 }

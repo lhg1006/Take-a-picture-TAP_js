@@ -3,7 +3,6 @@ const path = require('path');
 module.exports = {
     mode: 'production',
     entry: './src/index.tsx',
-    devtool: 'inline-source-map',
     module: {
         rules: [
             {
@@ -17,12 +16,12 @@ module.exports = {
             },
             {
                 test: /\.(ts)x?$/,
-                exclude: /node_modules|\.d\.ts$/, // this line as well
+                exclude: /node_modules|\.d\.ts$/,
                 use: {
                     loader: 'ts-loader',
                     options: {
                         compilerOptions: {
-                            noEmit: false, // this option will solve the issue
+                            noEmit: false,
                         },
                     },
                 },
@@ -42,17 +41,5 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
-    },
-    devServer: {
-        open: false,
-        hot: true,
-        port: '3000',
-        client: {
-            progress: true,
-        },
-        proxy: {
-            '/api': 'http://loaclhost:8000',
-            changeOrigin: true
-        },
     },
 }

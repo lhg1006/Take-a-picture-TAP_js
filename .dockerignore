@@ -1,0 +1,10 @@
+.idea
+.gradle
+.out
+.git/
+.gitignore/
+.vscode
+dist
+node_modules
+Dockerfile
+docker-compost.yml
