@@ -1,41 +1,29 @@
+# Deps stage
 FROM node:18-alpine AS deps
 RUN apk add --no-cache libc6-compat
 
 WORKDIR /usr/src/app
 
+COPY .env ./
 COPY package.json package-lock.json ./
-
 RUN npm ci
 
+# Builder stage
 FROM node:18-alpine AS builder
-
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json from deps stage
-COPY --from=deps /usr/src/app/package.json /usr/src/app/package-lock.json ./
-
-RUN npm ci
-
+COPY --from=deps /usr/src/app/node_modules ./node_modules
 COPY . .
-
-COPY .env ./.env
-
 RUN npm run build
 
-# Copy server.js from source
-COPY server.js .
-
+# Runner stage
 FROM node:18-alpine AS runner
-
 WORKDIR /usr/src/app
 
-RUN addgroup --system --gid 1001 nodejs
-
-# Copy from builder stage
+COPY --from=deps /usr/src/app/.env ./.env
 COPY --from=builder /usr/src/app/node_modules ./node_modules
 COPY --from=builder /usr/src/app/public ./public
-COPY --from=builder /usr/src/app/.env ./.env
-COPY --from=builder /usr/src/app/build .
+COPY --from=builder /usr/src/app/build ./build
 COPY --from=builder /usr/src/app/server.js .
 
 # Expose port
