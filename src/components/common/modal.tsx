@@ -8,13 +8,13 @@ export const Modal = (props:any) => {
     <div className={open ? 'openModal modal' : 'modal'}>
       {open ? (
         <section>
-          <header style={{marginTop: '70px'}}>
+          <header>
             {header}
             <button className="close" onClick={close}>
               &times;
             </button>
           </header>
-          <main style={{ maxHeight: '80vh', overflowY: 'auto'}}>
+          <main>
             {props.children}
           </main>
           <footer>
