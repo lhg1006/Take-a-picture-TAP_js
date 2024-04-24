@@ -1,3 +1,5 @@
+### Node.js v18.17.0
+
 ### 사용된 주요 패키지
 
 React: 사용자 인터페이스를 구축하기 위한 JavaScript 라이브러리입니다.
@@ -25,8 +27,6 @@ test: 테스트를 실행합니다.
 eject: create-react-app의 내부 설정을 외부로 추출합니다.
 
 ### 주요 환경
-
-Node.js v18.17.0
 
 Production Browserslist:
 
