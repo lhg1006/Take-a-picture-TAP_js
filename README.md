@@ -1,4 +1,4 @@
-![이미지](https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fb9ab5293-5d91-489d-9313-360a24c8bf9c%2Ff537e44f-7e39-4fb0-bc32-4f7721dfe4cd%2F%25EB%25A9%2594%25EC%259D%25B8.jpg?table=block&id=0f1f852c-6ffa-4583-8a4f-85a71ffdfac4&spaceId=b9ab5293-5d91-489d-9313-360a24c8bf9c&width=1330&userId=d8f75b76-3ba2-438e-b15e-bb2ea5e52e30&cache=v2)
+![이미지](http://13.209.62.108:8060/api/photo/imagePath/-2024-04-24-/79b492ed-0ce1-458c-b26f-2901e6695a94_t1.png)
 
 
 
