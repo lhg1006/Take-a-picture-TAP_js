@@ -1,46 +1,35 @@
-# Getting Started with Create React App
+### 사용된 주요 패키지
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React: 사용자 인터페이스를 구축하기 위한 JavaScript 라이브러리입니다.
 
-## Available Scripts
+React Router Dom: React 애플리케이션의 라우팅을 관리하기 위한 패키지입니다.
 
-In the project directory, you can run:
+Redux: React 애플리케이션의 상태 관리를 위한 패키지입니다.
 
-### `npm start`
+Axios: HTTP 클라이언트 라이브러리로, 서버와의 비동기 통신을 담당합니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+React Bootstrap: React 애플리케이션에서 Bootstrap을 사용할 수 있도록 해주는 패키지입니다.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+React Toastify: 알림 메시지를 표시하기 위한 React 컴포넌트입니다.
 
-### `npm test`
+React Confirm Alert: 사용자에게 확인 대화 상자를 표시하는 데 사용되는 패키지입니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 스크립트
 
-### `npm run build`
+start: 개발 서버를 시작합니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+build: 프로덕션용 빌드를 생성합니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+test: 테스트를 실행합니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+eject: create-react-app의 내부 설정을 외부로 추출합니다.
 
-### `npm run eject`
+### 주요 환경
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Production Browserslist:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+최신 버전의 브라우저 및 약간의 사용자의 사용하지 않는 브라우저를 대상으로 합니다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Development Browserslist:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+최신 버전의 크롬, 파이어폭스, 사파리를 대상으로 합니다.
