@@ -1,12 +1,14 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 type initType = {
+  isReload: boolean
   isLoading: boolean
   isCall: boolean
   rememberPostNo: number
 }
 
 const initialState: initType = {
+  isReload: false,
   isLoading: false,
   isCall: false,
   rememberPostNo:0
@@ -24,6 +26,9 @@ export const commonReducer = createSlice({
 
       state.isCall = !state.isCall
     },
+    setReLoad:(state, action:PayloadAction<boolean>) => {
+      state.isReload = action.payload
+    }
   },
   extraReducers: {},
 });

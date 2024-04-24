@@ -6,8 +6,9 @@ import NewCard from "../../components/newFeed/newCard";
 import {getNewFeedList, getSingleView, getTargetFeedList} from "../../api/call/newFeed";
 import {FeedListType} from "../../types/newFeedType";
 import NotFound from "../../components/common/notFound";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {CommonTypes} from "../../types/commonTypes";
+import {commonAction} from "../../reducers/common";
 
 const NewFeed = () => {
     const isLogin = getCookie('isLogin')
@@ -16,9 +17,9 @@ const NewFeed = () => {
     const [list, setList] = useState<FeedListType[]>([])
     const [pageNo, setPageNo] = useState<number>(0)
     const [stopPaging, setStopPaging] = useState<boolean>(false)
-    const {isCall, rememberPostNo } = useSelector((state: CommonTypes) => state.common)
-
+    const {isReload , isCall, rememberPostNo } = useSelector((state: CommonTypes) => state.common)
     const observerRef = useRef<null | HTMLDivElement>(null);
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (!isLogin) {
@@ -91,6 +92,21 @@ const NewFeed = () => {
         }
     }, [isCall]);
 
+    useEffect(() => {
+        if (isReload){
+            window.scrollTo(0, 0);
+
+            const param = {
+                userMail: cookieMemberEmail,
+                pageNo: 1
+            };
+            getNewFeedList(param).then((res) => {
+                setList(res.data.postList);
+                setStopPaging( res.data.stopPaging )
+                dispatch(commonAction.setReLoad(false))
+            });
+        }
+    }, [isReload]);
 
     return (
         <div className={"main-wrapper"}>

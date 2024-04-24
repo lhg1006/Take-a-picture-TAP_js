@@ -88,7 +88,7 @@ const NewCard = ({data}: { data: FeedListType }) => {
                                 if(newPath === '/feed/view'){
                                     navigate(-1)
                                 }else{
-                                    dispatch(commonAction.setCall(0))
+                                    dispatch(commonAction.setReLoad(true))
                                 }
                                 toast.success("삭제되었습니다.")
                             } else {
