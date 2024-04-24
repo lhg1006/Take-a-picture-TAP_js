@@ -26,6 +26,8 @@ eject: create-react-app의 내부 설정을 외부로 추출합니다.
 
 ### 주요 환경
 
+Node.js v18.17.0
+
 Production Browserslist:
 
 최신 버전의 브라우저 및 약간의 사용자의 사용하지 않는 브라우저를 대상으로 합니다.
