@@ -1,5 +1,5 @@
 
-![이미지](http://13.209.62.108:8060/api/photo/imagePath/-2024-04-24-/d5747752-53d7-4e13-b862-62a971725869_t2.png)
+![이미지](https://github.com/lhg1006/portfolio-images/blob/2d28ecc0cfe5317675dcc42ac4f4fa020d17af21/images/project/tap-0.png)
 
 ### backend link 
 https://github.com/lhg1006/Take-a-picture-TAP_java
